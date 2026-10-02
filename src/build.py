@@ -308,12 +308,13 @@ js_tail = js_tail.replace('addEventListener("hashchange",show);show();', 'addEve
 js_tail = js_tail.replace('    syncDeckVideo();\n', '')
 js_tail = js_tail.replace('curtain.style.setProperty("--c",toAbout?"var(--about)":colors[cur]);', 'curtain.style.setProperty("--c",toAbout?"var(--about)":P[cur].bg);')
 js_tail = js_tail.replace('location.hash="#work";await wait(1700);openCase(k)', 'location.hash="#work";await wait(1700);openCase(k)')
-js_tail = js_tail.replace('const ENDPOINT="";', 'const ENDPOINT="https://formsubmit.co/ajax/lujain.aloufi0@gmail.com";')
+js_tail = js_tail.replace('const ENDPOINT="";', 'const ENDPOINT="https://formsubmit.co/ajax/' + MAIL + '";')
 js_tail = js_tail.replace('if(!ENDPOINT){await wait(700);throw new Error("demo")}\n    const r=await fetch(ENDPOINT,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});if(!r.ok)throw new Error("fail");',
   'const fd=new FormData(form);fd.append("_subject",`Portfolio: ${fd.get("reason")} from ${fd.get("name")}`);fd.append("_replyto",fd.get("email"));fd.append("_template","box");fd.append("_captcha","false");\n    const r=await fetch(ENDPOINT,{method:"POST",body:fd,headers:{Accept:"application/json"}});const j=await r.json().catch(()=>({}));if(!r.ok||j.success==="false"||j.success===false)throw new Error("fail");')
+# if the send fails, say so on the page and show the address; nothing opens in another app
 js_tail = js_tail.replace('err.message==="demo"?"Demo mode: this form isn\'t connected yet, so nothing was sent. Email me at lujain.aloufi0@gmail.com.":"Your message didn\'t go through. Check your connection and try again, or email me directly."',
-  '"That didn\'t send, so your email app is opening with the message ready instead.";const v=n=>form.elements[n].value;location.href=`mailto:lujain.aloufi0@gmail.com?subject=${encodeURIComponent("Portfolio: "+form.querySelector("[name=reason]:checked").value)}&body=${encodeURIComponent(v("message")+"\\n\\n"+v("name")+" · "+v("email"))}`')
-assert 'formsubmit.co' in js_tail and 'mailto:lujain.aloufi0' in js_tail and 'Demo mode' not in js_tail
+  '`Your message didn\'t go through. Check your connection and try again, or email me at ${"' + MAIL + '"}.`')
+assert 'formsubmit.co' in js_tail and 'location.href=`mailto' not in js_tail and 'Demo mode' not in js_tail
 js_tail = re.sub(r'\npaint\(\);\nconst boot=.*$', '\n', js_tail, flags=re.S)
 JS = '<script>\n(()=>{' + js_prefix + intro_curves.JS + JS_NEW + '\n' + js_tail + '\n})();\n</script>\n'
 
