@@ -33,7 +33,7 @@ Scrolling, swiping or the arrow keys move between projects. The current card dro
 
 ![Tawaqaa project page](docs/gifs/03-tawaqaa.gif)
 
-**Graduation project · IoT & ML · University of Jeddah, 2024 · Grand Special Award, SGiE 2024**
+**Graduation project · IoT & ML · Project lead & systems developer · Grand Special Award, SGiE 2024**
 
 Tawaqaa is a smart road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app by street name or map pin. Reports are counted and ranked per street, a water-level sensor measures the hotspot, and a YOLOv10 model trained on 1,532 flooded-car and 171 people-in-flood images flags danger in real time. Drivers get alerts and a safer route, and authorities review and close reports on a live Firebase-synced web console.
 
@@ -51,7 +51,7 @@ Opening a card lifts it, grows it to fill the screen and slides the project page
 
 ![Masar project page](docs/gifs/04-masar.gif)
 
-**Bilingual web app for government teams · Full-stack engineer · 2026**
+**Bilingual web app for government teams · Backend & full-stack developer · Jun – Sep 2026**
 
 Masar is a task workspace for government departments. Every task has an owner, every step is visible, and finished work stays on record. Members, department heads, HR and administrators each get their own view, with progress by group and average days to complete. It has full Arabic and English with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.
 
@@ -75,7 +75,7 @@ The page walks through the flow: opening the fridge, tossing ingredients into th
 
 ![Stack card and page](docs/gifs/06-stack.gif)
 
-The last card is my toolset. On the home screen, rows of tool chips drift in alternating directions and fade between white and black. The Stack page groups the 17 tools I use (languages, frameworks, data & cloud, and AI, mobile & design), each with its logo and the projects I used it in. The filters show only the tools behind one project.
+The last card is my toolset. On the home screen, rows of tool chips drift in alternating directions and fade between white and black. The Stack page groups the 16 tools I use (languages, frameworks, data, and AI, mobile & design), each with its logo and the projects I used it in. The filters show only the tools behind one project.
 
 ## Catalog view and dark mode
 
@@ -87,7 +87,7 @@ The last card is my toolset. On the home screen, rows of tool chips drift in alt
 
 ![About page and footer](docs/gifs/08-about.gif)
 
-The About page covers what I work on, the tools I use, recognition, and a contact form. The form sends messages to my email through FormSubmit, and opens the visitor's email app with the message ready if sending fails. The footer has navigation, LinkedIn, my email, a live Jeddah clock and my name set full width.
+The About page covers what I work on, the tools I use, recognition, my experience and education, and a contact form. The form sends messages to my email through FormSubmit, and opens the visitor's email app with the message ready if sending fails. The footer has navigation, LinkedIn, my email, a live Jeddah clock and my name set full width.
 
 ---
 
