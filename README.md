@@ -85,11 +85,32 @@ The last card is my toolset. On the home screen, rows of tool chips drift in alt
 
 ## About
 
-![About page and footer](docs/gifs/08-about.gif)
+![About page: intro and expertise](docs/gifs/08-about.gif)
 
-The About page covers what I work on, the tools I use, recognition, my experience and education, and a contact form. The form sends messages to my email through FormSubmit, and opens the visitor's email app with the message ready if sending fails. The footer has navigation, LinkedIn, my email, a live Jeddah clock and my name set full width.
+The About page opens with a short intro: I'm a backend-focused software engineer who designs and ships REST APIs, relational data models and real-time services end to end. Below it, four expertise areas open one at a time:
 
----
+- **Backend & APIs:** Node.js, NestJS and TypeScript, server-enforced role-based access, WebSockets (Socket.IO) and scheduled jobs.
+- **Data & security:** PostgreSQL with Prisma, Firebase, argon2 password hashing, httpOnly JWT sessions with revocation, one-time activation codes and rate limiting.
+- **Testing & delivery:** Vitest and Playwright, GitHub Actions CI, Docker and cloud deployment.
+- **Frontend & mobile:** React, Next.js, Android (Java) and the Google Maps API.
+
+A strip of tool logos scrolls underneath.
+
+## Awards, experience and education
+
+![Awards photos and experience](docs/gifs/09-awards-experience.gif)
+
+- **Awards:** photos of the Grand Special Award trophy and certificate, the Gold Medal certificate, and the Tawaqaa poster on show at the Saudi Global Inventions and Innovations Expo (SGiE 2024). Under them is my degree: BSc Software Engineering, GPA 4.48 / 5.0, Second Class Honors.
+- **Jeddah Municipality, Digital Transformation Department (Jan – Mar 2025):** software engineering trainee. I built three pages for the internal Innovation Portal, worked through requirements with stakeholders, tested features in review cycles and prototyped a unified municipality app concept.
+- **Masar (Jun – Sep 2026):** a NestJS 11 REST API over an 11-table PostgreSQL schema with four role-based views, server-enforced permissions, Socket.IO events, scheduled jobs and 50 automated tests in CI.
+- **Tawaqaa:** I was project lead and systems developer on an IoT, AI and drone platform for road hazards and flood risk.
+- **University of Jeddah (2020 – 2025)** and my languages: Arabic (native) and English (professional, STEP 78).
+
+## Contact and footer
+
+![Contact form and footer](docs/gifs/10-contact-footer.gif)
+
+The contact form sends messages to my email through FormSubmit, and opens the visitor's email app with the message ready if sending fails. Next to it are my email, with a copy button, and LinkedIn. The footer has navigation, a live Jeddah clock and my name set full width.
 
 ## How it's built
 
@@ -106,6 +127,7 @@ src/
   intro_curves.py       intro motion curves, sampled at 60 Hz
   icons.json            tool logos as SVG paths
 docs/gifs/              the recordings in this README
+assets/award-*.webp     award and expo photos (cleaned up and upscaled 2x)
 ```
 
 ### Build
