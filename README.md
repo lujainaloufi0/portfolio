@@ -155,6 +155,67 @@ python3 -m http.server 8000
 - **Accessibility:** keyboard navigation for the deck and project pages, visible focus states, labelled controls, and contrast-checked text and mockup colours.
 - **Performance:** media is lazy-loaded animated WebP, and the hosted page is about 345 KB of HTML before media.
 
+## Make it yours
 
+Want to use this design for your own portfolio? You're welcome to. Fork the repository, swap in your details using the steps below, and publish it.
+
+> **Please replace all of my content.** The projects, descriptions, photos, app recordings and About page text are about me and my work. Keep the code and the design, but put your own projects, photos and story in their place.
+
+### 1. Get a copy
+
+1. Click **Fork** at the top of this page (or **Use this template** if it's shown).
+2. Clone your copy:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/portfolio.git
+   cd portfolio
+   ```
+3. Install the two Python packages the build uses (Python 3.10 or newer):
+   ```bash
+   pip install numpy scipy
+   ```
+
+### 2. Change your details
+
+All the source files are in `src/`. Never edit `index.html` by hand, because the build writes over it.
+
+| What | File | What to change |
+|---|---|---|
+| **Name** | `src/base.html`, `src/build.py` | Search for `Lujain Aloufi` and `LUJAIN ALOUFI`. It appears in the page title, the share previews, the logo, the footer wordmark and the copyright line. |
+| **Name in a second language** (under the logo) | `src/build.py`, `src/base.html`, `src/main.js` | Replace `لجين العوفي` with your name. In `main.js`, `AR_N` lists the letters of each word and `AR_S` marks the letters that may be stretched with kashida (ـ). Set them for your name, or delete the `<span class="ln ar">` lines to show only one name. |
+| **Email** | `src/build.py` | Change `MAIL = '...'`. This updates the contact section, the footer, the copy button and the contact form. Also change the `"email"` field in the JSON-LD block at the top of `src/base.html`. |
+| **LinkedIn** | `src/build.py` | Change `LI = '...'`, and the `sameAs` link near the top of the file. |
+| **Contact form** | (automatic) | Messages go to `MAIL` through [FormSubmit](https://formsubmit.co). The first message sent from the live site triggers a confirmation email; click **Activate** once. |
+| **City and clock** | `src/base.html` | Search for `Jeddah` and `Asia/Riyadh` (the clock's time zone). |
+| **Projects** | `src/build.py` → `PROJ` | One `dict(...)` per card, in order: `title`, the `attr` line under the title, `card` (the image on the home card), `meta_l` / `meta_r` (type, role, dates, awards), `stack`, `desc`, and `shots`, a list of `(label, image, caption)`. |
+| **Project colours** | `src/main.js` → `P` | One entry per project, in the same order as `PROJ`: `bg` (page colour), `night` (dark mode), `deep` (project page), `ink` (text) and `acc` (accent). |
+| **Images and recordings** | `assets/` | Put your files here and refer to them by file name in `PROJ`. Animated WebP works well for screen recordings and plays like a GIF. |
+| **Tools** | `src/build.py` → `TOOLS` | Each tool is `(name, projects, label)`. The letters (`t`, `m`, `f`) say which projects used it and match the filter buttons on the Stack page (search for `data-f=`). |
+| **Tool logos** | `src/icons.json` | The key is the tool name and the value is a 24×24 SVG path. You can copy paths from [Simple Icons](https://simpleicons.org). A tool without a logo still shows its name. |
+| **About page** | `src/base.html` | Search for `ABOUT`. Edit the intro, the four expertise items, the award photos (`award-*.webp` in `assets/`), the experience rows and the footer line. |
+| **Page description and share preview** | `src/base.html` | The `<meta name="description">`, `og:` and `twitter:` tags at the top. |
+
+The Tawaqaa screens are drawn in code (`src/tawaqaa_scenes.py` and `src/tawaqaa.css`). For your own projects, the simplest route is to record your app and use the images the way Masar does (`card='your-card.webp'`, plus `shots`).
+
+To find anything you might have missed:
+
+```bash
+grep -rn "Lujain\|lujain\|Jeddah\|Tawaqaa\|Masar" src
+```
+
+### 3. Build and check
+
+```bash
+python3 src/build.py
+python3 -m http.server 8000      # then open http://localhost:8000
+```
+
+Click through every project, the About page and the footer, and try it on your phone too.
+
+### 4. Publish
+
+1. Commit and push your changes.
+2. On GitHub, open **Settings → Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**, select **main** and **/ (root)**, and save.
+4. After a minute your site is live at `https://YOUR-USERNAME.github.io/portfolio/`.
 
 © 2026 Lujain Aloufi
