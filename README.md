@@ -133,8 +133,6 @@ python3 -m http.server 8000
 - **Accessibility:** keyboard navigation for the deck and project pages, visible focus states, labelled controls, and contrast-checked text and mockup colours.
 - **Performance:** media is lazy-loaded animated WebP, and the hosted page is about 345 KB of HTML before media.
 
-## Design inspiration
 
-The layout and motion are inspired by [johngearhart.me](https://johngearhart.me/).
 
 © 2026 Lujain Aloufi
