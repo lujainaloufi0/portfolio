@@ -36,7 +36,7 @@ head = head.replace('<meta name="theme-color" content="#7E6D54">', '<meta name="
 head = head.replace('family=Bebas+Neue&amp;family=League+Gothic&amp;display=swap', 'family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700&amp;family=League+Gothic&amp;display=swap')
 assert 'family=Inter' in head
 head = head.replace('"sameAs":["https://github.com/your-username","https://www.linkedin.com/in/your-handle"]', '"sameAs":["https://www.linkedin.com/in/lujain-aloufi/"]')
-head = head.replace('"knowsAbout":["Python","Java","TypeScript","Next.js","NestJS","PostgreSQL","Firebase","AWS","SQL","Computer Vision","YOLOv10","IoT"]', '"knowsAbout":["Python","Java","JavaScript","TypeScript","SQL","React","Next.js","NestJS","Node.js","PostgreSQL","Firebase","AWS","YOLOv10","Android","Figma"]')
+head = head.replace('"knowsAbout":["Python","Java","TypeScript","Next.js","NestJS","PostgreSQL","Firebase","AWS","SQL","Computer Vision","YOLOv10","IoT"]', '"knowsAbout":["Python","Java","JavaScript","TypeScript","SQL","React","Next.js","NestJS","Node.js","PostgreSQL","Firebase","Prisma","Socket.IO","Docker","YOLOv10","Android"]')
 assert 'github' not in head.lower()
 
 head = head.replace("fill='%237E6D54'", "fill='%230F3442'")
@@ -89,11 +89,11 @@ def icon(name):
 TOOLS = [
  ('Languages', [('Python','t','Tawaqaa'),('Java','t','Tawaqaa'),('JavaScript','t m f','All three'),('TypeScript','m','Masar'),('SQL','m','Masar'),('HTML','t m f','All three'),('CSS','t m f','All three')]),
  ('Frameworks', [('React','m','Masar'),('Next.js','m','Masar'),('NestJS','m','Masar'),('Node.js','m','Masar')]),
- ('Data &amp; cloud', [('PostgreSQL','m','Masar'),('Firebase','t','Tawaqaa'),('AWS','','')]),
+ ('Data', [('PostgreSQL','m','Masar'),('Firebase','t','Tawaqaa')]),
  ('AI, mobile &amp; design', [('YOLOv10','t','Tawaqaa'),('Android','t','Tawaqaa'),('Figma','t f','Tawaqaa, Fridge &amp; Friends')]),
 ]
 ALL_TOOLS = [n for _, items in TOOLS for n, _, _ in items]
-ROWS = [ALL_TOOLS[0:5], ALL_TOOLS[5:9], ALL_TOOLS[9:13], ALL_TOOLS[13:17]]
+ROWS = [ALL_TOOLS[0:4], ALL_TOOLS[4:8], ALL_TOOLS[8:12], ALL_TOOLS[12:16]]
 stack_rows = ''; n = 0
 for names in ROWS:
     stack_rows += '<div class="row">' + ''.join(f'<span style="--n:{(n+k*2)%8}">{icon(nm)}{nm}</span>' for _ in range(3) for k, nm in enumerate(names)) + '</div>'
@@ -102,14 +102,14 @@ for names in ROWS:
 PROJ = [
  dict(key='tawaqaa', title='Tawaqaa', ar='', attr='IOT &amp; ML   •   2024   •   GRADUATION PROJECT', card='@html:tq', bg=None,
       alt='Tawaqaa interface in motion: flood reports on a map of Jeddah, ranked streets, a drone measuring water and detection boxes',
-      meta_l=[('Type','Graduation project · IoT &amp; ML'),('Role','<span class="ph" title="Placeholder: add your role in the team">Your role</span>'),('Completed','2024 · University of Jeddah')],
+      meta_l=[('Type','Graduation project · IoT &amp; ML'),('Role','Project lead &amp; systems developer'),('Completed','2024 · University of Jeddah')],
       meta_r=[('Awards','Grand Special Award, SGiE 2024')],
       stack=['Java','Android','Firebase','Python','YOLOv10','JavaScript','Figma'],
       desc="Tawaqaa is a smart road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app by street name or map pin. Reports are counted and ranked per street, a water-level sensor measures the hotspot, and a YOLOv10 model trained on 1,532 flooded-car and 171 people-in-flood images flags danger in real time. Drivers get alerts and a safer route, and authorities review and close reports on a live Firebase-synced web console.",
       shots=TQ.SHOTS, phone=False, html=True),
  dict(key='masar', title='Masar', ar='', attr='WEB APP   •   2026   •   FULL-STACK', card='m-card.webp', bg=None,
       alt='Masar in use: signing in, the department overview, the task board, completing a task and switching to Arabic',
-      meta_l=[('Type','Bilingual web app for government teams'),('Role','Full-stack engineer'),('Completed','2026')],
+      meta_l=[('Type','Bilingual web app for government teams'),('Role','Backend &amp; full-stack developer'),('Completed','Jun – Sep 2026')],
       meta_r=[],
       stack=['TypeScript','React','Next.js','NestJS','Node.js','PostgreSQL'],
       desc='Masar is a task workspace for government departments. Every task has an owner, every step is visible, and finished work stays on record. Members, department heads, HR and administrators each get their own view, with progress by group and average days to complete. Full Arabic and English with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.',
@@ -283,6 +283,7 @@ ABOUT = ABOUT.replace('Web components, React or Vue, and modern CSS,', 'React, N
 _strip = ''.join(f'<li>{icon(nm)}{nm}</li>' for nm in ALL_TOOLS)
 ABOUT = re.sub(r'<div class="marquee-track">.*?</div>', '<div class="marquee-track">\n          <ul>' + _strip + '</ul>\n          <ul aria-hidden="true">' + _strip + '</ul>\n        </div>', ABOUT, count=1, flags=re.S)
 assert 'github.com' not in ABOUT and 'Vue' not in ABOUT
+for _n in re.findall(r'@@A:([^@]+)@@', ABOUT): asset(_n)  # About page photos
 # ---------- contact: real LinkedIn, working email, English footer wordmark ----------
 LI='https://www.linkedin.com/in/lujain-aloufi/'
 MAIL='lujain.aloufi0@gmail.com'

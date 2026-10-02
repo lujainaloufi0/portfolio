@@ -12,11 +12,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://your-domain.com/">
 <meta property="og:title" content="Lujain Aloufi | Software Engineer &amp; Full-Stack Systems">
-<meta property="og:description" content="Full-stack systems, computer vision and cloud architecture. First Class Honors, Software Engineering, University of Jeddah.">
+<meta property="og:description" content="Backend-focused software engineer: REST APIs, relational data models and real-time services. BSc Software Engineering, University of Jeddah.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lujain Aloufi | Software Engineer">
-<meta name="twitter:description" content="Full-stack systems, computer vision and cloud architecture, built in Jeddah.">
+<meta name="twitter:description" content="Backend-focused software engineer in Jeddah: REST APIs, data models and real-time services.">
 <meta name="theme-color" content="#7E6D54">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%237E6D54'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='15' font-weight='700' text-anchor='middle' fill='%23fff'%3EL%3C/text%3E%3C/svg%3E">
@@ -241,23 +241,26 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
 
 /* recognition */
 .rec-statement{grid-column:2/span 10;font:400 clamp(2.2rem,5vw,4.6rem)/1 var(--f-bebas);text-align:center;text-wrap:balance;margin-bottom:clamp(3rem,7vw,6rem)}
-.rec{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,28px);list-style:none;margin:0;padding:0}
-.rec li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem;padding:1.6rem 1rem;border-top:1px solid var(--paper-ink)}
-.rec .ring{width:clamp(76px,8vw,104px);aspect-ratio:1;border:1px solid var(--paper-ink);border-radius:50%;display:grid;place-items:center;font:400 1.6rem var(--f-bebas);margin-bottom:.8rem;transition:background .4s,color .4s,transform .7s var(--out)}
-.rec li:hover .ring{background:var(--paper-ink);color:var(--paper);transform:rotate(-12deg)}
-.rec .m{color:var(--paper-muted)}
-@media (max-width:860px){.rec{grid-template-columns:repeat(2,minmax(0,1fr))}.rec-statement{grid-column:1/-1}}
+.awards{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.63fr) minmax(0,1fr);gap:clamp(16px,2.4vw,32px);align-items:start}
+.aw{margin:0;display:flex;flex-direction:column;gap:.9rem}
+.aw-img{overflow:hidden;border-radius:clamp(10px,1.4vw,18px);background:var(--paper-line)}
+.aw-img img{display:block;width:100%;height:auto;transition:transform 1.2s var(--out)}
+@media (hover:hover) and (pointer:fine){.aw:hover .aw-img img{transform:scale(1.035)}}
+.aw figcaption{display:flex;flex-direction:column;gap:.3rem}
+.aw .m,.aw-honors .m{color:var(--paper-muted)}
+.aw-honors{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem;margin:clamp(2.5rem,5vw,4rem) 0 0;padding-top:1.4rem;border-top:1px solid var(--paper-line);text-align:center}
+@media (max-width:760px){.awards{grid-template-columns:minmax(0,1fr)}.rec-statement{grid-column:1/-1}}
 
 /* notes */
 .notes{grid-column:1/-1;list-style:none;margin:0;padding:0;border-top:1px solid var(--paper-line)}
-.notes a{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr) auto;gap:clamp(16px,2vw,28px);align-items:baseline;padding:clamp(1.2rem,2.6vw,2rem) 0;border-bottom:1px solid var(--paper-line);text-decoration:none}
+.notes .row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(16px,2vw,28px);align-items:baseline;padding:clamp(1.2rem,2.6vw,2rem) 0;border-bottom:1px solid var(--paper-line);text-decoration:none}
 .notes .t{font:400 clamp(1.8rem,3.6vw,3.2rem)/1 var(--f-bebas);transition:transform .6s var(--out)}
 .notes .x{color:var(--paper-muted);max-width:52ch}
 .notes .go{display:inline-grid;place-items:center;width:46px;height:46px;border:1px solid var(--paper-line);border-radius:50%;transition:background .35s,color .35s,transform .6s var(--out),border-color .35s}
-.notes a:hover .t{transform:translateX(.6rem)}
+.notes .role{display:block;margin-top:.5rem;color:var(--paper-muted)}
 .notes a:hover .go{background:var(--paper-ink);color:var(--paper);border-color:var(--paper-ink);transform:rotate(-45deg)}
-.notes .meta{grid-column:1/-1;color:var(--paper-muted);margin-top:-.4rem}
-@media (max-width:760px){.notes a{grid-template-columns:minmax(0,1fr) auto}.notes .x{grid-column:1/-1;grid-row:3}}
+.notes .row{grid-template-areas:"t x" "m x";align-items:start}.notes .t{grid-area:t}.notes .x{grid-area:x}.notes .meta{grid-area:m;color:var(--paper-muted)}
+@media (max-width:760px){.notes .row{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "x" "m"}}
 
 /* contact */
 #contact{background:var(--about)}
@@ -717,8 +720,8 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
     <section class="a-hero" aria-labelledby="about-title">
       <h1 id="about-title"><span class="ln"><span>Less talk.</span></span><span class="ln"><span>More shipping.</span></span></h1>
       <p class="lbl status a-status"><i aria-hidden="true"></i>Open to roles</p>
-      <p class="a-intro">Hi, I'm Lujain, a software engineer from Jeddah who builds full-stack systems: flood alerts that keep drivers out of the water, bilingual workspaces for government teams, and playful apps with real motion. I graduated with First Class Honors in Software Engineering from the University of Jeddah.</p>
-      <div class="a-recent"><span class="lbl">Recent work</span><button type="button" data-open-from-about="2">Fridge &amp; Friends</button></div>
+      <p class="a-intro">Hi, I'm Lujain, a backend-focused software engineer from Jeddah. I design and ship REST APIs, relational data models and real-time services end to end, from requirements through testing, CI and deployment. I built Masar, a NestJS and PostgreSQL platform for government departments, and led Tawaqaa, winner of the SGiE 2024 Grand Special Award. I graduated in Software Engineering from the University of Jeddah with a GPA of 4.48 / 5.0.</p>
+      <div class="a-recent"><span class="lbl">Recent work</span><button type="button" data-open-from-about="1">Masar</button></div>
     </section>
 
     <section class="paper sec" aria-labelledby="exp-title">
@@ -726,10 +729,10 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
         <h2 class="sec-lbl lbl" id="exp-title">Expertise</h2>
         <div class="num" aria-hidden="true"><span>0</span><span class="digits" id="digits" style="--n:0"><span>1</span><span>2</span><span>3</span><span>4</span></span></div>
         <ul class="svc" id="svc">
-          <li class="open"><button type="button" aria-expanded="true" aria-controls="svc-0"><span class="k">01</span><span class="t">Full-stack systems</span></button><div class="body" id="svc-0"><div><p>End-to-end products in Python, SQL and JavaScript, from the data model to the last pixel of the interface.</p></div></div></li>
-          <li><button type="button" aria-expanded="false" aria-controls="svc-1"><span class="k">02</span><span class="t">Machine learning &amp; IoT</span></button><div class="body" id="svc-1"><div><p>Real-time YOLOv10 detection fed by sensors and cameras, with pipelines that move data from the edge to the cloud.</p></div></div></li>
-          <li><button type="button" aria-expanded="false" aria-controls="svc-2"><span class="k">03</span><span class="t">Cloud architecture</span></button><div class="body" id="svc-2"><div><p>AWS services and relational schemas designed to stay simple to operate and cheap to run as usage grows.</p></div></div></li>
-          <li><button type="button" aria-expanded="false" aria-controls="svc-3"><span class="k">04</span><span class="t">Front-end performance</span></button><div class="body" id="svc-3"><div><p>Web components, React or Vue, and modern CSS, built from Figma and tuned for fast loads on real phones.</p></div></div></li>
+          <li class="open"><button type="button" aria-expanded="true" aria-controls="svc-0"><span class="k">01</span><span class="t">Backend &amp; APIs</span></button><div class="body" id="svc-0"><div><p>REST APIs in Node.js, NestJS and TypeScript, with role-based access enforced on the server, real-time events over WebSockets (Socket.IO) and scheduled jobs.</p></div></div></li>
+          <li><button type="button" aria-expanded="false" aria-controls="svc-1"><span class="k">02</span><span class="t">Data &amp; security</span></button><div class="body" id="svc-1"><div><p>Relational schemas in PostgreSQL with Prisma, plus Firebase. Sign-in secured with argon2 hashing, httpOnly JWT sessions with revocation, one-time activation codes and rate limiting.</p></div></div></li>
+          <li><button type="button" aria-expanded="false" aria-controls="svc-2"><span class="k">03</span><span class="t">Testing &amp; delivery</span></button><div class="body" id="svc-2"><div><p>Automated tests with Vitest and Playwright, CI pipelines on GitHub Actions, Docker containers and cloud deployment.</p></div></div></li>
+          <li><button type="button" aria-expanded="false" aria-controls="svc-3"><span class="k">04</span><span class="t">Frontend &amp; mobile</span></button><div class="body" id="svc-3"><div><p>React and Next.js on the web, Android apps in Java, and the Google Maps API, connected to the services behind them.</p></div></div></li>
         </ul>
       </div>
       <div class="marquee" aria-label="Tools and frameworks">
@@ -744,22 +747,29 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
       <div class="grid">
         <h2 class="sec-lbl lbl" id="rec-title" style="text-align:center">Awards &amp; recognition</h2>
         <p class="rec-statement">Recognized on the competition stage and in the classroom.</p>
-        <ul class="rec">
-          <li><span class="ring" aria-hidden="true">GSA</span><span class="lbl">Grand Special Award</span><span class="lbl m">Tawaqaa Road Monitor</span><span class="lbl m">2024 · SGiE</span></li>
-          <li><span class="ring" aria-hidden="true">1st</span><span class="lbl">First Class Honors</span><span class="lbl m">BSc Software Engineering</span><span class="lbl m">University of Jeddah</span></li>
-          <li><span class="ring" aria-hidden="true">SFC</span><span class="lbl">Scrum Fundamentals</span><span class="lbl m">Certified</span><span class="lbl m">Agile delivery</span></li>
-          <li><span class="ring" aria-hidden="true">IT4</span><span class="lbl">ITIL 4 Foundation</span><span class="lbl m">In preparation</span><span class="lbl m">Service management</span></li>
-        </ul>
+        <div class="awards">
+          <figure class="aw">
+            <div class="aw-img"><img src="@@A:award-sgie-2024.webp@@" alt="The Special Award trophy, the Grand Special Award certificate and the Gold Medal certificate for Tawaqaa at SGiE 2024" width="1656" height="1216" loading="lazy" decoding="async"></div>
+            <figcaption><span class="lbl">Grand Special Award &amp; Gold Medal</span><span class="lbl m">Tawaqaa · SGiE 2024 · Jeddah</span></figcaption>
+          </figure>
+          <figure class="aw">
+            <div class="aw-img"><img src="@@A:award-poster-sgie-2024.webp@@" alt="The Tawaqaa poster, Drone Monitoring System for Efficient Traffic Management During Heavy Rain, on display at SGiE 2024" width="1336" height="1600" loading="lazy" decoding="async"></div>
+            <figcaption><span class="lbl">On show at the expo</span><span class="lbl m">Saudi Global Inventions and Innovations Expo</span></figcaption>
+          </figure>
+        </div>
+        <p class="aw-honors"><span class="lbl">Second Class Honors</span><span class="lbl m">BSc Software Engineering · GPA 4.48 / 5.0 · University of Jeddah, 2025</span></p>
       </div>
     </section>
 
     <section class="paper sec" style="padding-top:0" aria-labelledby="notes-title">
       <div class="grid">
-        <h2 class="sec-lbl lbl" id="notes-title">Notes from the build</h2>
+        <h2 class="sec-lbl lbl" id="notes-title">Experience &amp; education</h2>
         <ul class="notes">
-          <li><a href="#about"><span class="t">Training YOLOv10 on flooded streets</span><span class="x">A new model, few resources and a small dataset. What it took to make Tawaqaa spot flooded cars and people in the water.</span><span class="go" aria-hidden="true">→</span><span class="meta lbl">Computer vision · 7 min</span></a></li>
-          <li><a href="#about"><span class="t">One workspace, two directions</span><span class="x">Building Masar in Arabic and English from a single codebase: right-to-left layout, Hijri dates and mirrored icons.</span><span class="go" aria-hidden="true">→</span><span class="meta lbl">Front end · 6 min</span></a></li>
-          <li><a href="#about"><span class="t">Twelve characters from one kit</span><span class="x">How Fridge &amp; Friends got its cast: shared eyes, gloves and sneakers, and motion that reacts to every tap.</span><span class="go" aria-hidden="true">→</span><span class="meta lbl">Design &amp; motion · 5 min</span></a></li>
+          <li><div class="row"><span class="t">Jeddah Municipality<span class="role lbl">Software engineering trainee · Digital Transformation</span></span><span class="x">Built three pages for the internal Innovation Portal, where employees submit improvement ideas that are routed to review specialists, and improved their performance. Analyzed requirements with stakeholders, tested features in review cycles, and prototyped a mobile app concept that brings Jeddah and Riyadh Municipality features together.</span><span class="meta lbl">Jan – Mar 2025 · Jeddah</span></div></li>
+          <li><div class="row"><span class="t">Masar<span class="role lbl">Personal project · Backend &amp; full-stack developer</span></span><span class="x">A NestJS 11 REST API over an 11-table PostgreSQL schema (Prisma) with four role-based views. Permissions live in one shared rules package and are enforced on the server for every request. Socket.IO events scoped per department, user and role, scheduled jobs, 50 automated tests in GitHub Actions CI, and a Docker deployment with a Next.js frontend.</span><span class="meta lbl">Jun – Sep 2026</span></div></li>
+          <li><div class="row"><span class="t">Tawaqaa<span class="role lbl">Project lead &amp; systems developer</span></span><span class="x">Led an IoT, AI and drone platform for road hazards and flood risk in heavy rain. YOLOv10 detection on live drone video and Raspberry Pi water-level sensors feed a Firebase backend, an authority dashboard and a citizen Android app, with Google Maps rerouting around hazards.</span><span class="meta lbl">SGiE 2024 · Grand Special Award</span></div></li>
+          <li><div class="row"><span class="t">University of Jeddah<span class="role lbl">BSc Software Engineering</span></span><span class="x">GPA 4.48 / 5.0, Excellent with Second Class Honors. Focus on distributed systems, cloud computing, software architecture, network and system security, and web development.</span><span class="meta lbl">2020 – 2025</span></div></li>
+          <li><div class="row"><span class="t">Languages<span class="role lbl">Arabic and English</span></span><span class="x">Arabic is my native language, and I work in English at a professional level (STEP score 78).</span></div></li>
         </ul>
       </div>
     </section>
@@ -795,7 +805,7 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
 
   <footer class="foot">
     <div class="grid">
-      <p class="f-over">A software engineer in Jeddah building full-stack systems, from flood alerts for Jeddah’s rainy season to workspaces for government teams.</p>
+      <p class="f-over">A backend-focused software engineer in Jeddah building APIs, data models and real-time services, from flood alerts for Jeddah’s rainy season to workspaces for government teams.</p>
       <div class="f-col f-nav"><span class="lbl">Navigation</span><a href="#work">Home</a><a href="#contact">Let's connect</a></div>
       <div class="f-col f-soc"><span class="lbl">Social</span><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></div>
       <div class="f-col f-mail"><span class="lbl">Drop me a line</span><a href="#contact">lujain.aloufi0@gmail.com</a></div>
