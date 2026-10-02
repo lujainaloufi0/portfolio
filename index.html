@@ -1007,6 +1007,7 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
       <div class="grid">
         <h2 class="c-title" id="contact-title">Let's connect</h2>
         <form class="c-form" id="contact-form" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="row2">
             <div><div class="fld"><input id="c-name" name="name" type="text" autocomplete="name" placeholder=" " required aria-describedby="c-name-err" data-validate><label for="c-name">Your name</label></div><p class="err" id="c-name-err"></p></div>
             <div><div class="fld"><input id="c-email" name="email" type="email" autocomplete="email" placeholder=" " required aria-describedby="c-email-err" data-validate><label for="c-email">Work email</label></div><p class="err" id="c-email-err"></p></div>
@@ -1334,7 +1335,7 @@ form.addEventListener("submit",async e=>{e.preventDefault();status.textContent="
     const fd=new FormData(form);fd.append("_subject",`Portfolio: ${fd.get("reason")} from ${fd.get("name")}`);fd.append("_replyto",fd.get("email"));fd.append("_template","box");fd.append("_captcha","false");
     const r=await fetch(ENDPOINT,{method:"POST",body:fd,headers:{Accept:"application/json"}});const j=await r.json().catch(()=>({}));if(!r.ok||j.success==="false"||j.success===false)throw new Error("fail");
     form.reset();$("#c-msg-count").textContent="0 / 600";fields.forEach(f=>delete f.dataset.t);sl.textContent="Sent";status.textContent="Thanks, your message was sent. I'll reply by email.";
-  }catch(err){sl.textContent="Send";status.textContent="That didn't send, so your email app is opening with the message ready instead.";const v=n=>form.elements[n].value;location.href=`mailto:lujain.aloufi0@gmail.com?subject=${encodeURIComponent("Portfolio: "+form.querySelector("[name=reason]:checked").value)}&body=${encodeURIComponent(v("message")+"\n\n"+v("name")+" · "+v("email"))}`}
+  }catch(err){sl.textContent="Send";status.textContent=`Your message didn't go through. Check your connection and try again, or email me at ${"lujain.aloufi0@gmail.com"}.`}
   finally{send.dataset.state="idle";send.disabled=false;setTimeout(()=>{if(sl.textContent==="Sent")sl.textContent="Send"},2500)}});
 
 /* ── copy email ── */
