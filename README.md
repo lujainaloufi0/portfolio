@@ -7,6 +7,8 @@ This repository is my personal portfolio site: a full-screen deck with one card 
 - **Email:** [lujain.aloufi0@gmail.com](mailto:lujain.aloufi0@gmail.com)
 - **LinkedIn:** [linkedin.com/in/lujain-aloufi](https://www.linkedin.com/in/lujain-aloufi/)
 
+Want to use this design for your own portfolio? See [Make it yours](#make-it-yours).
+
 ---
 
 ## Intro
