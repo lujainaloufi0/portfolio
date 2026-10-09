@@ -37,9 +37,8 @@ head = head.replace('family=Bebas+Neue&amp;family=League+Gothic&amp;display=swap
 assert 'family=Inter' in head
 head = head.replace('"sameAs":["https://github.com/your-username","https://www.linkedin.com/in/your-handle"]', '"sameAs":["https://www.linkedin.com/in/lujain-aloufi/"]')
 head = head.replace('"knowsAbout":["Python","Java","TypeScript","Next.js","NestJS","PostgreSQL","Firebase","AWS","SQL","Computer Vision","YOLOv10","IoT"]', '"knowsAbout":["Python","Java","JavaScript","TypeScript","SQL","React","Next.js","NestJS","Node.js","PostgreSQL","Firebase","Prisma","Socket.IO","Docker","YOLOv10","Android"]')
-assert 'github' not in head.lower()
+assert 'your-username' not in head and 'your-domain' not in head
 
-head = head.replace("fill='%237E6D54'", "fill='%230F3442'")
 
 # ---------- CSS ----------
 style = between(OLD, '<style>', '</style>', inc_a=False)
