@@ -123,7 +123,7 @@ PROJ = [
       meta_l=[('Type','iOS app concept'),('Role','UI, characters &amp; motion'),('Completed','2026')],
       meta_r=[],
       stack=['Figma','HTML','CSS','JavaScript'],
-      desc="Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into the bowl and a crew of twelve rubber-hose characters tells you what you can make. Every screen change is a checkerboard wipe, and every character reacts to what you do.",
+      desc="Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into a bowl, and a crew of twelve rubber-hose characters tells you what you can make. Screens change with a checkerboard wipe, and the characters react to what you do.",
       shots=[('01 · Open','f-flow.webp','Open the fridge: every screen change is a checkerboard wipe.'),
              ('02 · Toss','f-roll.webp','Toss them in: ingredients tumble off their tiles into the bowl.'),
              ('03 · Reveal','f-recipe.webp','Recipe reveal: the dish pops up and the crew bursts out.'),

@@ -67,7 +67,7 @@ The page plays recorded screens of the app inside a MacBook: sign-in, the depart
 
 **iOS app concept · UI, characters & motion · 2026**
 
-Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into the bowl and a crew of twelve rubber-hose characters tells you what you can make. Every screen change is a checkerboard wipe, and every character reacts to what you do.
+Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into a bowl, and a crew of twelve rubber-hose characters tells you what you can make. Screens change with a checkerboard wipe, and the characters react to what you do.
 
 The page walks through the flow: opening the fridge, tossing ingredients into the bowl, the recipe reveal, cooking along with timers, and the celebration at the end.
 
