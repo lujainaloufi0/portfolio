@@ -89,7 +89,7 @@ The last card is my toolset. On the home screen, rows of tool chips drift in alt
 
 ![About page: intro and expertise](docs/gifs/08-about.gif)
 
-The About page opens with a short intro: I'm a backend-focused software engineer who designs and ships REST APIs, relational data models and real-time services end to end. Below it, four expertise areas open one at a time:
+The About page opens with a short intro: I'm a backend-focused software engineer who builds REST APIs, relational data models and real-time services and takes them through to deployment. Below it, four expertise areas open one at a time:
 
 - **Backend & APIs:** Node.js, NestJS and TypeScript, server-enforced role-based access, WebSockets (Socket.IO) and scheduled jobs.
 - **Data & security:** PostgreSQL with Prisma, Firebase, argon2 password hashing, httpOnly JWT sessions with revocation, one-time activation codes and rate limiting.
