@@ -1,6 +1,6 @@
 # Lujain Aloufi · Portfolio
 
-Software engineer in Jeddah building full-stack systems, from flood alerts for Jeddah's rainy season to workspaces for government teams.
+Software engineer in Jeddah. I've built flood alerts for the city's rainy season and a task workspace for government teams.
 
 This repository is my personal portfolio site: a full-screen deck with one card per project, a project page for each one, a page for my stack, and an About page. Everything is plain HTML, CSS and JavaScript with no framework, and it is assembled by a small Python build script.
 
