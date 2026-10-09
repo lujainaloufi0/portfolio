@@ -55,7 +55,7 @@ Opening a card lifts it, grows it to fill the screen and slides the project page
 
 **Bilingual web app for government teams · Backend & full-stack developer · Jun – Sep 2026**
 
-Masar is a task workspace for government departments. Every task has an owner, every step is visible, and finished work stays on record. Members, department heads, HR and administrators each get their own view, with progress by group and average days to complete. It has full Arabic and English with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.
+Masar is a task workspace for government departments. Each task has an owner and steps the whole team can see, and finished work stays on record. Members, department heads, HR and administrators each get their own view, showing progress by group and the average days to finish a task. The app works fully in Arabic and English, with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.
 
 The page plays recorded screens of the app inside a MacBook: sign-in, the department overview, the task board, completing a task, groups, and switching to Arabic and dark mode.
 

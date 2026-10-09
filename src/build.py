@@ -111,7 +111,7 @@ PROJ = [
       meta_l=[('Type','Bilingual web app for government teams'),('Role','Backend &amp; full-stack developer'),('Completed','Jun – Sep 2026')],
       meta_r=[],
       stack=['TypeScript','React','Next.js','NestJS','Node.js','PostgreSQL'],
-      desc='Masar is a task workspace for government departments. Every task has an owner, every step is visible, and finished work stays on record. Members, department heads, HR and administrators each get their own view, with progress by group and average days to complete. Full Arabic and English with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.',
+      desc='Masar is a task workspace for government departments. Each task has an owner and steps the whole team can see, and finished work stays on record. Members, department heads, HR and administrators each get their own view, showing progress by group and the average days to finish a task. The app works fully in Arabic and English, with right-to-left layout, Hijri and Gregorian dates, dark mode and live updates.',
       shots=[('01 · Sign in','m-signin.webp','Sign in with an employee ID. New staff set their password on first sign-in.'),
              ('02 · Overview','m-overview.webp',"The department head's overview: active tasks, progress by group and days to complete."),
              ('03 · Tasks','m-tasks.webp','The task board filters by group as you switch tabs.'),
