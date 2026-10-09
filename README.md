@@ -37,7 +37,7 @@ Scrolling, swiping or the arrow keys move between projects. The current card dro
 
 **Graduation project · IoT & ML · Project lead & systems developer · Grand Special Award, SGiE 2024**
 
-Tawaqaa is a smart road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app by street name or map pin. Reports are counted and ranked per street, a water-level sensor measures the hotspot, and a YOLOv10 model trained on 1,532 flooded-car and 171 people-in-flood images flags danger in real time. Drivers get alerts and a safer route, and authorities review and close reports on a live Firebase-synced web console.
+Tawaqaa is a road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app, by street name or with a pin on the map. Reports are counted and ranked by street, a water-level sensor measures the worst spot, and a YOLOv10 model trained on 1,532 images of flooded cars and 171 of people in floodwater flags danger in real time. Drivers get an alert and a safer route, while authorities review and close reports on a web console that syncs live with Firebase.
 
 Opening a card lifts it, grows it to fill the screen and slides the project page in. Every Tawaqaa screen on the page is drawn in code (HTML and CSS inside an iPhone and a MacBook frame) and animated:
 

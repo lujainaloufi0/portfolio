@@ -104,7 +104,7 @@ PROJ = [
       meta_l=[('Type','Graduation project · IoT &amp; ML'),('Role','Project lead &amp; systems developer'),('Completed','2024 · University of Jeddah')],
       meta_r=[('Awards','Grand Special Award, SGiE 2024')],
       stack=['Java','Android','Firebase','Python','YOLOv10','JavaScript','Figma'],
-      desc="Tawaqaa is a smart road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app by street name or map pin. Reports are counted and ranked per street, a water-level sensor measures the hotspot, and a YOLOv10 model trained on 1,532 flooded-car and 171 people-in-flood images flags danger in real time. Drivers get alerts and a safer route, and authorities review and close reports on a live Firebase-synced web console.",
+      desc="Tawaqaa is a road-safety system for Jeddah's rainy season. Citizens report flooded streets from an Android app, by street name or with a pin on the map. Reports are counted and ranked by street, a water-level sensor measures the worst spot, and a YOLOv10 model trained on 1,532 images of flooded cars and 171 of people in floodwater flags danger in real time. Drivers get an alert and a safer route, while authorities review and close reports on a web console that syncs live with Firebase.",
       shots=TQ.SHOTS, phone=False, html=True),
  dict(key='masar', title='Masar', ar='', attr='WEB APP   •   2026   •   FULL-STACK', card='m-card.webp', bg=None,
       alt='Masar in use: signing in, the department overview, the task board, completing a task and switching to Arabic',
