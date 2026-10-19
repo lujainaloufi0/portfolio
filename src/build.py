@@ -38,7 +38,7 @@ head = head.replace('<meta name="theme-color" content="#7E6D54">', '<meta name="
 # body face: Inter for platforms without Helvetica Neue (Windows, Android)
 head = head.replace('family=Bebas+Neue&amp;family=League+Gothic&amp;display=swap', 'family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700&amp;family=League+Gothic&amp;display=swap')
 assert 'family=Inter' in head
-head = head.replace('"sameAs":["https://github.com/your-username","https://www.linkedin.com/in/your-handle"]', '"sameAs":["https://www.linkedin.com/in/lujain-aloufi/"]')
+head = head.replace('"sameAs":["https://github.com/your-username","https://www.linkedin.com/in/your-handle"]', '"sameAs":["https://www.linkedin.com/in/lujain-aloufi/","https://github.com/lujainaloufi0"]')
 head = head.replace('"knowsAbout":["Python","Java","TypeScript","Next.js","NestJS","PostgreSQL","Firebase","AWS","SQL","Computer Vision","YOLOv10","IoT"]', '"knowsAbout":["Python","Java","JavaScript","TypeScript","SQL","React","Next.js","NestJS","Node.js","PostgreSQL","Firebase","Prisma","Socket.IO","Docker","YOLOv10","Android"]')
 assert 'your-username' not in head and 'your-domain' not in head
 
@@ -274,12 +274,13 @@ MENU = between(OLD, '<!-- mobile menu -->', '<!-- ══════════
 
 ABOUT = between(OLD, '<!-- ═════════════ ABOUT ═════════════ -->', '<script>')
 ABOUT = ABOUT.replace('data-open-from-about="2"', 'data-open-from-about="2"')
-ABOUT = re.sub(r'<div><span class="lbl">GitHub</span><a href="https://github.com/[^"]*"[^>]*>[^<]*</a></div>\s*', '', ABOUT)
-ABOUT = ABOUT.replace('<a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>', '')
+GH = 'https://github.com/lujainaloufi0'
+ABOUT = ABOUT.replace('<a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username ↗</a>', f'<a href="{GH}" target="_blank" rel="noopener">github.com/lujainaloufi0 ↗</a>')
+ABOUT = ABOUT.replace('<a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>', f'<a href="{GH}" target="_blank" rel="noopener">GitHub</a>')
 ABOUT = ABOUT.replace('Web components, React or Vue, and modern CSS,', 'React, Next.js and modern CSS,')
 _strip = ''.join(f'<li>{icon(nm)}{nm}</li>' for nm in ALL_TOOLS)
 ABOUT = re.sub(r'<div class="marquee-track">.*?</div>', '<div class="marquee-track">\n          <ul>' + _strip + '</ul>\n          <ul aria-hidden="true">' + _strip + '</ul>\n        </div>', ABOUT, count=1, flags=re.S)
-assert 'github.com' not in ABOUT and 'Vue' not in ABOUT
+assert 'your-username' not in ABOUT and ABOUT.count('github.com/lujainaloufi0') == 3 and 'Vue' not in ABOUT
 for _n in re.findall(r'@@A:([^@]+)@@', ABOUT): asset(_n)  # About page photos
 # ---------- contact: real LinkedIn, working email, English footer wordmark ----------
 LI='https://www.linkedin.com/in/lujain-aloufi/'
