@@ -290,3 +290,11 @@
 .mz-card,.case-media .mz-card{align-items:flex-start;padding-top:9cqh;gap:4cqw}
 .mz-card .z-ph{height:118cqh}
 .mz-card .z-ph.lg{height:126cqh;margin-top:-4cqh}
+
+/* in the portfolio the stage takes the page colour, a deeper indigo, like Tawaqaa's teal and Masar's green stages */
+.card .mz,.case .mz,.case-media .mz{
+  background:radial-gradient(50% 55% at 85% 105%,rgba(16,185,129,.22),transparent 70%),
+             radial-gradient(45% 50% at 10% -5%,rgba(229,212,192,.10),transparent 70%),
+             radial-gradient(110% 90% at 50% 0%,#2B3572 0%,#171D3F 55%,#0D1129 100%)}
+.card .mz::before,.case .mz::before,.case-media .mz::before{background-image:linear-gradient(rgba(170,185,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(170,185,255,.05) 1px,transparent 1px)}
+.case .z-fl{background:linear-gradient(160deg,rgba(44,54,118,.62),rgba(17,22,52,.6));border-color:rgba(190,200,255,.16)}
