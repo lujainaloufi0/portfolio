@@ -124,7 +124,7 @@ PROJ = [
  dict(key='mizan', title='Mizan', ar='مِيزان', attr='ANDROID APP   •   2026   •   EXPO &amp; REACT NATIVE', card='@html:mz', bg=None,
       alt='Mizan in Arabic: the weekly budget step with a balance scale, today\'s meals and the grocery list',
       meta_l=[('Type','Android app · meal planning &amp; grocery budget'),('Role','Design &amp; development'),('Year','2026')],
-      meta_r=[('Links','<a href="mizan/">Landing page</a> · <a href="https://github.com/lujainaloufi0/Mizan" target="_blank" rel="noopener">GitHub</a>')],
+      meta_r=[('Links','<a href="https://lujainaloufi0.github.io/portfolio/mizan/" target="_blank" rel="noopener">Landing page</a> · <a href="https://github.com/lujainaloufi0/Mizan" target="_blank" rel="noopener">GitHub</a>')],
       stack=['TypeScript','React Native','Expo','React','Android'],
       desc="Mizan plans a Saudi household's week of meals and keeps the shopping inside a budget. You pick your cuisines, supermarkets, household size and a weekly budget in riyals, and Mizan plans the week from 163 halal recipes across 18 cuisines, filtered by your allergies, kitchen appliances and goal. It builds the grocery list sorted by aisle and store, and sends it to a delivery app. The app is Arabic first, right to left, with light and dark themes.",
       shots=MZ.SHOTS, phone=False, html=True),
