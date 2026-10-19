@@ -1,6 +1,6 @@
 """Tawaqaa scenes: HTML for the home card and the project-page shots."""
 
-SB = '<div class="sb"><span>9:41</span><i>5G</i></div>'
+SB = '<div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>'
 
 def svg(path, extra=''):
     return f'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"{extra}>{path}</svg>'
