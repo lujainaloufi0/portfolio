@@ -163,14 +163,6 @@
 .read .t3{font:600 5.2cqw var(--f-body);text-transform:none;letter-spacing:0}
 .ok{display:flex;gap:2cqw;align-items:center;font:600 4.8cqw var(--f-body);color:#16784C}
 
-/* fridge card: phones on a sunburst, inside a rounded card */
-.ff{position:absolute;inset:0;container-type:size;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:3.5cqw;
-  background:repeating-conic-gradient(from 0deg at 50% 115%,#E8B53D 0 7deg,#F4E7C8 7deg 14deg)}
-.ff::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16%;background:repeating-conic-gradient(#D64F33 0 25%,#F4E7C8 0 50%) 0 0/3.2cqh 3.2cqh;opacity:.9}
-.ff img{position:relative;z-index:1;height:90cqh;width:auto;border-radius:10.5%/5.2%;filter:drop-shadow(0 1.6cqh 2cqh rgba(75,29,14,.35))}
-.ff img:nth-child(2){height:96cqh}
-
-
 /* home card: bigger phones that run off the bottom edge */
 .card .tq{align-items:flex-start;padding-top:9cqh;gap:4cqw}
 .card .tq .iph{height:118cqh}

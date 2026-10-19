@@ -23,7 +23,7 @@ const cursorEl=(()=>{
 const P=[
   {title:"Tawaqaa",night:"#071820",bg:"#0F3442",ink:"#E9F5F8",acc:"#1FA6BC",deep:"#082230"},
   {title:"Masar",night:"#071A12",bg:"#123A2B",ink:"#EAF3EE",acc:"#2E9E6E",deep:"#0A261B"},
-  {title:"Fridge & Friends",night:"#240805",bg:"#5E140E",ink:"#F4E7C8",acc:"#D9A033",deep:"#3D0D09"},
+  {title:"Mizan",night:"#0B0F24",bg:"#171D3F",ink:"#F4EFE8",acc:"#0F9D6E",deep:"#0D1129"},
   {title:"Stack",night:"#0C0C0C",bg:"#262626",ink:"#F2EFEA",acc:"#4A4A4A",deep:"#161616"}
 ];
 const N=P.length;

@@ -8,7 +8,9 @@ Run from the repository root:
 Pieces:
   src/base.html           page shell: <head>, About page, mobile menu and shared scripts
   src/styles.css          home deck, project pages, intro, cursor, stack page, footer
-  src/tawaqaa.css         the code-drawn Tawaqaa phone and laptop screens, Masar laptop, Fridge card
+  src/tawaqaa.css         the code-drawn Tawaqaa phone and laptop screens, Masar laptop
+  src/mizan.css           the code-drawn Mizan phone screens and floating cards
+  src/mizan_scenes.py     markup for the Mizan screens
   src/main.js             deck, transitions, intro, cursor, project pages
   src/tawaqaa_scenes.py   markup for the Tawaqaa screens
   src/intro_curves.py     intro motion curves, sampled at 60 Hz
@@ -18,10 +20,11 @@ Pieces:
 import base64, os, re, shutil, html, sys, json
 sys.path.insert(0, 'src')
 import tawaqaa_scenes as TQ
+import mizan_scenes as MZ
 import intro_curves
 
 OLD = open('src/base.html').read()
-CSS_NEW = open('src/styles.css').read() + '\n' + open('src/tawaqaa.css').read()
+CSS_NEW = open('src/styles.css').read() + '\n' + open('src/tawaqaa.css').read() + '\n' + open('src/mizan.css').read()
 JS_NEW = open('src/main.js').read()
 
 def between(s, a, b, inc_a=True):
@@ -84,15 +87,15 @@ ICON_PATHS = json.load(open('src/icons.json'))
 def icon(name):
     d = ICON_PATHS.get(name)
     return f'<svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="{d}"/></svg>' if d else ''
-# one list, used by the home card, the Stack page and the About strip. p = projects that used it (t/m/f)
+# one list, used by the home card, the Stack page and the About strip. p = projects that used it (t/m/z)
 TOOLS = [
- ('Languages', [('Python','t','Tawaqaa'),('Java','t','Tawaqaa'),('JavaScript','t m f','All three'),('TypeScript','m','Masar'),('SQL','m','Masar'),('HTML','t m f','All three'),('CSS','t m f','All three')]),
- ('Frameworks', [('React','m','Masar'),('Next.js','m','Masar'),('NestJS','m','Masar'),('Node.js','m','Masar')]),
+ ('Languages', [('Python','t','Tawaqaa'),('Java','t','Tawaqaa'),('JavaScript','t m','Tawaqaa, Masar'),('TypeScript','m z','Masar, Mizan'),('SQL','m','Masar'),('HTML','t m z','All three'),('CSS','t m z','All three')]),
+ ('Frameworks', [('React','m z','Masar, Mizan'),('React Native','z','Mizan'),('Expo','z','Mizan'),('Next.js','m z','Masar, Mizan'),('NestJS','m','Masar'),('Node.js','m','Masar')]),
  ('Data', [('PostgreSQL','m','Masar'),('Firebase','t','Tawaqaa')]),
- ('AI, mobile &amp; design', [('YOLOv10','t','Tawaqaa'),('Android','t','Tawaqaa'),('Figma','t f','Tawaqaa, Fridge &amp; Friends')]),
+ ('AI, mobile &amp; design', [('YOLOv10','t','Tawaqaa'),('Android','t z','Tawaqaa, Mizan'),('Figma','t','Tawaqaa')]),
 ]
 ALL_TOOLS = [n for _, items in TOOLS for n, _, _ in items]
-ROWS = [ALL_TOOLS[0:4], ALL_TOOLS[4:8], ALL_TOOLS[8:12], ALL_TOOLS[12:16]]
+ROWS = [ALL_TOOLS[0:5], ALL_TOOLS[5:10], ALL_TOOLS[10:14], ALL_TOOLS[14:18]]
 stack_rows = ''; n = 0
 for names in ROWS:
     stack_rows += '<div class="row">' + ''.join(f'<span style="--n:{(n+k*2)%8}">{icon(nm)}{nm}</span>' for _ in range(3) for k, nm in enumerate(names)) + '</div>'
@@ -118,17 +121,13 @@ PROJ = [
              ('04 · Task','m-task.webp','Ticking the last step completes the task and the progress ring fills.'),
              ('05 · Groups','m-groups.webp','Groups, their members and the open work each one owns.'),
              ('06 · Arabic','m-arabic.webp','Arabic, right to left, then dark mode, one click each.')], phone=False, laptop=True),
- dict(key='fridge', title='Fridge &amp; Friends', ar='', attr='iOS CONCEPT   •   2026   •   UI &amp; MOTION', card='@html:ff', bg=None,
-      alt='Three Fridge and Friends screens in motion: opening the fridge, tossing ingredients into the bowl and a recipe reveal',
-      meta_l=[('Type','iOS app concept'),('Role','UI, characters &amp; motion'),('Completed','2026')],
-      meta_r=[],
-      stack=['Figma','HTML','CSS','JavaScript'],
-      desc="Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into a bowl, and a crew of twelve rubber-hose characters tells you what you can make. Screens change with a checkerboard wipe, and the characters react to what you do.",
-      shots=[('01 · Open','f-flow.webp','Open the fridge: every screen change is a checkerboard wipe.'),
-             ('02 · Toss','f-roll.webp','Toss them in: ingredients tumble off their tiles into the bowl.'),
-             ('03 · Reveal','f-recipe.webp','Recipe reveal: the dish pops up and the crew bursts out.'),
-             ('04 · Cook','f-cook.webp','Cook along: the characters act out each step, with timers.'),
-             ('05 · Celebrate','f-done.webp','Celebrate: confetti and a crew jump when you finish.')], phone=True),
+ dict(key='mizan', title='Mizan', ar='مِيزان', attr='ANDROID APP   •   2026   •   EXPO &amp; REACT NATIVE', card='@html:mz', bg=None,
+      alt='Mizan in Arabic: the weekly budget step with a balance scale, today\'s meals and the grocery list',
+      meta_l=[('Type','Android app · meal planning &amp; grocery budget'),('Role','Design &amp; development'),('Year','2026')],
+      meta_r=[('Links','<a href="mizan/">Landing page</a> · <a href="https://github.com/lujainaloufi0/Mizan" target="_blank" rel="noopener">GitHub</a>')],
+      stack=['TypeScript','React Native','Expo','React','Android'],
+      desc="Mizan plans a Saudi household's week of meals and keeps the shopping inside a budget. You pick your cuisines, supermarkets, household size and a weekly budget in riyals, and Mizan plans the week from 163 halal recipes across 18 cuisines, filtered by your allergies, kitchen appliances and goal. It builds the grocery list sorted by aisle and store, and sends it to a delivery app. The app is Arabic first, right to left, with light and dark themes.",
+      shots=MZ.SHOTS, phone=False, html=True),
  dict(key='stack', title='Stack', ar='', attr='LANGUAGES   •   FRAMEWORKS   •   TOOLS', card=None, bg=None, shots=[]),
 ]
 
@@ -136,9 +135,8 @@ def card_html(i, p):
     lazy = ' loading="lazy"' if i else ''
     if p['card'] == '@html:tq':
         return f'<div class="card is-on" role="button" tabindex="0" data-k="{i}" aria-label="Open Tawaqaa: the app\'s report, home and alert screens">{TQ.CARD}</div>'
-    if p['card'] == '@html:ff':
-        ims = ''.join(f'<img src="{asset(f)}" alt="" loading="lazy" decoding="async" width="424" height="864">' for f in ['f-flow.webp','f-roll.webp','f-recipe.webp'])
-        return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open Fridge and Friends: three app screens in motion"><div class="ff" aria-hidden="true">{ims}</div></div>'
+    if p['card'] == '@html:mz':
+        return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open Mizan: {p["alt"]}">{MZ.CARD}</div>'
     if p.get('laptop'):
         img = f'<img src="{asset(p["card"])}" alt="" decoding="async">'
         return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open {html.unescape(p["title"])}: {p["alt"]}"><div class="mk" aria-hidden="true">{TQ.laptop(img)}</div></div>'
@@ -252,14 +250,14 @@ STACK_CASE = f'''<dialog class="case" id="case-3" aria-labelledby="case-3-t">
   <div class="case-ui">
     <section class="case-intro" style="min-height:auto;padding-bottom:3rem">
       <h2 id="case-3-t">Stack</h2>
-      <p class="case-desc">The tools I reach for and where I've shipped with them: Java and Python for Tawaqaa's app and detection model, a TypeScript stack for Masar, and hand-built motion for Fridge &amp; Friends.</p>
+      <p class="case-desc">The tools I reach for and where I've shipped with them: Java and Python for Tawaqaa's app and detection model, a TypeScript stack for Masar, and React Native with Expo for Mizan.</p>
     </section>
     <div class="st-wrap">
       <div class="st-filter" role="group" aria-label="Show tools used in">
         <button type="button" data-f="" aria-pressed="true">All</button>
         <button type="button" data-f="t" aria-pressed="false">Tawaqaa</button>
         <button type="button" data-f="m" aria-pressed="false">Masar</button>
-        <button type="button" data-f="f" aria-pressed="false">Fridge &amp; Friends</button>
+        <button type="button" data-f="z" aria-pressed="false">Mizan</button>
         <span class="st-count lbl" id="st-count" aria-live="polite">{len(ALL_TOOLS)} tools</span>
       </div>
       <div class="st-groups">{groups}
@@ -333,6 +331,8 @@ def render(inline):
     assert '@@' not in out, re.findall(r'@@[^@]+@@', out)[:3]
     return out
 
+import mizan_landing
+mizan_landing.write('.')  # mizan/index.html, the Mizan landing page
 SINGLE = '--single' in sys.argv
 open('index.html', 'w').write(render(False))
 missing = [n for n in A if not os.path.exists('assets/' + n)]
