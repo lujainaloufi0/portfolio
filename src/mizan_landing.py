@@ -1,8 +1,12 @@
 """Builds mizan/index.html: a single-file landing page for Mizan.
 
 The phone screens come from mizan_scenes.py, so the landing page and the portfolio show the same UI.
-Layout uses Tailwind from its CDN; the phone frame and scene styles are inlined from tawaqaa.css and mizan.css.
-Run through build.py, or on its own: python3 src/mizan_landing.py
+Plain HTML, CSS and a little JavaScript; the phone frame and scene styles are inlined from tawaqaa.css
+and mizan.css. Run through build.py, or on its own: python3 src/mizan_landing.py
+
+Design: Apple product-page language in Mizan's own palette (obsidian #121417, sand, mint). One
+authored load moment (the hero phones), one scroll story (a pinned phone that changes screen), one
+user-driven toggle (light and dark). Everything else stays still.
 """
 import os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -19,257 +23,311 @@ def phone_css():
     return '\n'.join(keep) + '\n' + open(os.path.join(os.path.dirname(__file__), 'mizan.css')).read()
 
 
-def stage(inner, cls=''):
-    return f'<div class="relative {cls}"><div class="mz">{inner}</div></div>'
+def device(screen, cls=''):
+    """A bare phone: the scene's iPhone frame with no stage behind it."""
+    return f'<div class="device {cls}"><div class="mz bare">{screen}</div></div>'
 
 
-FEATURES = [
-    ('plan', 'Plan', 'A week that fits the budget',
-     'Pick your cuisines, your supermarkets, the size of your household and a weekly budget in riyals. '
-     'The scale weighs the expected basket against the budget while you move the slider.',
-     ['18 cuisines, or a mix', 'Carrefour, Panda, Othaim, Danube, Tamimi and LuLu', 'Cooking days, meals per day and leftovers'],
-     f'{MZ.FL_CUISINE}{MZ.wizard(lg=True)}{MZ.FL_BUDGET}'),
-    ('swap', 'Swap', 'Change any meal in one tap',
-     'Every meal can be swapped. The three quick options are ranked by what your basket already covers, '
-     'and each one shows how the basket price changes.',
-     ['Filtered by allergies and appliances', 'Ban a dish and it never comes back', 'Goals: balanced, high protein, cutting or bulking'],
-     f'{MZ.swap()}{MZ.FL_SWAP}'),
-    ('shop', 'Shop', 'A list sorted the way you walk the store',
-     'The grocery list is grouped by aisle and can split by store. Ticked items move into "في مطبخي", '
-     'the kitchen view, and cooked meals take their ingredients out of it.',
-     ['Copy the list, sorted by aisle', 'Send it to HungerStation, Nana, Ninja, Keeta, ToYou, Jahez or Mrsool', 'Leftovers count toward next week'],
-     f'{MZ.FL_AISLE}{MZ.grocery()}'),
+CHEVRON = '<svg viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+ARROW_UP = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+STORY = [
+    ('plan', 'Start with a budget.',
+     'Pick your cuisines, your supermarkets and how many people you cook for. As you move the slider, '
+     'the scale weighs the expected basket against what you want to spend.', MZ.wizard()),
+    ('today', 'Today, at a glance.',
+     "Home opens on what to cook today and where the week's basket stands. Mark a meal as cooked and its "
+     'ingredients come out of the kitchen.', MZ.home()),
+    ('swap', "Don't fancy it? Swap it.",
+     "Any meal can be swapped. The quick options come from what's already in your basket, and each one "
+     'shows how the price changes.', MZ.swap()),
+    ('shop', 'One list, in aisle order.',
+     'The grocery list follows the aisles and can split by supermarket. Copy it, or send it to '
+     'HungerStation, Jahez, Nana or four other delivery apps.', MZ.grocery()),
 ]
 
-GALLERY = [
-    ('Today', "Today's meals and the week's basket", MZ.home()),
-    ('Week', 'Every meal with time, calories and protein', MZ.week()),
-    ('Deliver', 'Send the list to a delivery app', MZ.delivery()),
-    ('Profile', 'Asked once, saved on the phone', MZ.profile()),
-    ('Light', 'The same screens in the light theme', MZ.home(light=True, cook=False)),
-]
-
-BENTO = [
-    ('lg:col-span-2', 'Arabic first', 'The whole app is written in Arabic and laid out right to left, with Thmanyah type on an 8pt grid.', 'مِيزان'),
-    ('', 'No account', 'Your profile and plans are saved on the phone. Nothing is sent to a server.', None),
-    ('', 'Works offline', 'Planning, swapping and the grocery list all run on the device.', None),
-    ('', '163 halal recipes', 'Across 18 cuisines and about 128 ingredients, each with macros and a cost per serving in riyals.', None),
-    ('lg:col-span-2', 'Stays on budget', 'When the week runs over, the planner swaps in cheaper meals in stages, keeping to your chosen cuisines first.', None),
-    ('', 'Light and dark', 'Automatic, light or dark, set from the profile.', None),
-    ('', 'Calm motion', 'Fades between 120 and 260 ms with an ease-out. Nothing slides or bounces.', None),
-    ('', '21 tests', 'Jest tests cover the catalog, the planner rules and full flows on Android.', None),
-]
-
-STEPS = [
-    ('01', 'Filter', 'Recipes that clash with your allergies, appliances, goal or banned dishes are removed first.'),
-    ('02', 'Shuffle', 'A seeded shuffle picks the week, so two weeks rarely look the same.'),
-    ('03', 'Balance', 'If the basket runs over budget, cheaper meals replace expensive ones in stages.'),
-    ('04', 'Shop', 'Ingredients are priced per pack and grouped by aisle and store.'),
+DETAILS = [
+    ('Arabic first', 'Written in Arabic and laid out right to left, on an 8pt grid.'),
+    ('No account', 'Your profile and plans stay on your phone. Nothing goes to a server.'),
+    ('Works offline', 'Planning, swaps and the grocery list all run on the device.'),
+    ('Halal catalog', '163 recipes across 18 cuisines, each with macros and a price per serving.'),
+    ('Saudi supermarkets', 'Carrefour, Panda, Othaim, Danube, Tamimi and LuLu.'),
+    ('Tested', '21 Jest tests cover the catalog, the planner rules and full flows on Android.'),
 ]
 
 
 def page():
-    tabs = ''.join(f'<button type="button" role="tab" data-tab="{k}" aria-selected="{"true" if i == 0 else "false"}" class="tab relative px-5 py-2.5 rounded-full text-sm font-semibold transition-colors">{lbl}<span class="tab-bar"></span></button>'
-                   for i, (k, lbl, *_ ) in enumerate(FEATURES))
-    panels = ''
-    stages = ''
-    for i, (k, lbl, h, p, pts, sc) in enumerate(FEATURES):
-        li = ''.join(f'<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#10B981]"></span><span>{x}</span></li>' for x in pts)
-        panels += f'''<div class="panel{" on" if i == 0 else ""}" data-panel="{k}" role="tabpanel">
-          <h3 class="text-3xl md:text-4xl font-semibold tracking-tight text-[#F4EFE8]">{h}</h3>
-          <p class="mt-4 text-lg leading-relaxed text-[#B9B3AA]">{p}</p>
-          <ul class="mt-6 space-y-3 text-[#D9D3CA]">{li}</ul></div>'''
-        stages += f'<div class="tstage{" on" if i == 0 else ""}" data-stage="{k}"><div class="mz">{sc}</div></div>'
-    gal = ''.join(f'''<figure class="gcard reveal snap-center flex-none w-[260px] md:w-[300px]">
-        <div class="glow-border relative aspect-[9/16.5] rounded-[28px] overflow-hidden"><div class="mz solo">{s}</div></div>
-        <figcaption class="mt-4"><span class="text-xs font-semibold tracking-[.18em] uppercase text-[#6EE7B7]">{t}</span><p class="mt-1 text-[#B9B3AA]">{c}</p></figcaption></figure>''' for t, c, s in GALLERY)
-    bento = ''.join(f'''<div class="bento reveal {span} rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[220px]">
-        {f'<span class="ar text-6xl md:text-7xl font-bold text-[#E5D4C0] leading-none" lang="ar">{big}</span>' if big else '<span class="dot"></span>'}
-        <div class="mt-8"><h3 class="text-xl font-semibold text-[#F4EFE8]">{t}</h3><p class="mt-2 text-[#B9B3AA] leading-relaxed">{d}</p></div></div>''' for span, t, d, big in BENTO)
-    steps = ''.join(f'''<div class="step reveal rounded-3xl p-7"><span class="font-mono text-sm text-[#6EE7B7]">{n}</span>
-        <h3 class="mt-6 text-2xl font-semibold text-[#F4EFE8]">{t}</h3><p class="mt-3 text-[#B9B3AA] leading-relaxed">{d}</p></div>''' for n, t, d in STEPS)
-    mark = MZ.MARK.replace('class="z-mark"', 'class="h-8 w-8" style="--z-sand:#E5D4C0;--z-mint:#10B981"')
-    facts = [('163', 'halal recipes'), ('18', 'cuisines'), ('6', 'supermarkets'), ('7', 'delivery apps')]
-    fact_html = ''.join(f'<div><dt class="text-3xl md:text-4xl font-semibold text-[#F4EFE8] tabular-nums">{n}</dt><dd class="mt-1 text-sm text-[#8F8A82]">{l}</dd></div>' for n, l in facts)
+    mark = MZ.MARK.replace('class="z-mark"', 'class="logo-mark" style="--z-sand:#E5D4C0;--z-mint:#10B981"')
+    story_text = ''.join(
+        f'<article class="step{" on" if i == 0 else ""}" data-step="{i}"><h3>{h}</h3><p>{p}</p>'
+        f'<div class="step-device">{device(sc)}</div></article>'
+        for i, (k, h, p, sc) in enumerate(STORY))
+    story_phones = ''.join(f'<div class="layer{" on" if i == 0 else ""}" data-layer="{i}">{device(sc)}</div>' for i, (k, h, p, sc) in enumerate(STORY))
+    details = ''.join(f'<div class="spec"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in DETAILS)
     return f'''<!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mizan · Meal planning and grocery budget</title>
 <meta name="description" content="Mizan plans a Saudi household's week of meals, builds the grocery list by aisle and store, and keeps the basket inside a weekly budget in riyals. An Android app by Lujain Aloufi.">
-<meta name="theme-color" content="#0B0C0E">
+<meta name="theme-color" content="#121417">
+<meta name="color-scheme" content="dark">
 <meta property="og:title" content="Mizan · Meal planning and grocery budget">
 <meta property="og:description" content="An Arabic-first Android app that plans the week's meals and keeps the shopping inside a budget.">
 <meta property="og:image" content="https://lujainaloufi0.github.io/portfolio/assets/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='226' fill='%23121417'/%3E%3Ccircle cx='512' cy='680' r='44' fill='%2310B981'/%3E%3Cpath d='M230 400C230 330 310 310 360 360C410 410 390 490 310 510C250 530 230 460 230 400Z' fill='%23E5D4C0'/%3E%3Cpath d='M320 460C420 640 680 640 794 400' fill='none' stroke='%23E5D4C0' stroke-width='52' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <style>
-:root{{--f-ar:"IBM Plex Sans Arabic",Tahoma,sans-serif;--f-body:"Outfit",system-ui,sans-serif;--ease:cubic-bezier(.77,0,.18,1);--out:cubic-bezier(.16,1,.3,1)}}
-html{{background:#0A0A0C}}
-body{{font-family:var(--f-body);background:#0A0A0C;color:#F4EFE8;-webkit-font-smoothing:antialiased}}
+:root{{
+  --bg:#121417;--raise:#1A1D22;--line:rgba(244,239,232,.09);
+  --ink:#F4EFE8;--ink-2:#B9B3AA;--ink-3:#8E897F;--sand:#E5D4C0;--mint:#10B981;--mint-ink:#6EE7B7;
+  --f-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI Variable Display","Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --f-ar:"IBM Plex Sans Arabic","SF Arabic","Geeza Pro",Tahoma,sans-serif;--f-body:var(--f-sans);
+  --ease:cubic-bezier(.77,0,.175,1);--out:cubic-bezier(.23,1,.32,1);--spring:cubic-bezier(.32,1.18,.52,1);
+  --gutter:clamp(20px,5vw,72px);--max:1180px}}
+*{{box-sizing:border-box}}
+html{{background:var(--bg);color-scheme:dark;-webkit-text-size-adjust:100%;scrollbar-color:#2C3038 var(--bg)}}
+body{{margin:0;font:400 17px/1.47 var(--f-sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;caret-color:var(--mint);overflow-x:clip}}
+::selection{{background:rgba(16,185,129,.35);color:var(--ink)}}
+a{{color:inherit;text-decoration:none}}
+:focus-visible{{outline:2px solid var(--mint-ink);outline-offset:3px;border-radius:6px}}
+h1,h2,h3{{margin:0;text-wrap:balance;font-weight:600}}
+p{{margin:0;text-wrap:pretty}}
 .ar{{font-family:var(--f-ar)}}
-h1,h2,h3{{text-wrap:balance}} p{{text-wrap:pretty}}
-::selection{{background:#10B981;color:#0A0A0C}}
+.wrap{{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}}
+.skip{{position:absolute;left:-999px;top:12px;z-index:100;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px}}
+.skip:focus{{left:12px}}
+
+/* scene styles from the app mockups */
 {phone_css()}
-.mz.solo .z-ph{{height:96cqh}}
-.mz .z-fl{{width:min(30cqw,40cqh)}}
-#hero-stage .z-fl{{position:absolute;margin:0;width:min(44cqw,40cqh)}}
-#hero-stage .z-fl:first-child{{left:3%;top:13%}}
-#hero-stage .z-fl:last-child{{right:3%;bottom:8%;width:min(46cqw,44cqh)}}
-.glass{{background:rgba(24,24,28,.6);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(229,212,192,.1)}}
-.glow-border{{box-shadow:0 0 0 1px rgba(229,212,192,.1),0 30px 80px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(16,185,129,.25)}}
-.btn{{transition:transform .2s cubic-bezier(.23,1,.32,1),box-shadow .2s,background-color .2s}}
+.mz.bare{{background:none;position:absolute;inset:0}}
+.mz.bare::before,.mz.bare::after{{display:none}}
+.mz.bare .z-ph{{height:100cqh}}
+.device{{position:relative;aspect-ratio:9/19.3;width:var(--w,300px);container-type:size}}
+
+/* nav: the one translucent layer, content scrolls under it */
+.nav{{position:fixed;inset:0 0 auto;z-index:50;height:56px;display:flex;align-items:center;
+  background:rgba(18,20,23,.72);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid transparent;transition:border-color .3s ease}}
+.nav.scrolled{{border-bottom-color:var(--line)}}
+.nav .wrap{{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}}
+.brand{{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em}}
+.brand .ar{{color:var(--ink-3);font-weight:500}}
+.logo-mark{{width:26px;height:26px}}
+.nav-links{{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--ink-2)}}
+.nav-links a{{transition:color .2s ease}}
+.btn{{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 22px;border-radius:999px;font:500 17px/1 var(--f-sans);letter-spacing:-.01em;
+  transition:transform .16s var(--out),background-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}}
 .btn:active{{transform:scale(.97)}}
-.btn-mint{{background:#10B981;color:#0A0A0C;box-shadow:0 10px 30px -10px rgba(16,185,129,.6)}}
-.btn-ghost{{border:1px solid rgba(229,212,192,.2);color:#F4EFE8}}
-@media (hover:hover) and (pointer:fine){{
-  .btn-mint:hover{{box-shadow:0 14px 40px -10px rgba(16,185,129,.8)}}
-  .btn-ghost:hover{{background:rgba(229,212,192,.06)}}
-  .bento:hover,.step:hover,.gcard:hover .glow-border{{transform:translateY(-4px);border-color:rgba(16,185,129,.35)}}
-  .gcard:hover .glow-border{{box-shadow:0 0 0 1px rgba(16,185,129,.4),0 40px 90px -30px rgba(0,0,0,.85),0 0 70px -15px rgba(16,185,129,.4)}}
+.btn-mint{{background:var(--mint);color:#0D1A14}}
+.btn-sm{{height:30px;padding:0 14px;font-size:13px}}
+.link{{display:inline-flex;align-items:center;gap:6px;color:var(--mint-ink);font-size:17px;letter-spacing:-.01em}}
+.link svg{{width:7px;height:12px;transition:transform .2s var(--out)}}
+.link-plain{{color:var(--ink-2)}}
+
+/* hero */
+.hero{{position:relative;padding:116px 0 0;text-align:center;overflow:hidden}}
+.hero h1{{font-size:clamp(2.6rem,6vw,4.9rem);line-height:1.04;letter-spacing:-.038em}}
+.hero .lede{{margin:22px auto 0;max-width:34ch;font-size:clamp(1.12rem,1.6vw,1.32rem);line-height:1.45;color:var(--ink-2);letter-spacing:-.012em}}
+.hero .ctas{{margin-top:32px;display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap}}
+.fan{{position:relative;--w:clamp(200px,23vw,320px);height:calc(var(--w) * 1.42);margin-top:52px}}
+.fan .device{{position:absolute;left:50%;top:0}}
+.fan .d1{{transform:translateX(-50%);z-index:3}}
+.fan .d0{{transform:translateX(calc(-50% - 78%)) translateY(9%) rotate(-7deg);z-index:2;opacity:.9}}
+.fan .d2{{transform:translateX(calc(-50% + 78%)) translateY(9%) rotate(7deg);z-index:2;opacity:.9}}
+.floor{{position:absolute;left:50%;bottom:-55%;width:min(1200px,140vw);aspect-ratio:2.4;transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(16,185,129,.30),rgba(16,185,129,.08) 55%,transparent)}}
+/* the one authored load moment: headline, then the three phones settle in */
+@media (prefers-reduced-motion:no-preference){{
+  .hero h1,.hero .lede,.hero .ctas{{animation:rise .9s var(--out) both}}
+  .hero .lede{{animation-delay:.08s}} .hero .ctas{{animation-delay:.16s}}
+  .fan .device{{animation:settle 1.3s var(--out) both}}
+  .fan .d1{{animation-delay:.28s}} .fan .d0,.fan .d2{{animation-delay:.42s}}
+  .floor{{animation:glow 1.6s var(--out) .3s both}}
 }}
-.bento,.step{{background:linear-gradient(160deg,#18181C,#121216);border:1px solid rgba(229,212,192,.08);transition:transform .3s cubic-bezier(.23,1,.32,1),border-color .3s}}
-.gcard .glow-border{{transition:transform .3s cubic-bezier(.23,1,.32,1),box-shadow .3s}}
-.dot{{width:10px;height:10px;border-radius:50%;background:#10B981;box-shadow:0 0 0 6px rgba(16,185,129,.14)}}
-.reveal{{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1);transition-delay:var(--d,0s)}}
-.reveal.in{{opacity:1;transform:none}}
-.tab{{color:#B9B3AA}}
-.tab[aria-selected="true"]{{background:#F4EFE8;color:#0A0A0C}}
-.tab-bar{{position:absolute;left:18px;right:18px;bottom:5px;height:2px;border-radius:2px;background:#10B981;transform:scaleX(0);transform-origin:0 50%}}
-.tab[aria-selected="true"] .tab-bar{{background:#0A0A0C;opacity:.25;animation:tabbar 7s linear forwards}}
-@keyframes tabbar{{to{{transform:scaleX(1)}}}}
-.panel{{display:none}} .panel.on{{display:block;animation:fadein .5s cubic-bezier(.23,1,.32,1)}}
-.tstage{{position:absolute;inset:0;opacity:0;transition:opacity .5s cubic-bezier(.23,1,.32,1);pointer-events:none}}
-.tstage.on{{opacity:1}}
-@keyframes fadein{{from{{opacity:0}}}}
-.hero-glow{{background:radial-gradient(50% 50% at 50% 50%,rgba(16,185,129,.35),transparent 70%)}}
-.noise::after{{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
-#gallery::-webkit-scrollbar{{display:none}}
+@keyframes rise{{from{{opacity:0;transform:translateY(14px);filter:blur(6px)}}}}
+@keyframes settle{{from{{opacity:0;translate:0 90px;scale:.96}}}}
+@keyframes glow{{from{{opacity:0}}}}
+
+/* scroll story: text on the left, one pinned phone on the right that changes screen */
+.story{{position:relative;padding:clamp(120px,16vw,200px) 0 40px}}
+.story-head{{text-align:center;margin-bottom:clamp(40px,8vw,96px)}}
+.story-head h2{{font-size:clamp(2.2rem,5vw,4rem);line-height:1.06;letter-spacing:-.034em}}
+.story-grid{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px)}}
+.step{{min-height:88vh;display:flex;flex-direction:column;justify-content:center;max-width:30rem;opacity:.28;transition:opacity .5s var(--out)}}
+.step.on{{opacity:1}}
+.step h3{{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.08;letter-spacing:-.03em}}
+.step>p{{margin-top:18px;font-size:clamp(1.06rem,1.4vw,1.24rem);line-height:1.5;color:var(--ink-2);letter-spacing:-.008em}}
+.step-device{{display:none}}
+.pin{{position:sticky;top:calc(50vh - min(42vh,330px));height:min(84vh,660px);display:grid;place-items:center}}
+.pin .layer{{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.985);filter:blur(6px);
+  transition:opacity .55s var(--out),transform .55s var(--out),filter .55s var(--out)}}
+.pin .layer.on{{opacity:1;transform:none;filter:none}}
+.pin .device{{--w:auto;height:100%;width:auto}}
+.pin::before{{content:"";position:absolute;inset:8% -10%;border-radius:50%;background:radial-gradient(closest-side,rgba(16,185,129,.16),transparent);pointer-events:none}}
+
+/* light and dark */
+.theme{{padding:clamp(120px,16vw,200px) 0;text-align:center}}
+.theme h2{{font-size:clamp(2.2rem,5vw,4rem);line-height:1.06;letter-spacing:-.034em}}
+.theme .wrap>p{{margin:18px auto 0;max-width:36ch;font-size:clamp(1.06rem,1.4vw,1.24rem);color:var(--ink-2)}}
+.seg{{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;margin-top:36px;padding:4px;border-radius:999px;background:var(--raise);border:1px solid var(--line)}}
+.seg button{{position:relative;z-index:1;appearance:none;border:0;background:none;color:var(--ink-2);font:500 15px/1 var(--f-sans);height:36px;padding:0 26px;border-radius:999px;cursor:pointer;transition:color .25s ease}}
+.seg button[aria-pressed="true"]{{color:#0D1A14}}
+.seg .thumb{{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--ink);transition:transform .28s var(--spring)}}
+.seg[data-mode="light"] .thumb{{transform:translateX(100%)}}
+.seg button:active{{transform:scale(.97)}}
+.theme-stage{{position:relative;margin:56px auto 0;width:min(320px,74vw);aspect-ratio:9/19.3}}
+.theme-stage .layer{{position:absolute;inset:0;opacity:0;filter:blur(8px);transition:opacity .5s var(--out),filter .5s var(--out)}}
+.theme-stage .layer.on{{opacity:1;filter:none}}
+.theme-stage .device{{--w:100%}}
+
+/* details: a quiet spec list */
+.details{{padding:0 0 clamp(120px,16vw,200px)}}
+.details h2{{font-size:clamp(2.2rem,5vw,4rem);line-height:1.06;letter-spacing:-.034em;max-width:14ch}}
+.specs{{margin:clamp(40px,6vw,72px) 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(24px,4vw,56px)}}
+.spec{{padding:26px 0 30px;border-top:1px solid var(--line)}}
+.spec dt{{font-size:19px;font-weight:600;letter-spacing:-.015em}}
+.spec dd{{margin:8px 0 0;color:var(--ink-2);max-width:34ch}}
+
+/* closing */
+.close{{padding:0 0 clamp(120px,14vw,180px);text-align:center}}
+.close .ar{{font-size:clamp(1.4rem,2.4vw,1.9rem);color:var(--sand);font-weight:500}}
+.close h2{{margin-top:14px;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.036em}}
+.close .ctas{{margin-top:34px;display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap}}
+.close .mark-big{{width:72px;height:72px;margin:0 auto 26px;display:block}}
+
+footer{{border-top:1px solid var(--line);padding:28px 0 40px;font-size:13px;color:var(--ink-3)}}
+footer .wrap{{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}}
+footer nav{{display:flex;gap:22px}}
+footer a{{color:var(--ink-2);transition:color .2s ease}}
+footer a svg{{width:9px;height:9px;margin-left:3px;vertical-align:1px}}
+
+@media (hover:hover) and (pointer:fine){{
+  .nav-links a:not(.btn):hover,footer a:hover{{color:var(--ink)}}
+  .btn-mint:hover{{background:#13C68C}}
+  .link:hover svg{{transform:translateX(3px)}}
+  .seg button:hover{{color:var(--ink)}}
+  .seg button[aria-pressed="true"]:hover{{color:#0D1A14}}
+}}
+@media (max-width:900px){{
+  .nav-links .opt{{display:none}}
+  .story-grid{{grid-template-columns:1fr}}
+  .pin{{display:none}}
+  .step{{min-height:0;opacity:1;max-width:none;padding:56px 0;text-align:center;align-items:center}}
+  .step>p{{max-width:34ch}}
+  .step-device{{display:block;margin-top:40px}}
+  .step-device .device{{--w:min(280px,70vw)}}
+  .specs{{grid-template-columns:1fr 1fr}}
+}}
+@media (max-width:560px){{
+  .fan .d0,.fan .d2{{display:none}}
+  .fan{{--w:min(270px,72vw)}}
+  .specs{{grid-template-columns:1fr}}
+  .hero .ctas,.close .ctas{{flex-direction:column;gap:18px}}
+}}
+@media (prefers-reduced-motion:reduce){{
+  .pin .layer,.theme-stage .layer{{transform:none!important;filter:none!important}}
+  .mz *,.mz *::before,.mz *::after{{animation:none!important}}
+}}
 </style>
 </head>
-<body class="overflow-x-hidden">
-
-<header class="fixed inset-x-0 top-0 z-50">
-  <nav class="glass mx-4 mt-4 md:mx-auto md:max-w-5xl rounded-full flex items-center justify-between pl-4 pr-2 py-2">
-    <a href="#top" class="flex items-center gap-2.5" aria-label="Mizan, back to top">{mark}<span class="font-semibold tracking-tight">Mizan</span><span class="ar text-[#8F806E]" lang="ar">مِيزان</span></a>
-    <div class="hidden md:flex items-center gap-7 text-sm text-[#B9B3AA]"><a class="hover:text-[#F4EFE8] transition-colors" href="#features">Features</a><a class="hover:text-[#F4EFE8] transition-colors" href="#screens">Screens</a><a class="hover:text-[#F4EFE8] transition-colors" href="#planner">How it plans</a></div>
-    <a href="{GITHUB}" target="_blank" rel="noopener" class="btn btn-mint rounded-full px-4 py-2 text-sm font-semibold">GitHub</a>
-  </nav>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Mizan, back to top">{mark}<span>Mizan</span><span class="ar" lang="ar">مِيزان</span></a>
+    <nav class="nav-links" aria-label="Page">
+      <a class="opt" href="#story">How it works</a><a class="opt" href="#details">Details</a>
+      <a class="btn btn-mint btn-sm" href="{GITHUB}" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
 </header>
 
-<main id="top">
-  <!-- hero -->
-  <section class="noise relative overflow-hidden pt-36 md:pt-40 pb-20 md:pb-28">
-    <div class="hero-glow absolute -right-40 top-20 h-[640px] w-[640px] blur-3xl opacity-60 pointer-events-none"></div>
-    <div class="absolute -left-40 -top-20 h-[520px] w-[520px] rounded-full blur-3xl opacity-40 pointer-events-none" style="background:radial-gradient(closest-side,rgba(229,212,192,.25),transparent)"></div>
-    <div class="relative mx-auto max-w-6xl px-4 md:px-6 grid lg:grid-cols-[1.05fr_1fr] gap-14 items-center">
-      <div>
-        <p class="reveal inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 text-xs font-medium tracking-wide text-[#D9D3CA]"><span class="dot !w-2 !h-2"></span>Android app · Arabic first</p>
-        <h1 class="reveal mt-6 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.035em] leading-[1.02]" style="--d:.08s">Smart nutrition,<br><span class="text-[#E5D4C0]">absolute balance.</span></h1>
-        <p class="reveal mt-6 max-w-xl text-lg md:text-xl leading-relaxed text-[#B9B3AA] font-light" style="--d:.16s">Mizan plans your family's week of meals, builds the grocery list by aisle and store, and keeps the basket inside your weekly budget in riyals.</p>
-        <div class="reveal mt-9 flex flex-wrap gap-3" style="--d:.24s">
-          <a href="{GITHUB}" target="_blank" rel="noopener" class="btn btn-mint rounded-full px-6 py-3.5 font-semibold">View the code on GitHub</a>
-          <a href="../" class="btn btn-ghost rounded-full px-6 py-3.5 font-semibold">More of my work</a>
-        </div>
-        <dl class="reveal mt-12 grid grid-cols-4 gap-4 max-w-lg border-t border-white/10 pt-6" style="--d:.32s">{fact_html}</dl>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1>Smart nutrition,<br>absolute balance.</h1>
+      <p class="lede">Mizan plans your family's week of meals and keeps the grocery basket inside your budget.</p>
+      <div class="ctas">
+        <a class="btn btn-mint" href="{GITHUB}" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="link" href="#story">See how it works {CHEVRON}</a>
       </div>
-      <div class="reveal relative h-[560px] md:h-[640px]" id="hero-stage" style="--d:.1s">
-        <div class="absolute inset-0 rounded-[40px] overflow-hidden glow-border" id="hero-tilt" style="transition:transform .6s cubic-bezier(.23,1,.32,1)"><div class="mz">{MZ.FL_COOKED}{MZ.home()}{MZ.FL_BASKET}</div></div>
-      </div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <div class="floor"></div>
+      {device(MZ.wizard(), 'd0')}{device(MZ.home(cook=False), 'd1')}{device(MZ.grocery(), 'd2')}
     </div>
   </section>
 
-  <!-- features -->
-  <section id="features" class="relative py-20 md:py-28">
-    <div class="mx-auto max-w-6xl px-4 md:px-6">
-      <p class="reveal text-xs font-semibold tracking-[.2em] uppercase text-[#6EE7B7]">What it does</p>
-      <h2 class="reveal mt-3 text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">Plan the week, swap what you don't want, shop once.</h2>
-      <div class="reveal mt-10 inline-flex gap-1 rounded-full glass p-1.5" role="tablist" aria-label="Features">{tabs}</div>
-      <div class="mt-10 grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-center">
-        <div class="reveal min-h-[300px]">{panels}</div>
-        <div class="reveal relative aspect-[16/12] rounded-[36px] overflow-hidden glow-border">{stages}</div>
+  <section class="story" id="story" aria-label="How Mizan works">
+    <div class="wrap">
+      <div class="story-head"><h2>A week of meals,<br>planned around your budget.</h2></div>
+      <div class="story-grid">
+        <div class="steps">{story_text}</div>
+        <div class="pin" aria-hidden="true">{story_phones}</div>
       </div>
     </div>
   </section>
 
-  <!-- gallery -->
-  <section id="screens" class="relative py-20 md:py-28 overflow-hidden">
-    <div class="mx-auto max-w-6xl px-4 md:px-6 flex items-end justify-between gap-6">
-      <div><p class="reveal text-xs font-semibold tracking-[.2em] uppercase text-[#6EE7B7]">Screens</p>
-        <h2 class="reveal mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Mizan in action</h2></div>
-      <div class="hidden md:flex gap-2"><button type="button" class="btn btn-ghost h-11 w-11 rounded-full" data-scroll="-1" aria-label="Previous screens">←</button><button type="button" class="btn btn-ghost h-11 w-11 rounded-full" data-scroll="1" aria-label="Next screens">→</button></div>
-    </div>
-    <div id="gallery" class="mt-12 flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 md:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-6 cursor-grab" style="scrollbar-width:none">{gal}</div>
-  </section>
-
-  <!-- bento -->
-  <section class="py-20 md:py-28">
-    <div class="mx-auto max-w-6xl px-4 md:px-6">
-      <p class="reveal text-xs font-semibold tracking-[.2em] uppercase text-[#6EE7B7]">Details</p>
-      <h2 class="reveal mt-3 text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">Built for Saudi kitchens and Saudi prices.</h2>
-      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">{bento}</div>
+  <section class="theme" aria-label="Light and dark">
+    <div class="wrap">
+      <h2>Easy on the eyes,<br>day or night.</h2>
+      <p>Choose automatic, light or dark from your profile.</p>
+      <div class="seg" role="group" aria-label="Preview theme" data-mode="dark">
+        <span class="thumb" aria-hidden="true"></span>
+        <button type="button" data-mode="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-mode="light" aria-pressed="false">Light</button>
+      </div>
+      <div class="theme-stage" aria-hidden="true">
+        <div class="layer on" data-theme="dark">{device(MZ.home(cook=False))}</div>
+        <div class="layer" data-theme="light">{device(MZ.home(light=True, cook=False))}</div>
+      </div>
     </div>
   </section>
 
-  <!-- planner -->
-  <section id="planner" class="py-20 md:py-28">
-    <div class="mx-auto max-w-6xl px-4 md:px-6">
-      <p class="reveal text-xs font-semibold tracking-[.2em] uppercase text-[#6EE7B7]">How it plans</p>
-      <h2 class="reveal mt-3 text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">Four steps, all on the phone.</h2>
-      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">{steps}</div>
+  <section class="details" id="details">
+    <div class="wrap">
+      <h2>Made for Saudi kitchens.</h2>
+      <dl class="specs">{details}</dl>
     </div>
   </section>
 
-  <!-- closing -->
-  <section class="py-20 md:py-28">
-    <div class="reveal noise relative mx-4 md:mx-auto md:max-w-6xl overflow-hidden rounded-[40px] px-6 py-16 md:p-20 text-center glow-border" style="background:radial-gradient(70% 90% at 50% 120%,rgba(16,185,129,.35),transparent 70%),#121216">
-      <p class="ar text-[#E5D4C0] text-2xl" lang="ar" dir="rtl">وش نطبخ اليوم؟</p>
-      <h2 class="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">The week, planned and priced.</h2>
-      <p class="mt-5 text-lg text-[#B9B3AA] max-w-xl mx-auto">Mizan is an Android app built with Expo and React Native. The code is on GitHub.</p>
-      <div class="mt-9 flex flex-wrap justify-center gap-3"><a href="{GITHUB}" target="_blank" rel="noopener" class="btn btn-mint rounded-full px-6 py-3.5 font-semibold">View on GitHub</a><a href="../" class="btn btn-ghost rounded-full px-6 py-3.5 font-semibold">Back to the portfolio</a></div>
+  <section class="close">
+    <div class="wrap">
+      {MZ.MARK.replace('class="z-mark"', 'class="mark-big" style="--z-sand:#E5D4C0;--z-mint:#10B981"')}
+      <p class="ar" lang="ar" dir="rtl">وش نطبخ اليوم؟</p>
+      <h2>The code is on GitHub.</h2>
+      <div class="ctas">
+        <a class="btn btn-mint" href="{GITHUB}" target="_blank" rel="noopener">View the code</a>
+        <a class="link" href="../">More of my work {CHEVRON}</a>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="border-t border-white/10 py-12">
-  <div class="mx-auto max-w-6xl px-4 md:px-6 grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
-    <div><a href="#top" class="flex items-center gap-2.5">{mark}<span class="font-semibold">Mizan</span><span class="ar text-[#8F806E]" lang="ar">مِيزان</span></a>
-      <p class="mt-4 max-w-sm text-[#8F8A82] leading-relaxed">A meal-planning, pantry and grocery-budget app for Saudi households. Designed and built by Lujain Aloufi.</p></div>
-    <div><p class="text-xs font-semibold tracking-[.18em] uppercase text-[#6EE7B7]">On this page</p>
-      <ul class="mt-4 space-y-2 text-[#B9B3AA]"><li><a class="hover:text-[#F4EFE8]" href="#features">Features</a></li><li><a class="hover:text-[#F4EFE8]" href="#screens">Screens</a></li><li><a class="hover:text-[#F4EFE8]" href="#planner">How it plans</a></li></ul></div>
-    <div><p class="text-xs font-semibold tracking-[.18em] uppercase text-[#6EE7B7]">Elsewhere</p>
-      <ul class="mt-4 space-y-2 text-[#B9B3AA]"><li><a class="hover:text-[#F4EFE8]" href="{GITHUB}" target="_blank" rel="noopener">GitHub ↗</a></li><li><a class="hover:text-[#F4EFE8]" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a class="hover:text-[#F4EFE8]" href="../">Portfolio</a></li></ul></div>
+<footer>
+  <div class="wrap">
+    <span>Designed and built by Lujain Aloufi. Prices in the screens are sample data.</span>
+    <nav aria-label="Elsewhere"><a href="{GITHUB}" target="_blank" rel="noopener">GitHub{ARROW_UP}</a><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn{ARROW_UP}</a><a href="../">Portfolio</a></nav>
   </div>
-  <p class="mx-auto max-w-6xl px-4 md:px-6 mt-12 text-sm text-[#6B675F]">© 2026 Lujain Aloufi. Prices in the screens are sample data.</p>
 </footer>
 
 <script>
 (()=>{{
-  const io=new IntersectionObserver(es=>es.forEach(e=>{{if(e.isIntersecting){{e.target.classList.add("in");io.unobserve(e.target)}}}}),{{threshold:.12}});
-  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-  // feature tabs: click to switch, advance every 7s while visible
-  const tabs=[...document.querySelectorAll("[data-tab]")];let at=0,timer=0;
-  const show=k=>{{at=k;tabs.forEach((t,i)=>{{t.setAttribute("aria-selected",i===k);const b=t.querySelector(".tab-bar");b.style.animation="none";b.offsetWidth;b.style.animation=""}});
-    const id=tabs[k].dataset.tab;document.querySelectorAll("[data-panel]").forEach(p=>p.classList.toggle("on",p.dataset.panel===id));
-    document.querySelectorAll("[data-stage]").forEach(s=>s.classList.toggle("on",s.dataset.stage===id));
-    clearTimeout(timer);timer=setTimeout(()=>show((at+1)%tabs.length),7000)}};
-  tabs.forEach((t,i)=>t.addEventListener("click",()=>show(i)));
-  new IntersectionObserver(es=>es.forEach(e=>{{if(e.isIntersecting)show(at);else clearTimeout(timer)}}),{{threshold:.3}}).observe(document.getElementById("features"));
-  // gallery: buttons and drag
-  const g=document.getElementById("gallery");
-  document.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>g.scrollBy({{left:+b.dataset.scroll*330,behavior:"smooth"}})));
-  let down=false,sx=0,sl=0;
-  g.addEventListener("pointerdown",e=>{{if(e.pointerType!=="mouse")return;down=true;sx=e.clientX;sl=g.scrollLeft;g.style.scrollSnapType="none";g.style.cursor="grabbing"}});
-  addEventListener("pointerup",()=>{{if(!down)return;down=false;g.style.scrollSnapType="";g.style.cursor=""}});
-  addEventListener("pointermove",e=>{{if(down)g.scrollLeft=sl-(e.clientX-sx)}});
-  // hero: a slight tilt toward the pointer
-  const st=document.getElementById("hero-stage"),tl=document.getElementById("hero-tilt");
-  if(matchMedia("(hover:hover) and (pointer:fine)").matches){{
-    st.addEventListener("pointermove",e=>{{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tl.style.transform=`perspective(1200px) rotateY(${{x*5}}deg) rotateX(${{-y*5}}deg)`}});
-    st.addEventListener("pointerleave",()=>tl.style.transform="")}}
+  // hairline under the nav once the page has scrolled
+  const nav=document.getElementById("nav"),top=document.getElementById("top");
+  new IntersectionObserver(([e])=>nav.classList.toggle("scrolled",!e.isIntersecting),{{rootMargin:"-56px 0px 0px 0px",threshold:.98}}).observe(top);
+  // scroll story: the step crossing the middle of the screen picks the phone screen
+  const steps=[...document.querySelectorAll(".step")],layers=[...document.querySelectorAll(".pin .layer")];
+  const pick=i=>{{steps.forEach((s,k)=>s.classList.toggle("on",k===i));layers.forEach((l,k)=>l.classList.toggle("on",k===i))}};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{{if(e.isIntersecting)pick(+e.target.dataset.step)}}),{{rootMargin:"-45% 0px -45% 0px"}});
+  steps.forEach(s=>io.observe(s));
+  // light and dark preview
+  const seg=document.querySelector(".seg"),btns=[...seg.querySelectorAll("button")],themes=[...document.querySelectorAll(".theme-stage .layer")];
+  btns.forEach(b=>b.addEventListener("click",()=>{{const m=b.dataset.mode;seg.dataset.mode=m;
+    btns.forEach(x=>x.setAttribute("aria-pressed",x===b));themes.forEach(t=>t.classList.toggle("on",t.dataset.theme===m))}}));
 }})();
 </script>
 </body>
