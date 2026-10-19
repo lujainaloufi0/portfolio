@@ -102,9 +102,9 @@ p{{margin:0;text-wrap:pretty}}
 
 /* scene styles from the app mockups */
 {phone_css()}
-.mz.bare{{background:none;position:absolute;inset:0}}
+.mz.bare{{background:none;position:absolute;inset:0;overflow:visible}}
 .mz.bare::before,.mz.bare::after{{display:none}}
-.mz.bare .z-ph{{height:100cqh}}
+.mz.bare .z-ph{{height:97cqh;box-shadow:0 0 0 .3cqh #f3f4f6,0 0 0 .6cqh #b4b8be,0 0 0 .78cqh #70747a,0 0 0 .9cqh #2b2d30,0 3cqh 7cqh -1cqh rgba(0,0,0,.55)}}
 .device{{position:relative;aspect-ratio:9/19.3;width:var(--w,300px);container-type:size}}
 
 /* nav: the one translucent layer, content scrolls under it */
