@@ -54,7 +54,7 @@ BENTO = [
     ('', 'No account', 'Your profile and plans are saved on the phone. Nothing is sent to a server.', None),
     ('', 'Works offline', 'Planning, swapping and the grocery list all run on the device.', None),
     ('', '163 halal recipes', 'Across 18 cuisines and about 128 ingredients, each with macros and a cost per serving in riyals.', None),
-    ('lg:col-span-2', 'A budget it respects', 'When the week runs over, the planner fixes it in stages and stays inside your chosen cuisines first.', None),
+    ('lg:col-span-2', 'Stays on budget', 'When the week runs over, the planner swaps in cheaper meals in stages, keeping to your chosen cuisines first.', None),
     ('', 'Light and dark', 'Automatic, light or dark, set from the profile.', None),
     ('', 'Calm motion', 'Fades between 120 and 260 ms with an ease-out. Nothing slides or bounces.', None),
     ('', '21 tests', 'Jest tests cover the catalog, the planner rules and full flows on Android.', None),

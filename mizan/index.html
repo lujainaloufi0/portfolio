@@ -326,6 +326,14 @@ h1,h2,h3{text-wrap:balance} p{text-wrap:pretty}
 .mz-card .z-ph{height:118cqh}
 .mz-card .z-ph.lg{height:126cqh;margin-top:-4cqh}
 
+/* in the portfolio the stage takes the page colour, a deeper indigo, like Tawaqaa's teal and Masar's green stages */
+.card .mz,.case .mz,.case-media .mz{
+  background:radial-gradient(50% 55% at 85% 105%,rgba(16,185,129,.22),transparent 70%),
+             radial-gradient(45% 50% at 10% -5%,rgba(229,212,192,.10),transparent 70%),
+             radial-gradient(110% 90% at 50% 0%,#2B3572 0%,#171D3F 55%,#0D1129 100%)}
+.card .mz::before,.case .mz::before,.case-media .mz::before{background-image:linear-gradient(rgba(170,185,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(170,185,255,.05) 1px,transparent 1px)}
+.case .z-fl{background:linear-gradient(160deg,rgba(44,54,118,.62),rgba(17,22,52,.6));border-color:rgba(190,200,255,.16)}
+
 .mz.solo .z-ph{height:96cqh}
 .mz .z-fl{width:min(30cqw,40cqh)}
 #hero-stage .z-fl{position:absolute;margin:0;width:min(44cqw,40cqh)}
@@ -560,7 +568,7 @@ h1,h2,h3{text-wrap:balance} p{text-wrap:pretty}
         <span class="dot"></span>
         <div class="mt-8"><h3 class="text-xl font-semibold text-[#F4EFE8]">163 halal recipes</h3><p class="mt-2 text-[#B9B3AA] leading-relaxed">Across 18 cuisines and about 128 ingredients, each with macros and a cost per serving in riyals.</p></div></div><div class="bento reveal lg:col-span-2 rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[220px]">
         <span class="dot"></span>
-        <div class="mt-8"><h3 class="text-xl font-semibold text-[#F4EFE8]">A budget it respects</h3><p class="mt-2 text-[#B9B3AA] leading-relaxed">When the week runs over, the planner fixes it in stages and stays inside your chosen cuisines first.</p></div></div><div class="bento reveal  rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[220px]">
+        <div class="mt-8"><h3 class="text-xl font-semibold text-[#F4EFE8]">Stays on budget</h3><p class="mt-2 text-[#B9B3AA] leading-relaxed">When the week runs over, the planner swaps in cheaper meals in stages, keeping to your chosen cuisines first.</p></div></div><div class="bento reveal  rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[220px]">
         <span class="dot"></span>
         <div class="mt-8"><h3 class="text-xl font-semibold text-[#F4EFE8]">Light and dark</h3><p class="mt-2 text-[#B9B3AA] leading-relaxed">Automatic, light or dark, set from the profile.</p></div></div><div class="bento reveal  rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[220px]">
         <span class="dot"></span>
