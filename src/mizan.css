@@ -1,7 +1,7 @@
 /* ═════════ MIZAN: app screens drawn in code, presented on a dark stage with floating UI cards ═════════
    Palette from app/src/lib/palette.ts and theme.ts. Resting styles are the final state; keyframes only
    add motion. In-app motion follows the app's own rule (fades, fills, a press), the stage adds a slow float. */
-.mz{--z-canvas:#121417;--z-surface:#1E2228;--z-raised:#262B33;--z-line:#2A2E39;--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#7E828C;
+.mz{--z-canvas:#121417;--z-surface:#1E2228;--z-raised:#262B33;--z-line:#2A2E39;--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#8B8F98;
   --z-sand:#E5D4C0;--z-sand-dim:#8F806E;--z-mint:#10B981;--z-mint3:#6EE7B7;--z-clay:#E8805F;--z-T:8s;
   position:absolute;inset:0;container-type:size;overflow:hidden;isolation:isolate;
   display:flex;align-items:center;justify-content:center;gap:0;font-family:var(--f-ar);
@@ -18,7 +18,7 @@
 
 /* phone screen */
 .z-ph{box-shadow:0 0 0 .3cqh #f3f4f6,0 0 0 .6cqh #b4b8be,0 0 0 .78cqh #70747a,0 0 0 .9cqh #2b2d30,0 4cqh 10cqh rgba(0,0,0,.6),0 0 12cqh rgba(16,185,129,.12)}
-.z-scr{--z-canvas:#121417;--z-surface:#1E2228;--z-raised:#262B33;--z-line:#2A2E39;--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#7E828C;
+.z-scr{--z-canvas:#121417;--z-surface:#1E2228;--z-raised:#262B33;--z-line:#2A2E39;--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#8B8F98;
   --z-sand:#E5D4C0;--z-sand-dim:#8F806E;--z-mint:#10B981;--z-mint3:#6EE7B7;--z-clay:#E8805F;--z-wash:rgba(16,185,129,.12);--z-onmint:#121417;
   background:var(--z-canvas);color:var(--z-ink);font-family:var(--f-ar);gap:3.2cqw;padding-bottom:0}
 .z-scr.light,.z-fl.light{--z-canvas:#F6F3EE;--z-surface:#FFFFFF;--z-raised:#EFEAE2;--z-line:#E6E0D6;--z-ink:#16181C;--z-soft:#5A5F67;--z-faint:#8A8F97;
@@ -232,7 +232,7 @@
 @keyframes z-lightup{0%,34%,94%,100%{opacity:.28;filter:saturate(.6)}46%,86%{opacity:1;filter:none}}
 
 /* floating cards beside the phone */
-.z-fl{--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#7E828C;--z-raised:rgba(255,255,255,.06);--z-surface:transparent;--z-line:rgba(229,212,192,.12);--z-wash:rgba(16,185,129,.14);--z-onmint:#121417;
+.z-fl{--z-ink:#F4EFE8;--z-soft:#B9B3AA;--z-faint:#8B8F98;--z-raised:rgba(255,255,255,.06);--z-surface:transparent;--z-line:rgba(229,212,192,.12);--z-wash:rgba(16,185,129,.14);--z-onmint:#121417;
   z-index:3;flex:none;width:min(21cqw,38cqh);container-type:inline-size;padding:3.2cqh;border-radius:3.4cqh;display:flex;flex-direction:column;gap:1.8cqh;color:var(--z-ink);font-family:var(--f-ar);
   background:linear-gradient(160deg,rgba(38,43,51,.72),rgba(22,25,30,.62));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
   border:1px solid rgba(229,212,192,.16);box-shadow:0 3cqh 9cqh rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(16,185,129,.05);
