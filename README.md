@@ -61,23 +61,33 @@ The page plays recorded screens of the app inside a MacBook: sign-in, the depart
 
 **Stack:** TypeScript, React, Next.js, NestJS, Node.js, PostgreSQL
 
-## Fridge & Friends
+## Mizan
 
-![Fridge & Friends project page](docs/gifs/05-fridge.gif)
+![Mizan project page](docs/gifs/05-mizan.gif)
 
-**iOS app concept · UI, characters & motion · 2026**
+**Android app · Design & development · 2026 · [Landing page](https://lujainaloufi0.github.io/portfolio/mizan/) · [Code](https://github.com/lujainaloufi0/Mizan)**
 
-Fridge & Friends helps you cook with what's already in your fridge. Your ingredients jump into a bowl, and a crew of twelve rubber-hose characters tells you what you can make. Screens change with a checkerboard wipe, and the characters react to what you do.
+Mizan plans a Saudi household's week of meals and keeps the shopping inside a budget. You pick your cuisines, supermarkets, household size and a weekly budget in riyals, and Mizan plans the week from 163 halal recipes across 18 cuisines, filtered by your allergies, kitchen appliances and goal. It builds the grocery list sorted by aisle and store, and sends it to a delivery app. The app is Arabic first, right to left, with light and dark themes.
 
-The page walks through the flow: opening the fridge, tossing ingredients into the bowl, the recipe reveal, cooking along with timers, and the celebration at the end.
+The card and the project page draw the app's screens in HTML and CSS, in Arabic and right to left, on a dark stage with frosted cards beside each phone. The page colour is a deep indigo, close to the opposite of Mizan's sand on the colour wheel, so the warm brand colours stand out. The project page walks through seven screens:
 
-**Stack:** Figma, HTML, CSS, JavaScript
+1. **Plan:** the budget step, where a balance scale weighs the expected basket against the budget as the slider moves.
+2. **Today:** today's meals and the week's basket. Marking a meal as cooked fills the progress ring.
+3. **Week:** every meal with its time, calories and protein.
+4. **Swap:** three quick options, ranked by what the basket already covers, each with its price change.
+5. **Shop:** the grocery list by aisle, with items ticking off.
+6. **Deliver:** the sheet that copies the list and opens a delivery app.
+7. **Theme:** the profile and the same home screen in the light theme.
+
+The landing page in `mizan/index.html` is built from the same screens by `src/mizan_landing.py`.
+
+**Stack:** TypeScript, React Native, Expo, React, Android
 
 ## Stack
 
 ![Stack card and page](docs/gifs/06-stack.gif)
 
-The last card is my toolset. On the home screen, rows of tool chips drift in alternating directions and fade between white and black. The Stack page groups the 16 tools I use (languages, frameworks, data, and AI, mobile & design), each with its logo and the projects I used it in. The filters show only the tools behind one project.
+The last card is my toolset. On the home screen, rows of tool chips drift in alternating directions and fade between white and black. The Stack page groups the 18 tools I use (languages, frameworks, data, and AI, mobile & design), each with its logo and the projects I used it in. The filters show only the tools behind one project.
 
 ## Catalog view and dark mode
 
@@ -118,6 +128,7 @@ The contact form sends messages to my email through FormSubmit, and opens the vi
 
 ```
 index.html              the built site (open it directly or host it as a static page)
+mizan/index.html        the Mizan landing page (built, one file)
 assets/                 recorded app screens, as animated WebP
 src/
   build.py              assembles index.html from the pieces below
@@ -125,6 +136,9 @@ src/
   styles.css            home deck, transitions, intro, cursor, project and stack pages, footer
   tawaqaa.css           code-drawn iPhone and MacBook frames and the Tawaqaa screens
   tawaqaa_scenes.py     markup for the Tawaqaa screens
+  mizan.css             code-drawn Mizan phones, floating cards and the dark stage
+  mizan_scenes.py       markup for the Mizan screens
+  mizan_landing.py      writes mizan/index.html, the Mizan landing page
   main.js               deck navigation, intro, cursor, project pages, logo fitting
   intro_curves.py       intro motion curves, sampled at 60 Hz
   icons.json            tool logos as SVG paths
@@ -152,7 +166,7 @@ python3 -m http.server 8000
 
 - **No framework:** semantic HTML, modern CSS (container queries, `text-wrap: balance`) and vanilla JavaScript.
 - **Motion:** card changes use CSS keyframes, opening a project uses a shared-element grow, and the intro uses measured Web Animations curves. Everything moves only `transform` and `opacity`.
-- **Code-drawn mockups:** the Tawaqaa phones and laptop are HTML and CSS sized with container units, so they stay sharp at any size.
+- **Code-drawn mockups:** the Tawaqaa and Mizan phones and the laptop are HTML and CSS sized with container units, so they stay sharp at any size.
 - **Bilingual name:** the Arabic name under the English one is stretched with kashida (ـ) at the joining letters until it is exactly the same width, at the same type size.
 - **Accessibility:** keyboard navigation for the deck and project pages, visible focus states, labelled controls, and contrast-checked text and mockup colours.
 - **Performance:** media is lazy-loaded animated WebP, and the hosted page is about 345 KB of HTML before media.
@@ -196,7 +210,7 @@ All the source files are in `src/`. Never edit `index.html` by hand, because the
 | **About page** | `src/base.html` | Search for `ABOUT`. Edit the intro, the four expertise items, the award photos (`award-*.webp` in `assets/`), the experience rows and the footer line. |
 | **Page description and share preview** | `src/base.html` | The `<meta name="description">`, `og:` and `twitter:` tags at the top. |
 
-The Tawaqaa screens are drawn in code (`src/tawaqaa_scenes.py` and `src/tawaqaa.css`). For your own projects, the simplest route is to record your app and use the images the way Masar does (`card='your-card.webp'`, plus `shots`).
+The Tawaqaa and Mizan screens are drawn in code (`src/tawaqaa_scenes.py`, `src/mizan_scenes.py` and their CSS files). For your own projects, the simplest route is to record your app and use the images the way Masar does (`card='your-card.webp'`, plus `shots`).
 
 To find anything you might have missed:
 
