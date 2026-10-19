@@ -69,7 +69,7 @@ The page plays recorded screens of the app inside a MacBook: sign-in, the depart
 
 Mizan plans a Saudi household's week of meals and keeps the shopping inside a budget. You pick your cuisines, supermarkets, household size and a weekly budget in riyals, and Mizan plans the week from 163 halal recipes across 18 cuisines, filtered by your allergies, kitchen appliances and goal. It builds the grocery list sorted by aisle and store, and sends it to a delivery app. The app is Arabic first, right to left, with light and dark themes.
 
-The card and the project page draw the app's screens in HTML and CSS, in Arabic and right to left, on a dark stage with frosted cards beside each phone. The page colour is a deep indigo, close to the opposite of Mizan's sand on the colour wheel, so the warm brand colours stand out. The project page walks through seven screens:
+The card and the project page draw the app's screens in HTML and CSS, in Arabic and right to left, on a dark stage with frosted cards beside each phone. The page and the stage behind the phones share a deep indigo, the way Tawaqaa uses teal and Masar uses green. Indigo sits almost opposite Mizan's sand on the colour wheel, so the sand and mint stand out against it. The project page walks through seven screens:
 
 1. **Plan:** the budget step, where a balance scale weighs the expected basket against the budget as the slider moves.
 2. **Today:** today's meals and the week's basket. Marking a meal as cooked fills the progress ring.
