@@ -985,10 +985,11 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
 .mb .mb-track svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .mb .mb-dot{position:absolute;top:0;left:0;width:var(--mb-size,56px);height:var(--mb-size,56px);background:radial-gradient(#fff 40%,transparent 60%);opacity:1;transform:translate(-999px,-999px);will-change:transform}
 .mb .mb-face{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:inherit;background:var(--about);border:1px solid rgba(255,255,255,.28);overflow:hidden}
-.send.mb{padding:2px}
+.send.mb{width:auto;min-width:12rem;height:3.5rem;aspect-ratio:auto;padding:1.5px;border-radius:14px;font:500 .8125rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase}
 .send.mb::before{display:none}
-.send .mb-face::before{content:"";position:absolute;inset:0;background:#fff;border-radius:50%;transform:scale(0);transition:transform .6s var(--out)}
-.send:hover .mb-face::before,.send:focus-visible .mb-face::before{transform:scale(1)}
+.send .mb-face{padding:0 1.8rem;transition:background .35s var(--out),border-color .35s,color .35s}
+.send:hover .mb-face,.send:focus-visible .mb-face{background:#fff;border-color:#fff;color:var(--about)}
+.send:active .mb-face{transform:scale(.98)}
 .send.mb[data-state="loading"] span{animation:none}
 .send.mb[data-state="loading"] #send-label{animation:blink .8s linear infinite}
 .copy.mb{min-height:0;padding:1.5px}
@@ -1497,7 +1498,7 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
           </fieldset>
           <div><div class="fld"><textarea id="c-msg" name="message" placeholder=" " required minlength="20" maxlength="600" aria-describedby="c-msg-err" data-validate></textarea><label for="c-msg">Message</label><span class="count" id="c-msg-count" aria-hidden="true">0 / 600</span></div><p class="err" id="c-msg-err"></p></div>
           <div class="send-row">
-            <button class="send mb" type="submit" data-state="idle" style="--mb-size:84px"><span class="mb-track" aria-hidden="true"><svg><rect width="100%" height="100%" fill="none"/></svg><span class="mb-dot"></span></span><span class="mb-face"><span id="send-label">Send</span></span></button>
+            <button class="send mb" type="submit" data-state="idle" style="--mb-size:68px"><span class="mb-track" aria-hidden="true"><svg><rect width="100%" height="100%" fill="none"/></svg><span class="mb-dot"></span></span><span class="mb-face"><span id="send-label">Send</span></span></button>
             <p class="form-status" id="form-status" role="status"></p>
           </div>
         </form>
