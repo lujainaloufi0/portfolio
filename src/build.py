@@ -176,7 +176,7 @@ HOME = f'''<!-- ═════════════ HOME ══════�
 {''.join(f'        <li{ON if i==0 else ""}>{p["attr"]}</li>{chr(10)}' for i,p in enumerate(PROJ))}      </ol></div>
       <div class="stage" id="stage">
 {''.join('        '+card_html(i,p)+chr(10) for i,p in enumerate(PROJ))}      </div>
-      <p class="lbl status hero-status"><i aria-hidden="true"></i>Available for Software Engineering Roles</p>
+      @@HOMEDOCK@@
     </div>
     <nav class="ticks" aria-label="Projects">
 {''.join(f'      <button type="button" aria-label="{html.unescape(p["title"])}"></button>{chr(10)}' for p in PROJ)}    </nav>
@@ -317,6 +317,13 @@ js_tail = js_tail.replace('err.message==="demo"?"Demo mode: this form isn\'t con
 assert 'formsubmit.co' in js_tail and 'location.href=`mailto' not in js_tail and 'Demo mode' not in js_tail
 js_tail = re.sub(r'\npaint\(\);\nconst boot=.*$', '\n', js_tail, flags=re.S)
 JS = '<script>\n(()=>{' + js_prefix + intro_curves.JS + JS_NEW + '\n' + js_tail + '\n})();\n</script>\n'
+
+# home: the contact dock again, with the availability note in front, where the status line used to be
+_m = re.search(r'<nav class="dock" aria-label="Social links">(.*?)</nav>', ABOUT, re.S)
+HOME = HOME.replace('@@HOMEDOCK@@', '<nav class="dock dock-home hero-status" aria-label="Availability and social links" data-base="36" data-max="62">'
+    '<span class="dock-status"><i aria-hidden="true"></i><span class="ds-long">Open to software engineering roles</span><span class="ds-short">Open to roles</span></span>'
+    '<span class="dock-sep" aria-hidden="true"></span>' + _m.group(1).strip() + '</nav>')
+assert '@@HOMEDOCK@@' not in HOME and 'your-' not in HOME
 
 PAGE = head + CSS + '</style>\n</head>\n<body class="on-home">\n<a class="skip" href="#main-home">Skip to content</a>\n\n' + HOME + '\n' + CASES + '\n' + MENU + ABOUT + JS + '</body>\n</html>\n'
 

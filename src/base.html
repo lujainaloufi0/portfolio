@@ -329,13 +329,25 @@ dialog.case[open]::backdrop{background:rgba(0,0,0,.4)}
 
 /* floating dock (after Aceternity's Floating Dock) */
 .dock{display:inline-flex;align-items:flex-end;gap:1rem;height:64px;margin-top:1.9rem;padding:0 1rem 12px;border-radius:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
-.c-side .dock-i{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:background .3s}
-.c-side .dock-i:hover{background:rgba(255,255,255,.26);text-decoration:none}
+.dock .dock-i{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:background .3s}
+.dock .dock-i:hover{background:rgba(255,255,255,.26);text-decoration:none}
 .dock-i svg{width:50%;height:50%}
 .dock-tip{position:absolute;left:50%;top:-2rem;transform:translate(-50%,10px);opacity:0;white-space:nowrap;padding:.15rem .55rem;border-radius:.375rem;background:#fff;color:var(--about);font:500 .75rem/1.4 var(--f-body);pointer-events:none;transition:opacity .2s,transform .25s var(--out)}
 .dock-i:hover .dock-tip,.dock-i:focus-visible .dock-tip{opacity:1;transform:translate(-50%,0)}
 .dock-i:focus-visible{outline:2px solid #fff;outline-offset:3px}
-@media (hover:none),(pointer:coarse){.dock{height:auto;margin-top:.2rem;padding:.6rem .8rem;align-items:center}.c-side .dock-i{width:48px;height:48px}.dock-i svg{width:22px;height:22px}.dock-tip{display:none}}
+@media (hover:none),(pointer:coarse){.dock{height:auto;margin-top:.2rem;padding:.6rem .8rem;align-items:center}.dock .dock-i{width:48px;height:48px}.dock-i svg{width:22px;height:22px}.dock-tip{display:none}}
+/* the same dock on the home page, a little smaller */
+.dock-status{display:inline-flex;align-items:center;gap:.55rem;align-self:center;margin-top:9px;font:500 .6875rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.dock-status i{position:relative;width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.dock-status i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:ping 2.4s var(--out) infinite}
+.dock-sep{align-self:center;width:1px;height:22px;margin-top:9px;background:rgba(255,255,255,.22)}
+.ds-short{display:none}
+@media (max-width:560px){.ds-long{display:none}.ds-short{display:inline}}
+@media (hover:none),(pointer:coarse){.dock-status,.dock-sep{margin-top:0}}
+.dock.dock-home{height:54px;margin:0;padding:0 .8rem 9px;gap:.8rem;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18)}
+.dock-home .dock-i{width:36px;height:36px}
+.dock-home .dock-tip{background:#fff;color:#111}
+@media (hover:none),(pointer:coarse){.dock.dock-home{height:auto;padding:.45rem .6rem;align-items:center}.dock.dock-home .dock-i{width:42px;height:42px}.dock-home .dock-i svg{width:20px;height:20px}}
 @media (max-width:900px){.c-form,.c-side{grid-column:1/-1}}
 @media (max-width:560px){.row2{grid-template-columns:1fr}}
 
@@ -1070,10 +1082,11 @@ $$("[data-copy]").forEach(b=>{const t=b.querySelector("[data-label]")||b;b.addEv
 })();
 
 /* ── floating dock: icons grow as the cursor gets close, on a spring ── */
-(()=>{const dock=$(".dock");if(!dock||calm||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;
-  const its=[...dock.querySelectorAll(".dock-i")].map(a=>({a,s:40,v:0,g:40}));let mx=Infinity,raf=0,last=0;
+if(!calm&&matchMedia("(hover:hover) and (pointer:fine)").matches)$$(".dock").forEach(dock=>{
+  const lo=+dock.dataset.base||40,hi=+dock.dataset.max||80;
+  const its=[...dock.querySelectorAll(".dock-i")].map(a=>({a,s:lo,v:0,g:lo}));let mx=Infinity,raf=0,last=0;
   const tick=t=>{raf=0;const dt=Math.min((t-(last||t))/1000,.032);last=t;
-    its.forEach(it=>{const b=it.a.getBoundingClientRect();it.g=40+40*Math.max(0,1-Math.abs(mx-(b.left+b.width/2))/150)});
+    its.forEach(it=>{const b=it.a.getBoundingClientRect();it.g=lo+(hi-lo)*Math.max(0,1-Math.abs(mx-(b.left+b.width/2))/150)});
     let moving=false;
     its.forEach(it=>{for(let i=0;i<8;i++){const h=dt/8,acc=(-150*(it.s-it.g)-12*it.v)/.1;it.v+=acc*h;it.s+=it.v*h}
       if(Math.abs(it.s-it.g)<.05&&Math.abs(it.v)<.05){it.s=it.g;it.v=0}else moving=true;
@@ -1082,7 +1095,7 @@ $$("[data-copy]").forEach(b=>{const t=b.querySelector("[data-label]")||b;b.addEv
   const go=()=>{if(!raf)raf=requestAnimationFrame(tick)};
   dock.addEventListener("mousemove",e=>{mx=e.clientX;go()});
   dock.addEventListener("mouseleave",()=>{mx=Infinity;go()});
-})();
+});
 
 paint();
 const boot=()=>{attach($("#deck"));syncDeckVideo()};
