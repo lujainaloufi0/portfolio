@@ -103,7 +103,7 @@ for names in ROWS:
 
 PROJ = [
  dict(key='tawaqaa', title='Tawaqaa', ar='', attr='IOT &amp; ML   •   2024   •   GRADUATION PROJECT', card='@html:tq', bg=None,
-      alt='Tawaqaa interface in motion: flood reports on a map of Jeddah, ranked streets, a drone measuring water and detection boxes',
+      alt='Tawaqaa in motion: the Arabic app reporting a flooded street, the services screen and live flood alerts',
       meta_l=[('Type','Graduation project · IoT &amp; ML'),('Role','Project lead &amp; systems developer'),('Completed','2024 · University of Jeddah')],
       meta_r=[('Awards','Grand Special Award, SGiE 2024')],
       stack=['Java','Android','Firebase','Python','YOLOv10','JavaScript','Figma'],
