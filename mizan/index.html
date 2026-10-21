@@ -63,8 +63,8 @@ p{margin:0;text-wrap:pretty}
   background-image:linear-gradient(rgba(229,212,192,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(229,212,192,.035) 1px,transparent 1px);
   background-size:8cqh 8cqh;mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
 .mz::after{content:"";position:absolute;left:50%;top:50%;width:70cqh;height:70cqh;margin:-35cqh;z-index:-1;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(16,185,129,.18),transparent);filter:blur(4cqh);animation:z-breathe var(--z-T) ease-in-out infinite}
-@keyframes z-breathe{50%{opacity:.55;transform:scale(1.08)}}
+  background:radial-gradient(closest-side,rgba(16,185,129,.16),rgba(16,185,129,.05) 60%,transparent);animation:z-breathe var(--z-T) ease-in-out infinite}
+@keyframes z-breathe{50%{opacity:.6}}
 .mz>*{position:relative}
 
 /* phone screen */
@@ -349,6 +349,9 @@ p{margin:0;text-wrap:pretty}
              radial-gradient(110% 90% at 50% 0%,#2B3572 0%,#171D3F 55%,#0D1129 100%)}
 .card .mz::before,.case .mz::before,.case-media .mz::before{background-image:linear-gradient(rgba(170,185,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(170,185,255,.05) 1px,transparent 1px)}
 .case .z-fl{background:linear-gradient(160deg,rgba(44,54,118,.62),rgba(17,22,52,.6));border-color:rgba(190,200,255,.16)}
+
+/* the portfolio's dark stage needs no backdrop blur behind the floating cards; a blur re-rendered on every float frame is costly */
+.case .z-fl,.card .z-fl{-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(160deg,rgba(44,54,118,.88),rgba(17,22,52,.9))}
 
 .mz.bare{background:none;position:absolute;inset:0;overflow:visible}
 .mz.bare::before,.mz.bare::after{display:none}
