@@ -226,7 +226,16 @@ FL_AISLE = fl('f-aisle', '<span class="z-kick">حسب المتجر</span><div cl
 FL_APPS = fl('f-apps', '<span class="z-kick">7 تطبيقات توصيل</span><div class="z-dots">' + ''.join(f'<i style="background:{bg};color:{fg}">{n[0]}</i>' for n, bg, fg in APPS) + '</div>')
 FL_THEME = fl('f-theme', '<span class="z-kick">ألوان مِيزان</span><div class="z-sw"><i style="--c:#121417"></i><i style="--c:#E5D4C0"></i><i style="--c:#10B981"></i><i style="--c:#F6F3EE"></i><i style="--c:#7A5C3A"></i><i style="--c:#047857"></i></div>')
 
-CARD = f'<div class="mz mz-card" aria-hidden="true">{wizard()}{home(cook=False)}{grocery()}</div>'
+def sky():
+    """Night sky behind the card: still star dust, and now and then a shooting star. One is mint."""
+    import random
+    r = random.Random(7)
+    dust = ','.join(f'{r.uniform(1,99):.1f}cqw {r.uniform(1,99):.1f}cqh 0 {r.choice([0,0,0,.5]):.1f}px rgba(230,236,255,{r.uniform(.25,.7):.2f})' for _ in range(70))
+    met = [(18, 6, 9.5, .6), (52, 2, 12, 3.4), (70, 14, 10.5, 6.8), (8, 30, 13, 8.9), (38, 10, 11, 1.9)]
+    shots = ''.join(f'<i{" class=mint" if k == 2 else ""} style="--x:{x}%;--y:{y}%;--d:{d}s;--w:{w}s"></i>' for k, (x, y, d, w) in enumerate(met))
+    return f'<div class="z-sky" aria-hidden="true"><b style="box-shadow:{dust}"></b>{shots}</div>'
+
+CARD = f'<div class="mz mz-card" aria-hidden="true">{sky()}{wizard()}{home(cook=False)}{grocery()}</div>'
 
 SHOTS_RAW = [
     ('01 · Plan', 'Pick cuisines, stores and a weekly budget in SAR. The scale weighs the expected basket against the budget as the slider moves.',

@@ -301,3 +301,17 @@
 
 /* the portfolio's dark stage needs no backdrop blur behind the floating cards; a blur re-rendered on every float frame is costly */
 .case .z-fl,.card .z-fl{-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(160deg,rgba(44,54,118,.88),rgba(17,22,52,.9))}
+
+/* night sky on the card: star dust, and a shooting star every few seconds (one in mint) */
+.mz>.z-sky{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.z-sky b{position:absolute;left:0;top:0;width:1px;height:1px;border-radius:50%}
+.z-sky i{position:absolute;left:var(--x);top:var(--y);width:18cqw;height:.36cqh;min-height:1.5px;border-radius:9px;opacity:0;transform-origin:100% 50%;
+  background:linear-gradient(90deg,transparent,rgba(196,210,255,.35) 55%,rgba(240,244,255,.95));transform:rotate(24deg) translateX(-12cqw) scaleX(.2);
+  animation:z-shoot var(--d) cubic-bezier(.3,0,.7,1) var(--w) infinite;will-change:transform,opacity}
+.z-sky i::after{content:"";position:absolute;right:-.3cqh;top:50%;width:.9cqh;height:.9cqh;min-width:3px;min-height:3px;margin-top:-.45cqh;border-radius:50%;background:#fff;box-shadow:0 0 1.4cqh .3cqh rgba(200,214,255,.8)}
+.z-sky i.mint{background:linear-gradient(90deg,transparent,rgba(16,185,129,.35) 55%,rgba(180,255,226,.95))}
+.z-sky i.mint::after{box-shadow:0 0 1.6cqh .35cqh rgba(16,185,129,.85)}
+@keyframes z-shoot{0%{opacity:0;transform:rotate(24deg) translateX(-12cqw) scaleX(.2)}
+  2%{opacity:1}
+  9%{opacity:0;transform:rotate(24deg) translateX(34cqw) scaleX(1)}
+  100%{opacity:0;transform:rotate(24deg) translateX(34cqw) scaleX(1)}}
