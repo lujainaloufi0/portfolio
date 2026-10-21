@@ -282,3 +282,9 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
 #stage .card:not(.is-on):not(.leave):not(.warm) > *{content-visibility:hidden}
 /* project screens are laid out only as they come near the viewport */
 .case .shot{content-visibility:auto;contain-intrinsic-size:auto 720px}
+
+/* title belt: room above and below the letters so tall glyphs and the Q's tail never get clipped
+   (Windows fonts sit taller in the line box). The negative margin keeps the layout where it was. */
+.belt{height:calc(var(--lh) * 1.4);margin-block:calc(var(--lh) * -.2);pointer-events:none}
+.belt button{pointer-events:auto}
+.belt button{line-height:1.4}
