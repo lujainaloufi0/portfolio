@@ -278,10 +278,11 @@ ABOUT = ABOUT.replace('data-open-from-about="2"', 'data-open-from-about="2"')
 GH = 'https://github.com/lujainaloufi0'
 ABOUT = ABOUT.replace('<a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username ↗</a>', f'<a href="{GH}" target="_blank" rel="noopener">github.com/lujainaloufi0 ↗</a>')
 ABOUT = ABOUT.replace('<a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>', f'<a href="{GH}" target="_blank" rel="noopener">GitHub</a>')
+ABOUT = ABOUT.replace('https://github.com/your-username', GH)
 ABOUT = ABOUT.replace('Web components, React or Vue, and modern CSS,', 'React, Next.js and modern CSS,')
 _strip = ''.join(f'<li>{icon(nm)}{nm}</li>' for nm in ALL_TOOLS)
 ABOUT = re.sub(r'<div class="marquee-track">.*?</div>', '<div class="marquee-track">\n          <ul>' + _strip + '</ul>\n          <ul aria-hidden="true">' + _strip + '</ul>\n        </div>', ABOUT, count=1, flags=re.S)
-assert 'your-username' not in ABOUT and ABOUT.count('github.com/lujainaloufi0') == 3 and 'Vue' not in ABOUT
+assert 'your-username' not in ABOUT and ABOUT.count('github.com/lujainaloufi0') == 2 and 'Vue' not in ABOUT
 for _n in re.findall(r'@@A:([^@]+)@@', ABOUT): asset(_n)  # About page photos
 # ---------- contact: real LinkedIn, working email, English footer wordmark ----------
 LI='https://www.linkedin.com/in/lujain-aloufi/'

@@ -979,6 +979,14 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
 .email-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
 .email-row code{font:400 1.6rem var(--f-bebas);word-break:break-all;user-select:all}
 .copy{min-height:32px;padding:.2rem .8rem;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:none;cursor:pointer;font:500 .6875rem var(--f-body);letter-spacing:.12em;text-transform:uppercase}@media (hover:hover) and (pointer:fine){.copy:hover{border-color:#fff}}
+/* floating dock (after Aceternity's Floating Dock) */
+.dock{display:inline-flex;align-items:flex-end;gap:1rem;height:64px;margin-top:1.9rem;padding:0 1rem 12px;border-radius:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.c-side .dock-i{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:background .3s}@media (hover:hover) and (pointer:fine){.c-side .dock-i:hover{background:rgba(255,255,255,.26);text-decoration:none}}
+.dock-i svg{width:50%;height:50%}
+.dock-tip{position:absolute;left:50%;top:-2rem;transform:translate(-50%,10px);opacity:0;white-space:nowrap;padding:.15rem .55rem;border-radius:.375rem;background:#fff;color:var(--about);font:500 .75rem/1.4 var(--f-body);pointer-events:none;transition:opacity .2s,transform .25s var(--out)}
+.dock-i:hover .dock-tip,.dock-i:focus-visible .dock-tip{opacity:1;transform:translate(-50%,0)}
+.dock-i:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (hover:none),(pointer:coarse){.dock{height:auto;margin-top:.2rem;padding:.6rem .8rem;align-items:center}.c-side .dock-i{width:48px;height:48px}.dock-i svg{width:22px;height:22px}.dock-tip{display:none}}
 @media (max-width:900px){.c-form,.c-side{grid-column:1/-1}}
 @media (max-width:560px){.row2{grid-template-columns:1fr}}
 
@@ -1479,8 +1487,11 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
         </form>
         <aside class="c-side" aria-label="Other ways to reach me">
           <div><span class="lbl">Drop me a line</span><div class="email-row"><a id="email-text" class="mail-link" href="mailto:lujain.aloufi0@gmail.com">lujain.aloufi0@gmail.com</a><button class="copy" type="button" data-copy="lujain.aloufi0@gmail.com">Copy</button></div></div>
-          <div><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/lujain-aloufi/" target="_blank" rel="noopener">linkedin.com/in/lujain-aloufi ↗</a></div>
-          <div><span class="lbl">GitHub</span><a href="https://github.com/lujainaloufi0" target="_blank" rel="noopener">github.com/lujainaloufi0 ↗</a></div>
+          <div><span class="lbl">Find me online</span><nav class="dock" aria-label="Social links">
+            <a class="dock-i" href="https://github.com/lujainaloufi0" target="_blank" rel="noopener" aria-label="GitHub"><span class="dock-tip" aria-hidden="true">GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
+            <a class="dock-i" href="https://www.linkedin.com/in/lujain-aloufi/" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="dock-tip" aria-hidden="true">LinkedIn</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
+            <a class="dock-i" href="mailto:lujain.aloufi0@gmail.com" aria-label="Email me on Gmail"><span class="dock-tip" aria-hidden="true">Gmail</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z"/><path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z"/><path d="M16 4l-4 4l-4 -4"/><path d="M4 6.5l8 7.5l8 -7.5"/></svg></a>
+          </nav></div>
         </aside>
       </div>
     </section>
@@ -1812,10 +1823,25 @@ form.addEventListener("submit",async e=>{e.preventDefault();status.textContent="
   finally{send.dataset.state="idle";send.disabled=false;setTimeout(()=>{if(sl.textContent==="Sent")sl.textContent="Send"},2500)}});
 
 /* ── copy email ── */
-$$("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{
-  try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="Copied"}
-  catch(e){const r=d.createRange();r.selectNodeContents($("#email-text"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Press Ctrl+C"}
-  setTimeout(()=>b.textContent="Copy",1800)}));
+$$("[data-copy]").forEach(b=>{const t=b.querySelector("[data-label]")||b;b.addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(b.dataset.copy);t.textContent="Copied"}
+  catch(e){const r=d.createRange();r.selectNodeContents($("#email-text"));const s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent="Press Ctrl+C"}
+  setTimeout(()=>t.textContent="Copy",1800)})});
+
+/* ── floating dock: icons grow as the cursor gets close, on a spring ── */
+(()=>{const dock=$(".dock");if(!dock||calm||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;
+  const its=[...dock.querySelectorAll(".dock-i")].map(a=>({a,s:40,v:0,g:40}));let mx=Infinity,raf=0,last=0;
+  const tick=t=>{raf=0;const dt=Math.min((t-(last||t))/1000,.032);last=t;
+    its.forEach(it=>{const b=it.a.getBoundingClientRect();it.g=40+40*Math.max(0,1-Math.abs(mx-(b.left+b.width/2))/150)});
+    let moving=false;
+    its.forEach(it=>{for(let i=0;i<8;i++){const h=dt/8,acc=(-150*(it.s-it.g)-12*it.v)/.1;it.v+=acc*h;it.s+=it.v*h}
+      if(Math.abs(it.s-it.g)<.05&&Math.abs(it.v)<.05){it.s=it.g;it.v=0}else moving=true;
+      it.a.style.width=it.a.style.height=it.s.toFixed(2)+"px"});
+    if(moving||mx!==Infinity)raf=requestAnimationFrame(tick);else last=0};
+  const go=()=>{if(!raf)raf=requestAnimationFrame(tick)};
+  dock.addEventListener("mousemove",e=>{mx=e.clientX;go()});
+  dock.addEventListener("mouseleave",()=>{mx=Infinity;go()});
+})();
 
 
 })();
