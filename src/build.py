@@ -138,7 +138,8 @@ def card_html(i, p):
     if p['card'] == '@html:mz':
         return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open Mizan: {p["alt"]}">{MZ.CARD}</div>'
     if p.get('laptop'):
-        img = f'<img src="{asset(p["card"])}" alt="" decoding="async">'
+        still = p['card'].replace('.webp', '-still.webp')
+        img = f'<img src="{asset(still)}" data-still="{asset(still)}" data-anim="{asset(p["card"])}" alt="" decoding="async">'
         return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open {html.unescape(p["title"])}: {p["alt"]}"><div class="mk" aria-hidden="true">{TQ.laptop(img)}</div></div>'
     inner = (f'<img src="{asset(p["card"])}" alt="{p["alt"]}" width="760" height="345"{lazy} decoding="async">'
              if p['card'] else f'<div class="c-stack" style="position:absolute;inset:0" aria-hidden="true">{stack_rows}</div><span class="sr-only">Stack: the languages, frameworks and tools I use</span>')
