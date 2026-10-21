@@ -265,3 +265,20 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
 .f-top{color:inherit;text-decoration:none}
 .f-top:hover{color:#fff}
 #home.intro{transition:none}
+
+/* ── performance: only what you can see animates ──
+   cards behind the front one, the deck while a project or About is open, and project screens scrolled out
+   of view all hold still, pseudo-elements included (rain, glows). The front card keeps every animation. */
+#stage .card:not(.is-on) *,#stage .card:not(.is-on) *::before,#stage .card:not(.is-on) *::after,
+.intro:not(.lit) .stage .card *::before,.intro:not(.lit) .stage .card *::after,
+html.case-open #stage *,html.case-open #stage *::before,html.case-open #stage *::after,
+body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::after,
+.case .shot:not(.live) *,.case .shot:not(.live) *::before,.case .shot:not(.live) *::after,
+.case-media.anim:not(.settled) *,.case-media.anim:not(.settled) *::before,.case-media.anim:not(.settled) *::after{animation-play-state:paused!important}
+.case-media{contain:layout paint style}
+.case .shot .frame{contain:layout paint}
+/* cards behind the front one skip their contents entirely (no style, layout or paint) and show only their
+   stage colour. In the intro's fanned stack only each card's top strip shows anyway, as images already were. */
+#stage .card:not(.is-on):not(.leave):not(.warm) > *{content-visibility:hidden}
+/* project screens are laid out only as they come near the viewport */
+.case .shot{content-visibility:auto;contain-intrinsic-size:auto 720px}
