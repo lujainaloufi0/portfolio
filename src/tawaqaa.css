@@ -185,3 +185,21 @@
 .mk{position:absolute;inset:0;container-type:size;display:flex;align-items:center;justify-content:center;overflow:hidden;
   background:radial-gradient(110% 90% at 50% 0%,#1F5A43 0%,#123A2B 55%,#0A261B 100%)}
 .card .mk .lp,.case-media .mk .lp{width:min(76cqw,116cqh);margin-top:9cqh}
+
+/* Masar's stage: twinkling stars, and twice a cycle a few of them join into a route ("masar" means path) */
+.mk>.m-sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.mk>.lp{position:relative}
+.m-sky i{position:absolute;left:var(--x);top:var(--y);width:calc(.42cqh * var(--s));height:calc(.42cqh * var(--s));min-width:1.5px;min-height:1.5px;border-radius:50%;background:#E6F6EC;opacity:.55;
+  animation:m-blink var(--d) ease-in-out var(--w) infinite}
+@keyframes m-blink{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:.95;transform:scale(1.15)}}
+.m-sky i[style*="--s:1.8"]{box-shadow:0 0 1cqh rgba(190,240,210,.55)}
+.m-route{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.m-route polyline{fill:none;stroke:rgba(190,240,210,.45);stroke-width:.32;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;animation:m-draw 14s ease-in-out infinite}
+.m-route.r2 polyline{animation-delay:7s}
+@keyframes m-draw{0%,8%{stroke-dashoffset:1;opacity:1}28%,46%{stroke-dashoffset:0;opacity:1}56%,100%{stroke-dashoffset:0;opacity:0}}
+.m-nodes i.node{width:.9cqh;height:.9cqh;min-width:3px;min-height:3px;margin:-.45cqh 0 0 -.45cqh;background:#F2FFF7;box-shadow:0 0 1.2cqh rgba(170,240,200,.7);opacity:.35;
+  animation:m-node 14s ease-in-out infinite;animation-delay:calc(var(--k) * .55s)}
+.m-nodes.r2 i.node{animation-delay:calc(7s + var(--k) * .55s)}
+@keyframes m-node{0%,8%{opacity:.35;transform:scale(.8)}14%{opacity:1;transform:scale(1.5)}22%,46%{opacity:.95;transform:scale(1)}58%,100%{opacity:.35;transform:scale(.8)}}
+@media (prefers-reduced-motion:reduce){.m-route polyline{stroke-dashoffset:0;opacity:.6}}

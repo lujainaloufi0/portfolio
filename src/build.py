@@ -131,6 +131,24 @@ PROJ = [
  dict(key='stack', title='Stack', ar='', attr='LANGUAGES   •   FRAMEWORKS   •   TOOLS', card=None, bg=None, shots=[]),
 ]
 
+def masar_sky():
+    """Masar means "path": stars twinkle, and every so often a few of them join into a route."""
+    import random
+    r = random.Random(11)
+    stars = []
+    for _ in range(46):
+        x, y = r.uniform(2, 98), r.uniform(2, 98)
+        if 18 < x < 82 and 18 < y: continue  # leave the laptop clear
+        stars.append(f'<i style="--x:{x:.1f}%;--y:{y:.1f}%;--s:{r.choice([1,1,1.4,1.8])};--d:{r.uniform(2.6,5.5):.1f}s;--w:-{r.uniform(0,5):.1f}s"></i>')
+    path = [(6, 62), (11, 40), (8, 22), (16, 11), (27, 7), (34, 14)]
+    path2 = [(66, 12), (76, 6), (86, 13), (93, 30), (89, 52), (95, 74)]
+    def route(pts, cls):
+        ln = ' '.join(f'{x*2.2:.1f},{y}' for x, y in pts)  # the stage is 2.2:1
+        dots = ''.join(f'<i class="node" style="--x:{x}%;--y:{y}%;--k:{k}"></i>' for k, (x, y) in enumerate(pts))
+        return (f'<svg class="m-route {cls}" viewBox="0 0 220 100" preserveAspectRatio="none"><polyline points="{ln}" pathLength="1"/></svg>'
+                f'<span class="m-nodes {cls}">{dots}</span>')
+    return '<div class="m-sky" aria-hidden="true">' + ''.join(stars) + route(path, 'r1') + route(path2, 'r2') + '</div>'
+
 def card_html(i, p):
     lazy = ' loading="lazy"' if i else ''
     if p['card'] == '@html:tq':
@@ -140,7 +158,7 @@ def card_html(i, p):
     if p.get('laptop'):
         still = p['card'].replace('.webp', '-still.webp')
         img = f'<img src="{asset(still)}" data-still="{asset(still)}" data-anim="{asset(p["card"])}" alt="" decoding="async">'
-        return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open {html.unescape(p["title"])}: {p["alt"]}"><div class="mk" aria-hidden="true">{TQ.laptop(img)}</div></div>'
+        return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open {html.unescape(p["title"])}: {p["alt"]}"><div class="mk" aria-hidden="true">{masar_sky()}{TQ.laptop(img)}</div></div>'
     inner = (f'<img src="{asset(p["card"])}" alt="{p["alt"]}" width="760" height="345"{lazy} decoding="async">'
              if p['card'] else f'<div class="c-stack" style="position:absolute;inset:0" aria-hidden="true">{stack_rows}</div><span class="sr-only">Stack: the languages, frameworks and tools I use</span>')
     return f'<div class="card" role="button" tabindex="0" data-k="{i}" aria-label="Open {html.unescape(p["title"])}">{inner}</div>'
