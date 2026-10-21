@@ -409,136 +409,284 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
 .sp{flex:1}
 .ic{width:6.4cqw;height:6.4cqw;flex:none}
 
+/* ═════════ TAWAQAA (rebuilt from the graduation report): Arabic, right to left ═════════
+   Every element rests in its final state; keyframes only add the motion. */
+.tq{--tq-ink:#12212B;--tq-blue:#3A7CA5;--tq-sky:#74A8C4;--tq-deep:#1F4E6B;--tq-bg:#F4F6F8;--tq-card:#fff;--tq-line:#E3E8EC;--tq-muted:#5D6F7B;
+  --tq-red:#C8363C;--tq-redbg:#FCEBEC;--tq-amb:#9A5F0C;--tq-amber:#E19A2C;--tq-ambbg:#FFF4DE;--tq-T:9s;--tq-W:10s}
+.tq .scr{font-family:var(--f-ar);background:var(--tq-bg)}
+.tq .scr p{margin:0}
+.tq .scr>.sb{position:relative;z-index:5}
+.tq .scr .t1{font:700 6.4cqw/1.3 var(--f-ar);color:var(--tq-ink)}
+.tq .scr .t2{font:600 3.8cqw/1.35 var(--f-ar);color:var(--tq-ink)}
+.tq .scr .t3{font:500 3.3cqw/1.5 var(--f-ar);color:var(--tq-muted)}
+.tq .ic{width:6cqw;height:6cqw;flex:none}
+.tq .tb{display:flex;align-items:center;justify-content:space-between;height:11cqw;padding:1cqw 5.5cqw 0}
+.tq .tb>.ic{width:4.6cqw;height:4.6cqw;padding:2cqw;box-sizing:content-box;border-radius:50%;background:#fff;box-shadow:0 .4cqw 1.4cqw rgba(18,33,43,.08)}
+.tq .scr>.t1{padding:2cqw 6cqw 0}
+.tq .pill{display:inline-block;padding:.6cqw 2.2cqw;border-radius:2.4cqw;font:700 3cqw/1.4 var(--f-ar)}
+.tq .pill.r{background:var(--tq-redbg);color:var(--tq-red)}
+.tq .btn{height:12cqw;margin:6cqw 6cqw 0;border-radius:3.6cqw;background:var(--tq-blue);color:#fff;display:grid;place-items:center;font:600 4cqw var(--f-ar)}
+
+/* logo: the drop and wordmark from the welcome screen */
+.tq .tqlogo{display:inline-flex;align-items:flex-end;gap:1.2cqw;color:var(--tq-deep)}
+.tq .tqlogo .wm{width:24cqw;height:auto}
+.tq .tqlogo .drop{width:5.6cqw;height:auto;margin-bottom:1.2cqw;color:var(--tq-sky)}
+
 /* home */
-.wx{margin:3cqw 6cqw 0;padding:5cqw;border-radius:5cqw;color:#fff;background:linear-gradient(135deg,#0F7A8C,#0B5868);display:flex;align-items:center;gap:4cqw;overflow:hidden;position:relative}
-.wx b{font:700 11cqw/1 var(--f-body)}
-.wx .t3{color:rgba(255,255,255,.85)}
-.wx::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(104deg,transparent 0 6cqw,rgba(255,255,255,.18) 6cqw 6.4cqw,transparent 6.4cqw 13cqw);animation:rain 1.4s linear infinite}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:3.6cqw;margin:5cqw 6cqw 0}
-.tile{position:relative;overflow:hidden;background:var(--tq-card);border-radius:5cqw;padding:5cqw 4cqw;display:flex;flex-direction:column;gap:3cqw;box-shadow:0 .8cqw 2.4cqw rgba(14,36,48,.08)}
-.tile .bub{width:11cqw;height:11cqw;border-radius:50%;display:grid;place-items:center;background:#E3F4F7;color:var(--tq-teal)}
-.tile.red .bub{background:var(--tq-redbg);color:var(--tq-red)}
-.tile.amb .bub{background:var(--tq-amberbg);color:var(--tq-amber)}
-.tile .bub svg{width:6.2cqw;height:6.2cqw}
-.tile.tap::after{content:"";position:absolute;left:50%;top:50%;width:30cqw;height:30cqw;margin:-15cqw;border-radius:50%;background:rgba(19,135,155,.25);transform:scale(0);opacity:0;animation:tap 6s var(--out) infinite}
-@keyframes tap{0%,62%{transform:scale(0);opacity:0}64%{opacity:1}76%{transform:scale(1.4);opacity:0}100%{opacity:0}}
-.nav{margin-top:auto;height:15cqw;flex:none;background:#fff;border-top:.3cqw solid var(--tq-line);display:flex;justify-content:space-around;align-items:center;color:var(--tq-muted)}
-.nav span{width:5.6cqw;height:5.6cqw;border-radius:1.6cqw;border:.6cqw solid currentColor}
-.nav span.on{color:var(--tq-teal);background:currentColor}
+.tq .scr:has(.hero){background:linear-gradient(180deg,#C6DAE6 0,#DCE7EE 30%,var(--tq-bg) 48%)}
+.tq .hero{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;gap:1.6cqw;padding:5cqw 0 9cqw}
+.tq .hero .gear{position:absolute;top:0;left:5.5cqw;width:4.6cqw;height:4.6cqw;padding:2cqw;box-sizing:content-box;border-radius:50%;background:rgba(255,255,255,.7);color:var(--tq-deep)}
+.tq .tag{font:500 3.6cqw var(--f-ar);color:#47677B}
+.tq .sheet0{flex:1;margin-top:-3cqw;padding:6cqw 6cqw 0;border-radius:7cqw 7cqw 0 0;background:var(--tq-bg);box-shadow:0 -1cqw 4cqw rgba(18,33,43,.05)}
+.tq .hi{font:500 3.7cqw var(--f-ar);color:var(--tq-muted)}
+.tq .hi span{color:var(--tq-blue);font-weight:600}
+.tq .sheet0 .t1{margin:1cqw 0 4cqw}
+.tq .tiles{display:grid;grid-template-columns:1fr 1fr;gap:3.6cqw}
+.tq .tile{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:3cqw;padding:6cqw 3cqw 5cqw;border-radius:5cqw;background:#fff;text-align:center;
+  box-shadow:0 0 0 .3cqw rgba(116,168,196,.2),0 1cqw 3cqw rgba(18,33,43,.05)}
+.tq .tile .bub{width:14cqw;height:14cqw;border-radius:4.4cqw;display:grid;place-items:center;background:#E8F1F6;color:var(--tq-blue)}
+.tq .tile .bub .ic{width:8cqw;height:8cqw}
+.tq .tile .t2{font-size:3.6cqw}
+.tq .tile em{position:absolute;top:3cqw;left:3cqw;min-width:5.4cqw;height:5.4cqw;padding:0 1cqw;box-sizing:border-box;border-radius:3cqw;background:var(--tq-red);color:#fff;font:700 3cqw/5.4cqw var(--f-body);font-style:normal;text-align:center;animation:tq-badge var(--tq-T) var(--out) infinite}
+@keyframes tq-badge{0%,70%,80%,100%{transform:none}74%{transform:scale(1.25)}}
+.tq .tile.tap{animation:tq-press var(--tq-T) infinite}
+@keyframes tq-press{0%,58%,68%,100%{transform:none}62%{transform:scale(.96)}}
+.tq .tile.tap::after{content:"";position:absolute;left:50%;top:50%;width:40cqw;height:40cqw;margin:-20cqw;border-radius:50%;background:rgba(58,124,165,.16);opacity:0;animation:tq-ripple var(--tq-T) var(--out) infinite}
+@keyframes tq-ripple{0%,58%{transform:scale(.2);opacity:0}61%{opacity:1}76%,100%{transform:scale(1.2);opacity:0}}
 
-/* report */
-.seg{display:flex;margin:4cqw 6cqw 0;padding:1cqw;border-radius:4cqw;background:#E5EDF1}
-.seg span{flex:1;text-align:center;padding:2.4cqw 0;border-radius:3cqw;font:600 3.7cqw var(--f-body);color:var(--tq-muted)}
-.seg span.on{background:#fff;color:var(--tq-ink);box-shadow:0 .5cqw 1.5cqw rgba(0,0,0,.08)}
-.lbl2{margin:4.5cqw 6cqw 1.6cqw;font:600 3.6cqw var(--f-body);color:var(--tq-muted)}
-.inp{margin:0 6cqw;height:11cqw;border-radius:3.4cqw;background:#fff;border:.45cqw solid var(--tq-teal2);display:flex;align-items:center;padding:0 3.6cqw;gap:2cqw;font:500 4.2cqw var(--f-body);overflow:hidden}
-.typed{display:inline-block;white-space:nowrap;overflow:hidden;max-width:40cqw;animation:type 6s steps(12,end) infinite}
-@keyframes type{0%,6%{max-width:0}30%,100%{max-width:40cqw}}
-.caret{width:.5cqw;height:5cqw;background:var(--tq-teal);animation:blink .9s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.mapbox{position:relative;margin:2.4cqw 6cqw 0;height:42cqw;border-radius:4cqw;overflow:hidden;background:#E6ECEF;
-  background-image:linear-gradient(#fff 0 0),linear-gradient(#fff 0 0),linear-gradient(#fff 0 0),linear-gradient(#fff 0 0);
-  background-size:100% 2.6cqw,100% 2.2cqw,2.6cqw 100%,2.2cqw 100%;background-position:0 32%,0 76%,28% 0,70% 0;background-repeat:no-repeat}
-.mapbox .wat{position:absolute;left:30%;top:22%;width:44%;height:42%;border-radius:50%;background:radial-gradient(closest-side,rgba(43,183,204,.55),rgba(43,183,204,.18) 70%,transparent);animation:pulse 2.4s var(--ease) infinite}
-@keyframes pulse{50%{transform:scale(1.08)}}
-.pin{position:absolute;left:50%;top:22%;width:9cqw;margin-left:-4.5cqw;color:var(--tq-red);animation:drop 6s var(--out) infinite;transform-origin:50% 100%}
-@keyframes drop{0%,30%{transform:translateY(-40cqw);opacity:0}31%{opacity:1}40%{transform:none}43%{transform:scaleY(.86)}46%,100%{transform:none}}
-.btn{margin:auto 6cqw 7cqw;height:12.5cqw;border-radius:4cqw;background:var(--tq-teal);color:#fff;display:grid;place-items:center;font:700 4.4cqw var(--f-body);animation:press 6s var(--ease) infinite}
-@keyframes press{0%,54%,60%,100%{transform:none;filter:none}57%{transform:scale(.95);filter:brightness(.88)}}
-.toast{position:absolute;left:6cqw;right:6cqw;top:13cqw;padding:3.4cqw 4cqw;border-radius:4cqw;background:#E6F5EE;color:var(--tq-green);display:flex;gap:2.4cqw;align-items:center;font:700 3.9cqw var(--f-body);box-shadow:0 2cqw 5cqw rgba(0,0,0,.12);animation:toast 6s var(--out) infinite}
-@keyframes toast{0%,58%{transform:translateY(-30cqw);opacity:0}64%,92%{transform:none;opacity:1}100%{transform:translateY(-30cqw);opacity:0}}
+/* report: street picked from the list, sent, confirmed */
+.tq .lab{display:block;margin:6cqw 6cqw 2cqw;font:600 3.5cqw var(--f-ar);color:var(--tq-ink)}
+.tq .sel{position:relative;z-index:3;height:12cqw;margin:0 6cqw;padding:0 4cqw;border-radius:3.6cqw;background:#fff;border:.35cqw solid var(--tq-line);display:flex;align-items:center;font:500 3.8cqw var(--f-ar);animation:tq-selb var(--tq-T) infinite}
+@keyframes tq-selb{0%,8%,34%,100%{border-color:var(--tq-line);box-shadow:none}10%,30%{border-color:var(--tq-blue);box-shadow:0 0 0 1cqw rgba(58,124,165,.14)}}
+.tq .sel>.ic{width:5cqw;height:5cqw;margin-inline-start:auto;color:var(--tq-muted)}
+.tq .sel .ph{color:#8796A0;opacity:0;animation:tq-ph var(--tq-T) infinite}
+.tq .sel .val{position:absolute;inset-inline-start:4cqw;color:var(--tq-ink);animation:tq-val var(--tq-T) infinite}
+@keyframes tq-ph{0%,27%{opacity:1}29%,92%{opacity:0}96%,100%{opacity:1}}
+@keyframes tq-val{0%,27%{opacity:0}30%,92%{opacity:1}96%,100%{opacity:0}}
+.tq .dd{position:absolute;top:calc(100% + 1.6cqw);left:-.35cqw;right:-.35cqw;border-radius:3.6cqw;background:#fff;overflow:hidden;transform-origin:50% 0;
+  box-shadow:0 0 0 .3cqw var(--tq-line),0 2cqw 6cqw rgba(18,33,43,.14);opacity:0;animation:tq-dd var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-dd{0%,10%{opacity:0;transform:translateY(-2cqw) scale(.97)}13%,25%{opacity:1;transform:none}29%,100%{opacity:0;transform:translateY(-1cqw) scale(.98)}}
+.tq .dd span{display:block;padding:3.2cqw 4cqw;border-bottom:.25cqw solid var(--tq-line);font:500 3.7cqw var(--f-ar);color:var(--tq-ink)}
+.tq .dd span:last-child{border:0}
+.tq .dd .pick{animation:tq-pick var(--tq-T) infinite}
+@keyframes tq-pick{0%,17%,30%,100%{background:#fff;color:var(--tq-ink)}20%,27%{background:#E8F1F6;color:var(--tq-blue)}}
+.tq .btn.go{animation:tq-go var(--tq-T) infinite}
+@keyframes tq-go{0%,34%,41%,100%{transform:none;filter:none}37%{transform:scale(.97);filter:brightness(.9)}}
+.tq .alt{display:flex;align-items:center;justify-content:center;gap:1.4cqw;margin:4.4cqw 6cqw 0;font:500 3.4cqw var(--f-ar);color:var(--tq-blue)}
+.tq .alt .ic{width:4.4cqw;height:4.4cqw}
+.tq .done{position:absolute;z-index:4;left:0;right:0;bottom:0;height:60%;display:flex;flex-direction:column;align-items:center;gap:1.6cqw;padding:9cqw 6cqw 0;border-radius:7cqw 7cqw 0 0;background:#fff;
+  box-shadow:0 0 0 100cqh rgba(15,28,36,.22),0 -2cqw 8cqw rgba(18,33,43,.14);transform:translateY(130%);animation:tq-done var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-done{0%,40%{transform:translateY(130%);box-shadow:0 0 0 100cqh rgba(15,28,36,0)}47%,86%{transform:none;box-shadow:0 0 0 100cqh rgba(15,28,36,.22)}93%,100%{transform:translateY(130%);box-shadow:0 0 0 100cqh rgba(15,28,36,0)}}
+.tq .done .badge{width:22cqw;height:22cqw;margin-bottom:2cqw;padding:3cqw;border-radius:6cqw;background:#E3F1FB;color:#2E9BE0;animation:tq-pop var(--tq-T) cubic-bezier(.34,1.56,.64,1) infinite}
+@keyframes tq-pop{0%,43%{transform:scale(.6);opacity:0}51%,100%{transform:none;opacity:1}}
+.tq .done .btn{align-self:stretch;margin:5cqw 0 0}
 
-/* alerts */
-.ban{margin:3.6cqw 6cqw 0;padding:4cqw;border-radius:4.4cqw;background:var(--tq-red);color:#fff;display:flex;gap:3cqw;align-items:center;animation:banner 6s var(--ease) infinite}
-.ban .t3{color:rgba(255,255,255,.9)}
-@keyframes banner{0%,8%{opacity:0;transform:translateY(-4cqw)}16%,100%{opacity:1;transform:none}}
-.al{display:flex;flex-direction:column;gap:3cqw;margin:4cqw 6cqw 0}
-.it{background:#fff;border-radius:4cqw;padding:4cqw;display:flex;flex-direction:column;gap:2cqw;box-shadow:0 .8cqw 2.4cqw rgba(14,36,48,.07);animation:itin 6s var(--out) infinite;animation-delay:calc(var(--k) * .25s)}
-@keyframes itin{0%,14%{opacity:0;transform:translateX(-10cqw)}26%,100%{opacity:1;transform:none}}
-.chip{padding:.8cqw 2.6cqw;border-radius:9cqw;font:700 3.2cqw var(--f-body)}
-.chip.r{background:var(--tq-redbg);color:var(--tq-red)}
-.chip.a{background:var(--tq-amberbg);color:var(--tq-amber)}
-.lvl{height:1.6cqw;border-radius:2cqw;background:#E5EDF1;overflow:hidden}
-.lvl span{display:block;height:100%;width:var(--w);border-radius:inherit;background:var(--c);transform-origin:100% 50%;animation:fill 6s var(--ease) infinite;animation-delay:calc(var(--k) * .25s)}
-@keyframes fill{0%,20%{transform:scaleX(0)}40%,100%{transform:none}}
+/* alerts: filter, danger level, water height */
+.tq .live{display:inline-flex;align-items:center;gap:1.4cqw;font:600 3.2cqw var(--f-ar);color:var(--tq-red)}
+.tq .live i{width:2cqw;height:2cqw;border-radius:50%;background:currentColor;animation:tq-blink 1.6s ease-in-out infinite}
+@keyframes tq-blink{50%{opacity:.25}}
+.tq .chips{position:relative;display:flex;gap:2cqw;margin:4cqw 6cqw 0}
+.tq .chips span{position:relative;z-index:1;width:17cqw;height:8cqw;display:grid;place-items:center;border-radius:4cqw;font:600 3.3cqw var(--f-ar);color:var(--tq-muted);box-shadow:inset 0 0 0 .3cqw var(--tq-line)}
+.tq .chips .ind{position:absolute;z-index:0;right:0;top:0;background:var(--tq-blue);box-shadow:none;animation:tq-ind var(--tq-T) cubic-bezier(.77,0,.175,1) infinite}
+@keyframes tq-ind{0%,38%,76%,100%{transform:none}42%,72%{transform:translateX(-19cqw)}}
+.tq .chips .c0{color:#fff;box-shadow:none;animation:tq-c0 var(--tq-T) infinite}
+.tq .chips .c1{animation:tq-c1 var(--tq-T) infinite}
+@keyframes tq-c0{0%,38%,76%,100%{color:#fff;box-shadow:none}42%,72%{color:var(--tq-muted);box-shadow:inset 0 0 0 .3cqw var(--tq-line)}}
+@keyframes tq-c1{0%,38%,76%,100%{color:var(--tq-muted);box-shadow:inset 0 0 0 .3cqw var(--tq-line)}42%,72%{color:#fff;box-shadow:none}}
+.tq .als{display:flex;flex-direction:column;gap:3cqw;margin:4.4cqw 5cqw 0}
+.tq .al{--c:var(--tq-red);--cb:var(--tq-redbg);display:flex;align-items:center;gap:3cqw;padding:3.6cqw 3.4cqw;border-radius:4cqw;background:#fff;
+  box-shadow:inset -1.1cqw 0 0 var(--c),0 .8cqw 2.4cqw rgba(18,33,43,.05);animation:tq-alin var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+.tq .al.a{--c:var(--tq-amber);--cb:var(--tq-ambbg);animation-name:tq-ala}
+.tq .al:nth-child(2){animation-delay:.08s}.tq .al:nth-child(3){animation-delay:.16s}
+@keyframes tq-alin{0%{opacity:0;transform:translateY(3cqw)}7%,100%{opacity:1;transform:none}}
+@keyframes tq-ala{0%{opacity:0;transform:translateY(3cqw)}7%,40%{opacity:1;transform:none}44%,72%{opacity:0;transform:scale(.96)}77%,100%{opacity:1;transform:none}}
+.tq .sq{width:11cqw;height:11cqw;flex:none;border-radius:3.2cqw;display:grid;place-items:center;background:var(--cb);color:var(--c)}
+.tq .al-b{flex:1;min-width:0;display:flex;flex-direction:column;gap:.6cqw}
+.tq .al-b .lv{font:700 3cqw var(--f-ar);color:var(--tq-red)}
+.tq .al.a .lv{color:var(--tq-amb)}
+.tq .al-b b{font:700 3.9cqw var(--f-ar);color:var(--tq-ink)}
+.tq .mt{height:1.2cqw;margin-top:1cqw;border-radius:1cqw;background:#EDF1F4;overflow:hidden}
+.tq .mt i{display:block;width:var(--h);height:100%;border-radius:inherit;background:var(--c);transform-origin:100% 50%;animation:tq-mt var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-mt{0%,5%{transform:scaleX(0)}18%,100%{transform:none}}
+.tq .al time{align-self:flex-start;font:500 3cqw var(--f-ar);color:var(--tq-muted);white-space:nowrap}
 
-/* map + reroute */
-.mapfull{position:relative;flex:1;margin:2cqw 0 0;overflow:hidden;background:#E8EEF1}
-.mapfull svg{position:absolute;inset:0;width:100%;height:100%}
-.route{stroke-dasharray:1;stroke-dashoffset:0;animation:route 7s var(--ease) infinite}
-@keyframes route{0%,18%{stroke-dashoffset:1}55%,100%{stroke-dashoffset:0}}
-.zone{transform-box:fill-box;transform-origin:center;animation:pulse 2s var(--ease) infinite}
-.sheet{position:absolute;left:4cqw;right:4cqw;bottom:4cqw;padding:4.4cqw;border-radius:5cqw;background:#fff;box-shadow:0 2cqw 6cqw rgba(0,0,0,.18);display:flex;flex-direction:column;gap:2cqw;animation:sheet 7s var(--out) infinite}
-@keyframes sheet{0%,48%{transform:translateY(60cqw)}58%,100%{transform:none}}
-.topcard{position:absolute;left:4cqw;right:4cqw;top:3cqw;padding:3.2cqw 4cqw;border-radius:4cqw;background:#fff;box-shadow:0 1.5cqw 4cqw rgba(0,0,0,.14);display:flex;gap:2.4cqw;align-items:center;font:700 3.8cqw var(--f-body);color:var(--tq-green);animation:toast 7s var(--out) infinite}
-.dot{width:2.6cqw;height:2.6cqw;border-radius:50%;background:currentColor;flex:none}
+/* map and directions */
+.tq .mapfull{position:absolute;inset:0}
+.tq .mapfull>svg{position:absolute;inset:0;width:100%;height:100%}
+.tq .mapfull .route{stroke-dasharray:1;stroke-dashoffset:0;animation:tq-route var(--tq-T) ease-in-out infinite}
+@keyframes tq-route{0%,8%{stroke-dashoffset:1}22%,100%{stroke-dashoffset:0}}
+.tq .mapfull .zone{transform-box:fill-box;transform-origin:50% 50%;animation:tq-zone 2.6s ease-out infinite}
+.tq .mapfull .z2{animation-delay:-1.3s}
+@keyframes tq-zone{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.3);opacity:.15}}
+.tq .mpin{position:absolute;left:var(--x);top:var(--y);width:8cqw;height:8cqw;margin:-7.6cqw 0 0 -4cqw;animation:tq-drop var(--tq-T) cubic-bezier(.34,1.56,.64,1) infinite}
+.tq .mpin.a{animation-delay:.12s}
+.tq .mpin .ic{width:100%;height:100%;fill:var(--c);stroke:#fff;stroke-width:1.3;filter:drop-shadow(0 .6cqw .8cqw rgba(0,0,0,.25))}
+.tq .mpin.r{--c:#D23F45}.tq .mpin.a{--c:#E19A2C}
+@keyframes tq-drop{0%,3%{transform:translateY(-5cqw);opacity:0}9%,100%{transform:none;opacity:1}}
+.tq .mtop{position:absolute;top:13.5cqw;left:5cqw;right:5cqw;height:11cqw;display:flex;align-items:center;gap:2.4cqw;padding:0 3cqw;border-radius:5.5cqw;background:#fff;box-shadow:0 1cqw 3cqw rgba(18,33,43,.12);font:600 3.8cqw var(--f-ar);color:var(--tq-ink)}
+.tq .mtop .ic{width:4.6cqw;height:4.6cqw}
+.tq .msheet{position:absolute;left:4cqw;right:4cqw;bottom:5cqw;display:flex;flex-direction:column;gap:1.4cqw;padding:4.6cqw;border-radius:5cqw;background:#fff;box-shadow:0 2cqw 6cqw rgba(18,33,43,.16);animation:tq-sheet var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-sheet{0%,10%{transform:translateY(130%)}18%,100%{transform:none}}
+.tq .msheet .row{display:flex;align-items:center;gap:2.4cqw}
+.tq .msheet b{font:700 4.4cqw var(--f-ar);color:var(--tq-ink)}
+.tq .msheet .btn{height:11cqw;margin:2.6cqw 0 0}
 
-/* landscape panels */
-.pn{height:82cqh;aspect-ratio:16/10;max-width:90cqw;flex:none;border-radius:2.4cqh;overflow:hidden;box-shadow:0 3cqh 7cqh rgba(0,0,0,.5);container-type:inline-size;position:relative}
-.pn.cam{background:#060D12}
-.pn.cam svg{position:absolute;inset:0;width:100%;height:100%}
-.hud{position:absolute;left:2.4cqw;top:2cqw;display:flex;gap:1.4cqw;align-items:center;font:600 1.5cqw var(--f-body);letter-spacing:.1em;color:#E9F5F8}
-.rec{width:1.2cqw;height:1.2cqw;border-radius:50%;background:#E5484D;animation:blink 1s steps(1) infinite}
-.scan{position:absolute;left:0;right:0;height:18%;background:linear-gradient(transparent,rgba(43,183,204,.16),transparent);animation:scan 3.2s linear infinite}
-@keyframes scan{from{top:-18%}to{top:100%}}
-.bx{stroke-dasharray:1;animation:bx 6s var(--ease) infinite;animation-delay:var(--dl,0s)}
-@keyframes bx{0%,15%{stroke-dashoffset:1}30%,100%{stroke-dashoffset:0}}
-.bl{animation:bl 6s var(--ease) infinite;animation-delay:var(--dl,0s)}
-@keyframes bl{0%,26%{opacity:0}32%,100%{opacity:1}}
-.waves{animation:waves 4s linear infinite}
-@keyframes waves{to{transform:translateX(-200px)}}
-.dets{position:absolute;right:2.4cqw;bottom:2.4cqw;display:flex;flex-direction:column;gap:1cqw}
-.det{display:flex;gap:1cqw;align-items:center;padding:1cqw 1.6cqw;border-radius:1cqw;background:rgba(10,20,26,.82);border:1px solid var(--c);color:#fff;font:600 1.5cqw var(--f-body);animation:bl 6s var(--ease) infinite;animation-delay:var(--dl,0s)}
-.det i{width:1.1cqw;height:1.1cqw;border-radius:50%;background:var(--c)}
+/* safety tips: one card at a time */
+.tq .car{margin-top:5cqw;overflow:hidden;animation:tq-carf calc(var(--tq-T) * 1.5) linear infinite}
+@keyframes tq-carf{0%{opacity:0}3%,96%{opacity:1}100%{opacity:0}}
+.tq .trk{display:flex;animation:tq-trk calc(var(--tq-T) * 1.5) cubic-bezier(.77,0,.175,1) infinite}
+@keyframes tq-trk{0%,28%{transform:none}33%,61%{transform:translateX(100%)}66%,100%{transform:translateX(200%)}}
+.tq .sl{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:6cqw;padding:0 9cqw;text-align:center}
+.tq .illo{width:64cqw;height:64cqw}
+.tq .sl p{font:500 3.8cqw/1.65 var(--f-ar);color:var(--tq-ink);text-wrap:balance}
+.tq .dots{display:flex;justify-content:center;gap:.6cqw;margin-top:7cqw}
+.tq .dots i{width:5cqw;height:2cqw;border-radius:1cqw;background:#C6D9E5;transform:scaleX(.4);animation:tq-dot calc(var(--tq-T) * 1.5) cubic-bezier(.77,0,.175,1) infinite}
+.tq .dots i:nth-child(2){animation-delay:calc(var(--tq-T) * .5)}.tq .dots i:nth-child(3){animation-delay:var(--tq-T)}
+@keyframes tq-dot{0%,30%{transform:none;background:var(--tq-blue)}35%,100%{transform:scaleX(.4);background:#C6D9E5}}
+.tq .pager{margin-top:auto;display:flex;justify-content:space-between;padding:0 7cqw 9cqw;font:600 3.6cqw var(--f-ar);color:var(--tq-muted)}
+.tq .pager span:last-child{color:var(--tq-blue)}
 
-/* authority console */
-.pn.web{background:#F4F7F9;display:flex;flex-direction:column;font-family:var(--f-body);color:#0E2430}
-.wb{flex:none;height:4.6cqw;background:#E3E9ED;display:flex;align-items:center;gap:.8cqw;padding:0 1.6cqw}
-.wb i{width:1.1cqw;height:1.1cqw;border-radius:50%;background:#C3CDD3}
-.wb span{margin:0 auto;padding:.5cqw 4cqw;border-radius:1cqw;background:#fff;font:500 1.3cqw var(--f-body);color:#5B7380}
-.wbody{flex:1;display:flex;min-height:0}
-.side{width:19cqw;background:#0B2A35;color:#CFE4EA;padding:2.4cqw 1.8cqw;display:flex;flex-direction:column;gap:1.2cqw;font:500 1.5cqw var(--f-body)}
-.side b{color:#fff;font:700 2cqw var(--f-body);margin-bottom:1.4cqw;display:flex;gap:.8cqw;align-items:center}
-.side span{padding:1cqw 1.2cqw;border-radius:1cqw}
-.side span.on{background:rgba(43,183,204,.22);color:#fff}
-.main{flex:1;padding:2.4cqw 3cqw;display:flex;flex-direction:column;gap:2cqw;min-width:0}
-.main .h4{margin:0;font:700 2.6cqw var(--f-body)}
-.main .sub{font:500 1.35cqw var(--f-body);color:#5B7380;margin-top:-1.4cqw}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw}
-.kpi{background:#fff;border-radius:1.2cqw;padding:1.4cqw 1.6cqw;display:flex;flex-direction:column;gap:.6cqw;font:500 1.3cqw var(--f-body);color:#5B7380;box-shadow:0 .3cqw 1cqw rgba(14,36,48,.06)}
-.kpi b{font:700 3cqw var(--f-body);color:#0E2430;font-variant-numeric:tabular-nums;position:relative;height:3.4cqw;overflow:hidden;display:block}
-.kpi b span{display:block;line-height:3.4cqw;animation:kroll 7s var(--ease) infinite}
-@keyframes kroll{0%,66%{transform:none}72%,96%{transform:translateY(-3.4cqw)}100%{transform:none}}
-.kpi.red b{color:#C02D33}
-.tbl{background:#fff;border-radius:1.2cqw;overflow:hidden;box-shadow:0 .3cqw 1cqw rgba(14,36,48,.06);font:500 1.4cqw var(--f-body)}
-.tr{display:grid;grid-template-columns:2.4fr 1fr 1.3fr 1.1fr 1.2fr 1fr;align-items:center;gap:1cqw;padding:0 1.6cqw;height:4.4cqw;border-bottom:1px solid #E5EDF1;font-variant-numeric:tabular-nums}
-.tr.h{height:3.6cqw;font:600 1.15cqw var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:#5B7380;background:#F8FAFB}
-.tr .st{justify-self:start;padding:.3cqw 1cqw;border-radius:2cqw;font:700 1.2cqw var(--f-body)}
-.st.h{background:#FDECEC;color:#C02D33}.st.m{background:#FFF3E0;color:#9A5A06}
-.del{justify-self:start;padding:.5cqw 1.2cqw;border-radius:.8cqw;border:1px solid #D7E0E5;font:600 1.2cqw var(--f-body)}
-.tr.gone{animation:gone 7s var(--ease) infinite;overflow:hidden}
-.tr.gone .del{animation:delp 7s var(--ease) infinite}
-@keyframes delp{0%,52%,58%,100%{background:#fff;color:#0E2430}54%,57%{background:#D93A40;color:#fff;border-color:#D93A40}}
-@keyframes gone{0%,60%{height:4.4cqw;opacity:1}68%,94%{height:0;opacity:0;border-bottom-width:0}100%{height:4.4cqw;opacity:1}}
-.wtoast{position:absolute;right:3cqw;bottom:3cqw;display:flex;gap:1cqw;align-items:center;padding:1.4cqw 2cqw;border-radius:1.2cqw;background:#0E2430;color:#fff;font:600 1.5cqw var(--f-body);box-shadow:0 1cqw 3cqw rgba(0,0,0,.3);animation:wtoast 7s var(--out) infinite}
-.wtoast i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#2E9E6E}
-@keyframes wtoast{0%,64%{transform:translateY(12cqw);opacity:0}70%,92%{transform:none;opacity:1}100%{transform:translateY(12cqw);opacity:0}}
+/* water level at the hotspot */
+@property --tqn{syntax:"<integer>";inherits:false;initial-value:0}
+.tq .sensor{flex:none;align-self:center;width:min(40cqw,54cqh);padding:4.4cqh;box-sizing:border-box;border-radius:3.6cqh;background:#fff;color:var(--tq-ink);font-family:var(--f-ar);container-type:inline-size;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08),0 3cqh 8cqh rgba(0,0,0,.35)}
+.tq .sensor p{margin:0}
+.tq .sensor .t3{font:500 5cqw var(--f-ar);color:var(--tq-muted)}
+.tq .sensor .h5{font:700 9cqw/1.25 var(--f-ar);margin:.6cqw 0 7cqw}
+.tq .gauge{display:flex;align-items:stretch;gap:4cqw;height:74cqw}
+.tq .tube{position:relative;width:20cqw;flex:none;border-radius:10cqw;background:#EEF3F6;overflow:hidden;box-shadow:inset 0 0 0 .6cqw #E0E8ED}
+.tq .wfill{position:absolute;left:0;right:0;bottom:0;height:80%;background:linear-gradient(#5D9FC5,#2D6B90);animation:tq-fill var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-fill{0%,4%{transform:translateY(100%)}40%,100%{transform:none}}
+.tq .wfill svg{position:absolute;left:0;bottom:calc(100% - 1px);width:200%;height:4cqw;fill:#5D9FC5;animation:tq-wv 2.4s linear infinite}
+@keyframes tq-wv{to{transform:translateX(-25%)}}
+.tq .scale{position:relative;width:7cqw;flex:none}
+.tq .scale span{position:absolute;bottom:var(--y);inset-inline-start:0;transform:translateY(50%);display:flex;align-items:center;gap:1cqw}
+.tq .scale span::before{content:"";width:2.4cqw;height:.4cqw;background:#C9D4DB}
+.tq .scale b{font:500 3.6cqw var(--f-body);color:var(--tq-muted)}
+.tq .read{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:1.4cqw;padding-bottom:1cqw}
+.tq .read b{--tqn:80;counter-reset:tqn var(--tqn);font:700 25cqw/.9 var(--f-body);letter-spacing:-.04em;color:var(--tq-ink);animation:tq-n var(--tq-T) cubic-bezier(.23,1,.32,1) infinite}
+.tq .read b::after{content:counter(tqn)}
+@keyframes tq-n{0%,4%{--tqn:0}40%,100%{--tqn:80}}
+.tq .read>span:not(.pill){font:500 5cqw var(--f-ar);color:var(--tq-muted)}
+.tq .read .pill{font-size:4.4cqw;padding:1cqw 3.2cqw;border-radius:3cqw;animation:tq-pill var(--tq-T) cubic-bezier(.34,1.56,.64,1) infinite}
+@keyframes tq-pill{0%,30%{opacity:0;transform:scale(.85)}36%,100%{opacity:1;transform:none}}
+.tq .sensor .ok{display:flex;align-items:center;gap:2cqw;margin-top:7cqw;font:600 4.6cqw var(--f-ar);color:#1C7148}
+.tq .sensor .ok i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:currentColor;animation:tq-blink 1.6s ease-in-out infinite}
 
-/* water-level sensor */
-.sensor{height:72cqh;aspect-ratio:3/4.2;flex:none;border-radius:3cqh;background:#fff;color:#0E2430;padding:4cqh 3.4cqh;display:flex;flex-direction:column;gap:2cqh;box-shadow:0 3cqh 7cqh rgba(0,0,0,.45);container-type:inline-size}
-.sensor .t3{font:600 5cqw var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:#5B7380}
-.sensor .h5{margin:0;font:700 7.5cqw var(--f-body)}
-.gauge{flex:1;display:flex;gap:7cqw;align-items:stretch}
-.tube{position:relative;width:20cqw;border-radius:6cqw;background:#E5EDF1;overflow:hidden}
-.tube span{position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(#2BB7CC,#13879B);animation:rise 6s var(--ease) infinite}
-@keyframes rise{0%,10%{height:4%}55%,100%{height:42%}}
-.read{display:flex;flex-direction:column;justify-content:center;gap:1cqw}
-.read b{font:700 30cqw/1 var(--f-body);font-variant-numeric:tabular-nums;counter-reset:lvl var(--lvl);--lvl:42;animation:count 6s var(--ease) infinite}
-.read b::after{content:counter(lvl)}
-@property --lvl{syntax:"<integer>";inherits:true;initial-value:42}
-@keyframes count{0%,10%{--lvl:2}55%,100%{--lvl:42}}
-.read .t3{font:600 5.2cqw var(--f-body);text-transform:none;letter-spacing:0}
-.ok{display:flex;gap:2cqw;align-items:center;font:600 4.8cqw var(--f-body);color:#16784C}
+/* laptop panels */
+.tq .pn{position:relative;height:82cqh;aspect-ratio:16/10;max-width:90cqw;flex:none;overflow:hidden;border-radius:2.4cqh;container-type:inline-size}
+
+/* YOLOv10 webcam test: cv2 window and the unittest output */
+.tq .pn.det{background:radial-gradient(120% 90% at 18% 0%,#25384A,#111820 70%);font-family:"Segoe UI",var(--f-body)}
+.tq .cvw{position:absolute;left:3cqw;top:4.4cqw;width:57cqw;border-radius:.9cqw;overflow:hidden;background:#fff;box-shadow:0 0 0 .1cqw rgba(255,255,255,.1),0 2cqw 5cqw rgba(0,0,0,.5)}
+.tq .cvt{height:3.4cqw;display:flex;align-items:center;gap:1cqw;padding-left:1.4cqw;background:#F3F3F3;color:#1B1B1B;font:400 1.35cqw "Segoe UI",var(--f-body)}
+.tq .cvt svg{width:1.6cqw;height:1.6cqw}
+.tq .cvt span{flex:1}
+.tq .cvt i{width:4.4cqw;text-align:center;font-style:normal;font-size:1.2cqw;color:#3A3A3A}
+.tq .cvf{position:relative;aspect-ratio:4/3;background:#2A2C2B}
+.tq .cvf>svg{position:absolute;inset:0;width:100%;height:100%}
+.tq .cvf .cvwave{animation:tq-cvw 6s linear infinite}
+@keyframes tq-cvw{to{transform:translateX(-120px)}}
+.tq .cvf .cvrain{animation:tq-cvr .45s linear infinite}
+@keyframes tq-cvr{to{transform:translate(-14px,60px)}}
+.tq .cvf .bx{animation:tq-b1 var(--tq-W) steps(1,end) infinite,tq-jit .8s steps(1,end) infinite}
+.tq .cvf .b2{animation-name:tq-b2,tq-jit;animation-duration:var(--tq-W),.7s}
+@keyframes tq-b1{0%,9%{opacity:0}10%,93%{opacity:1}96%,100%{opacity:0}}
+@keyframes tq-b2{0%,33%{opacity:0}34%,93%{opacity:1}96%,100%{opacity:0}}
+@keyframes tq-jit{0%{transform:none}25%{transform:translate(2px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,2px)}}
+.tq .term{position:absolute;right:2.4cqw;top:4.4cqw;bottom:4.4cqw;width:34.5cqw;overflow:hidden;border-radius:.9cqw;background:#181818;color:#CCCCCC;box-shadow:0 0 0 .1cqw rgba(255,255,255,.08),0 2cqw 5cqw rgba(0,0,0,.45);
+  font:400 1.2cqw/1.55 "Cascadia Mono",Consolas,"SF Mono",Menlo,monospace}
+.tq .tt{display:flex;gap:2.2cqw;padding:1.2cqw 1.6cqw 0;border-bottom:.1cqw solid #2B2B2B;font:500 1cqw "Segoe UI",var(--f-body);letter-spacing:.05em;color:#8B8B8B}
+.tq .tt span{padding-bottom:.9cqw}
+.tq .tt .on{color:#E7E7E7;box-shadow:inset 0 -.18cqw 0 #E7E7E7}
+.tq .tl{padding:1.4cqw 1.6cqw}
+.tq .tl p{margin:0 0 .5cqw;white-space:pre-wrap;overflow-wrap:anywhere;animation:tq-l0 var(--tq-W) steps(1,end) infinite}
+.tq .tl .p{color:#E5E5E5}.tq .tl .m{color:#8A8A8A}.tq .tl .g{color:#4EC9B0}
+.tq .tl .cur{width:.7cqw;height:1.4cqw;background:#CCCCCC;animation:tq-blink 1s steps(1,end) infinite}
+@keyframes tq-l0{0%,3%{opacity:0}4%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(1){animation-name:tq-l0}
+@keyframes tq-l1{0%,12%{opacity:0}13%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(2){animation-name:tq-l1}
+@keyframes tq-l2{0%,16%{opacity:0}17%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(3){animation-name:tq-l2}
+@keyframes tq-l3{0%,22%{opacity:0}23%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(4){animation-name:tq-l3}
+@keyframes tq-l4{0%,36%{opacity:0}37%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(5){animation-name:tq-l4}
+@keyframes tq-l5{0%,40%{opacity:0}41%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(6){animation-name:tq-l5}
+@keyframes tq-l6{0%,46%{opacity:0}47%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(7){animation-name:tq-l6}
+@keyframes tq-l7{0%,56%{opacity:0}57%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(8){animation-name:tq-l7}
+@keyframes tq-l8{0%,60%{opacity:0}61%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(9){animation-name:tq-l8}
+@keyframes tq-l9{0%,64%{opacity:0}65%,93%{opacity:1}96%,100%{opacity:0}}
+.tq .tl p:nth-child(10){animation-name:tq-l9}
+
+/* the authorities' page: one table, tinted by risk, and the delete flow */
+.tq .pn.web{display:flex;flex-direction:column;background:#E9ECEF;color:var(--tq-ink);font-family:var(--f-ar)}
+.tq .wb{flex:none;height:3.6cqw;display:flex;align-items:center;gap:.7cqw;padding:0 1.6cqw;background:#DCE1E5}
+.tq .wb i{width:1cqw;height:1cqw;border-radius:50%;background:#B6BEC5}
+.tq .wb .url{margin-inline-end:auto;margin-inline-start:auto;padding:.35cqw 6cqw;border-radius:1cqw;background:#fff;font:500 1.15cqw var(--f-ar);color:#55636D}
+.tq .wbody{position:relative;flex:1;padding:2.2cqw 4cqw;background:linear-gradient(180deg,#C6D9E5 0,#E2EAF0 38%,#F2F5F7)}
+.tq .whead{display:flex;padding-bottom:2cqw}
+.tq .tqlogo.lg .wm{width:8cqw}.tq .tqlogo.lg .drop{width:1.9cqw;margin-bottom:.4cqw}
+.tq .wcard{padding:2.4cqw;border-radius:1.4cqw;background:#fff;box-shadow:0 .6cqw 2cqw rgba(18,33,43,.08)}
+.tq .wlink{margin:0 0 2cqw;font:500 1.5cqw var(--f-ar)}
+.tq .wlink span{color:var(--tq-blue);font-weight:600}
+.tq .tbl .tr{display:grid;grid-template-columns:2.6cqw 1.2fr 1.7fr 1fr 1fr 1fr 1fr;align-items:center;gap:1cqw;padding:1.3cqw 1.2cqw;border-bottom:.12cqw solid var(--tq-line);font:500 1.4cqw var(--f-ar)}
+.tq .tbl .tr.hd{border:0;border-radius:.8cqw;background:#F0F3F5;color:var(--tq-muted);font-weight:600;font-size:1.25cqw}
+.tq .tbl .tr.h{background:#FDF3F3}.tq .tbl .tr.m{background:#FFF9EC}
+.tq .tbl b{font-weight:600}
+.tq .tr .st{justify-self:start;padding:.25cqw 1cqw;border-radius:1cqw;font-weight:700;font-size:1.2cqw}
+.tq .tr.h .st{background:var(--tq-redbg);color:var(--tq-red)}.tq .tr.m .st{background:#FDEBC8;color:var(--tq-amb)}
+.tq .cb{width:1.6cqw;height:1.6cqw;border-radius:.4cqw;background:#fff;box-shadow:inset 0 0 0 .15cqw #A3B0BA}
+.tq .tr.gone{animation:tq-gone var(--tq-W) cubic-bezier(.23,1,.32,1) infinite}
+.tq .tr.gone .cb{animation:tq-cb var(--tq-W) steps(1,end) infinite}
+@keyframes tq-cb{0%,13%,93%,100%{background:#fff;box-shadow:inset 0 0 0 .15cqw #A3B0BA}14%,92%{box-shadow:none;background:var(--tq-blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}}
+@keyframes tq-gone{0%,45%{opacity:1;transform:none}51%,88%{opacity:0;transform:translateX(-2cqw)}94%,100%{opacity:1;transform:none}}
+.tq .modal{position:absolute;z-index:3;left:50%;top:40%;width:30cqw;margin-left:-15cqw;padding:2.4cqw 2.4cqw 1.4cqw;border-radius:1.6cqw;background:#fff;text-align:center;font:600 1.6cqw var(--f-ar);
+  box-shadow:0 0 0 100cqw rgba(15,28,36,.24),0 2cqw 6cqw rgba(18,33,43,.25);opacity:0;animation:tq-modal var(--tq-W) cubic-bezier(.23,1,.32,1) infinite}
+@keyframes tq-modal{0%,19%{opacity:0;transform:scale(.96)}23%,41%{opacity:1;transform:none}45%,100%{opacity:0;transform:scale(.98)}}
+.tq .modal svg{display:block;width:5cqw;margin:0 auto 1.2cqw}
+.tq .modal p{margin:0 0 2cqw}
+.tq .mbar{display:flex;justify-content:space-between;padding-top:1.2cqw;border-top:.12cqw solid var(--tq-line);font-size:1.5cqw;color:var(--tq-muted)}
+.tq .mbar .yes{display:inline-block;color:var(--tq-blue);animation:tq-yes var(--tq-W) infinite}
+@keyframes tq-yes{0%,36%,42%,100%{transform:none}39%{transform:scale(.92)}}
+.tq .wtoast{position:absolute;z-index:3;left:50%;top:38%;width:28cqw;margin-left:-14cqw;padding:2.4cqw;border-radius:1.4cqw;background:#4F8DB2;color:#fff;display:flex;flex-direction:column;align-items:center;gap:1.2cqw;font:600 1.6cqw var(--f-ar);
+  box-shadow:0 2cqw 6cqw rgba(18,33,43,.25);opacity:0;animation:tq-toast var(--tq-W) cubic-bezier(.23,1,.32,1) infinite}
+.tq .wtoast .badge{width:4.6cqw;height:4.6cqw;padding:.7cqw;border-radius:1.2cqw;background:#fff;color:#2E9BE0}
+@keyframes tq-toast{0%,48%{opacity:0;transform:translateY(1.5cqw) scale(.97)}53%,80%{opacity:1;transform:none}85%,100%{opacity:0;transform:translateY(-1cqw)}}
+
+.tq .mini{position:relative;height:30cqw;margin:3cqw 6cqw 0;border-radius:4cqw;overflow:hidden;box-shadow:0 0 0 .3cqw var(--tq-line)}
+.tq .mini>svg{position:absolute;inset:0;width:100%;height:100%}
+.tq .mini .mpin{--x:50%;--y:52%}
+.tq .scr:has(.car){justify-content:flex-start}
+.tq .car{margin-top:8cqw}
+.tq .illo{width:70cqw;height:70cqw}
+
+/* rain that lands: drops fall, hit the floor of the stage and splash (after Aceternity's beams with collision) */
+.tq>.tq-rain{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.tq-rain span{position:absolute;left:var(--x);top:0;bottom:0;width:0}
+.tq-rain i{position:absolute;left:-1px;top:0;width:2px;height:16cqh;border-radius:2px;background:linear-gradient(transparent,rgba(160,222,240,.75));opacity:0;
+  animation:tq-fall var(--d) cubic-bezier(.55,0,.9,.6) var(--w) infinite}
+@keyframes tq-fall{0%{transform:translateY(-20cqh);opacity:0}6%{opacity:1}62%{transform:translateY(84cqh);opacity:1}64%,100%{transform:translateY(84cqh);opacity:0}}
+.tq-rain b{position:absolute;left:-7cqh;bottom:0;width:14cqh;height:3cqh;border-radius:50%;box-shadow:0 0 0 1px rgba(160,222,240,.55),0 0 2cqh rgba(120,200,230,.35);opacity:0;
+  animation:tq-ring var(--d) cubic-bezier(.23,1,.32,1) var(--w) infinite}
+@keyframes tq-ring{0%,62%{transform:scale(.15);opacity:0}64%{opacity:1}86%,100%{transform:scale(1);opacity:0}}
+.tq-rain em{position:absolute;left:-1.5px;bottom:1cqh;width:3px;height:3px;border-radius:50%;background:#BDE8F5;opacity:0;animation:tq-spl var(--d) cubic-bezier(.23,1,.32,1) var(--w) infinite}
+.tq-rain em:nth-of-type(1){--sx:-4cqh;--sy:-5cqh}.tq-rain em:nth-of-type(2){--sx:.5cqh;--sy:-7cqh}.tq-rain em:nth-of-type(3){--sx:4.5cqh;--sy:-4.5cqh}
+@keyframes tq-spl{0%,62%{transform:none;opacity:0}64%{opacity:1}82%,100%{transform:translate(var(--sx),var(--sy));opacity:0}}
+
+/* a light that runs round the water-level card (after Aceternity's glowing effect) */
+@property --tqa{syntax:"<angle>";inherits:false;initial-value:0deg}
+.tq .sensor{position:relative;isolation:isolate}
+.tq .sensor .glow{position:absolute;inset:-2px;z-index:-1;border-radius:inherit;padding:2px;pointer-events:none;
+  background:conic-gradient(from var(--tqa),transparent 0 62%,rgba(116,168,196,.0) 64%,#7CC6E6 78%,#E6F7FF 82%,#7CC6E6 86%,transparent 92%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:tq-spin 5s linear infinite}
+@keyframes tq-spin{to{--tqa:360deg}}
 
 /* home card: bigger phones that run off the bottom edge */
 .card .tq{align-items:flex-start;padding-top:9cqh;gap:4cqw}
@@ -1101,25 +1249,24 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
         <li>LANGUAGES   •   FRAMEWORKS   •   TOOLS</li>
       </ol></div>
       <div class="stage" id="stage">
-        <div class="card is-on" role="button" tabindex="0" data-k="0" aria-label="Open Tawaqaa: the app's report, home and alert screens"><div class="tq" aria-hidden="true"><div class="iph"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg><span class="t1">New report</span></div>
-  <div class="seg"><span class="on">Flooding</span><span>Unusual activity</span></div>
-  <div class="lbl2">Street name</div>
-  <div class="inp"><span class="typed">Palestine St</span><span class="caret"></span></div>
-  <div class="lbl2">Or drop a pin on the map</div>
-  <div class="mapbox"><span class="wat"></span><svg class="pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.6 0 20.3 12 32 12 32s12-11.7 12-20.4C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.5" fill="#fff"/></svg></div>
-  <div class="btn">Send report</div>
-  <div class="toast"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Report sent</div>
-</div></div><div class="iph lg"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad"><div class="t1">Hi, Lujain</div><div class="t3">Jeddah · rainy season</div></div>
-  <div class="wx"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12cqw;height:12cqw"><path d="M7 15a4.5 4.5 0 1 1 1.6-8.7A6 6 0 0 1 20 9.5 3.5 3.5 0 0 1 18 15z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/></svg><div><b>24°</b><div class="t3">Heavy rain until 9 PM</div></div></div>
-  <div class="tiles"><div class="tile tap"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.4 6 10.5A6 6 0 0 1 6 13.5C6 9.4 12 3 12 3z"/><path d="M12 11v4M12 17.5v.01"/></svg></span><span class="t2">New report</span><span class="t3">Flooded street</span></div><div class="tile "><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="t2">Map</span><span class="t3">Reported spots</span></div><div class="tile red"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><span class="t2">Alerts</span><span class="t3">3 streets</span></div><div class="tile amb"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="t2">Safety tips</span><span class="t3">During rain</span></div></div>
-  <div class="nav"><span class="on"></span><span></span><span></span><span></span></div>
-</div></div><div class="iph"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad row"><span class="t1">Alerts</span><span class="sp"></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
-  <div class="ban"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:8cqw;height:8cqw"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/></svg><div><div class="t2">Palestine St · danger</div><div class="t3">Avoid this street: the water is high</div></div></div>
-  <div class="al"><div class="it" style="--k:0"><div class="row"><span class="t2">Palestine St</span><span class="sp"></span><span class="chip r">Danger</span></div><span class="t3">Water level: 42 cm</span><div class="lvl"><span style="--w:84%;--c:#D93A40;--k:0"></span></div></div><div class="it" style="--k:1"><div class="row"><span class="t2">King Abdulaziz Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 18 cm</span><div class="lvl"><span style="--w:40%;--c:#E59A2F;--k:1"></span></div></div><div class="it" style="--k:2"><div class="row"><span class="t2">Prince Majid Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 15 cm</span><div class="lvl"><span style="--w:32%;--c:#E59A2F;--k:2"></span></div></div></div>
-</div></div></div></div>
+        <div class="card is-on" role="button" tabindex="0" data-k="0" aria-label="Open Tawaqaa: the app's report, home and alert screens"><div class="tq" aria-hidden="true"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="iph"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="tb"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></div><p class="t1">إنشاء بلاغ</p>
+  <label class="lab">اسم الشارع</label>
+  <div class="sel"><span class="ph">اختر اسم الشارع</span><span class="val">شارع قريش</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6.5 9.5 5.5 5.5 5.5-5.5"/></svg><div class="dd"><span class="pick">شارع قريش</span><span class="">شارع فلسطين</span><span class="">شارع أبو يزيد</span></div></div>
+  <div class="btn go">إرسال</div>
+  <p class="alt"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>أو حدّد الموقع على الخريطة</p>
+  <div class="mini"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="120" fill="#EEF1EC"/><g fill="#E3E7EA"><rect x="10" y="10" width="50" height="34" rx="2"/><rect x="80" y="10" width="54" height="34" rx="2"/><rect x="150" y="62" width="44" height="50" rx="2"/><rect x="10" y="66" width="50" height="44" rx="2"/></g><rect x="80" y="66" width="54" height="44" rx="2" fill="#DCE6D3"/><g stroke="#fff" stroke-width="9" fill="none"><path d="M-5 55H205M70 -5V125M142 -5V125"/></g></svg><span class="mpin r"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span></div>
+  <div class="done"><svg class="badge" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M24 3l4.6 3.4 5.7-.2 1.8 5.4 4.7 3.3-1.6 5.5 1.6 5.5-4.7 3.3-1.8 5.4-5.7-.2L24 45l-4.6-3.4-5.7.2-1.8-5.4-4.7-3.3 1.6-5.5-1.6-5.5 4.7-3.3 1.8-5.4 5.7.2z"/><path d="m16 24.5 5.5 5.5L32.5 19" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="t1">تم إرسال البلاغ</p><p class="t3">وصل بلاغك للجهات المختصة</p><div class="btn">التالي</div></div></div></div><div class="iph lg"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="hero"><svg class="ic gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="tqlogo" role="img" aria-label="توقّى"><svg class="wm" viewBox="0 -1260 1700 1560" aria-hidden="true"><path d="M429 -126C553 -106 668 -58 668 -30C668 3 514 40 380 40C219 40 136 -14 136 -137C136 -195 142 -252 155 -305L39 -324C29 -284 7 -203 7 -112C7 133 168 220 366 220C572 220 789 126 789 -56C789 -198 657 -241 518 -266L447 -279ZM593 -1245 606 -1162C613 -1119 592 -1118 587 -1118C554 -1118 550 -1153 550 -1214H501C501 -1148 476 -1106 442 -1106C424 -1106 410 -1118 410 -1166V-1203H357V-1160C357 -1104 375 -1054 433 -1054C482 -1054 505 -1091 516 -1128C522 -1104 534 -1066 583 -1066C633 -1066 663 -1106 655 -1166L643 -1252ZM636 -384C636 -280 593 -279 447 -279L566 -145C685 -198 756 -285 756 -440C756 -630 649 -742 513 -742C386 -742 292 -644 292 -510C292 -416 339 -326 459 -326C519 -326 556 -348 583 -368L627 -457C633 -435 636 -411 636 -384ZM438 -822 513 -898 588 -822 679 -914 588 -1005 513 -930 438 -1005 347 -914ZM482 -576C544 -576 597 -544 622 -476C583 -471 528 -466 498 -466C432 -466 402 -487 402 -520C402 -552 429 -576 482 -576ZM931 287C1187 287 1286 145 1316 0H1350C1382 0 1399 -17 1399 -49V-189H1324C1304 -353 1213 -450 1085 -450C965 -450 866 -364 866 -206C866 -65 945 0 1031 0H1186C1152 69 1074 122 917 122H880V287ZM976 -233C976 -264 1019 -285 1061 -285C1111 -285 1166 -255 1193 -189H1070C1024 -189 976 -200 976 -233ZM1351 0C1536 0 1677 -104 1630 -354L1608 -468L1462 -440L1493 -268C1505 -200 1485 -189 1400 -189C1368 -189 1351 -172 1351 -140ZM1455 -548 1530 -624 1605 -548 1696 -640 1605 -731 1530 -656 1455 -731 1364 -640Z" fill="currentColor"/></svg><svg class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 1.5S2 11 2 17.2A8 8 0 0 0 18 17.2C18 11 10 1.5 10 1.5z" fill="currentColor"/><path d="M6.2 18.5a4.2 4.2 0 0 0 3.6 3.9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/></svg></span><p class="tag">حياتك تهمنا</p></div>
+  <div class="sheet0"><p class="hi">مرحبًا بك، <span>لجين</span></p><p class="t1">الخدمات</p><div class="tiles"><div class="tile rep tap" style="--k:0"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5s-3 3.3-3 5.4a3 3 0 0 0 6 0C11 6.8 8 3.5 8 3.5zM16 3.5s-3 3.3-3 5.4a3 3 0 0 0 6 0c0-2.1-3-5.4-3-5.4z"/><path d="M3 16.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0M3 20.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/></svg></span><span class="t2">إنشاء بلاغ</span></div><div class="tile " style="--k:1"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5V3"/><path d="M12 5h6l2.4 2.5L18 10h-6zM12 12H6l-2.4 2.5L6 17h6z"/></svg></span><span class="t2">الاتجاهات</span></div><div class="tile " style="--k:2"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.4 3 7.9 7 9.5 4-1.6 7-5.1 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="t2">السلامة والإرشاد</span></div><div class="tile alr" style="--k:3"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 13.5 7 9.4A2 2 0 0 1 8.9 8h6.2a2 2 0 0 1 1.9 1.4l1.5 4.1"/><path d="M4.5 13.5h15V16h-15z"/><path d="M3 20.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/></svg></span><span class="t2">الإنذارات</span><em>3</em></div></div></div></div></div><div class="iph"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="tb"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg><span class="live"><i></i>مباشر</span></div><p class="t1">الإنذارات</p>
+  <div class="chips"><span class="ind"></span><span class="c0">الكل</span><span class="c1">خطير</span><span class="c2">متوسط</span></div>
+  <div class="als"><div class="al r" style="--k:0"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="m5.9 5.9 12.2 12.2"/></svg></span>
+    <div class="al-b"><span class="lv">خطير</span><b>شارع قريش</b><span class="t3">ارتفاع الماء 80 سم</span><span class="mt"><i style="--h:80%"></i></span></div>
+    <time>6:15 م</time></div><div class="al r" style="--k:1"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="m5.9 5.9 12.2 12.2"/></svg></span>
+    <div class="al-b"><span class="lv">خطير</span><b>شارع فلسطين</b><span class="t3">ارتفاع الماء 55 سم</span><span class="mt"><i style="--h:55%"></i></span></div>
+    <time>6:22 م</time></div><div class="al a" style="--k:2"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17v.01"/></svg></span>
+    <div class="al-b"><span class="lv">متوسط</span><b>شارع أبو يزيد</b><span class="t3">ارتفاع الماء 30 سم</span><span class="mt"><i style="--h:30%"></i></span></div>
+    <time>6:25 م</time></div><div class="al a" style="--k:3"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17v.01"/></svg></span>
+    <div class="al-b"><span class="lv">متوسط</span><b>طريق الملك عبدالعزيز</b><span class="t3">ارتفاع الماء 25 سم</span><span class="mt"><i style="--h:25%"></i></span></div>
+    <time>6:31 م</time></div></div></div></div></div></div>
         <div class="card" role="button" tabindex="0" data-k="1" aria-label="Open Masar: Masar in use: signing in, the department overview, the task board, completing a task and switching to Arabic"><div class="mk" aria-hidden="true"><div class="m-sky" aria-hidden="true"><i style="--x:90.7%;--y:46.7%;--s:1;--d:3.1s;--w:-2.6s"></i><i style="--x:11.0%;--y:31.1%;--s:1;--d:4.2s;--w:-4.5s"></i><i style="--x:8.1%;--y:5.4%;--s:1;--d:4.3s;--w:-3.9s"></i><i style="--x:30.2%;--y:2.4%;--s:1;--d:3.9s;--w:-1.4s"></i><i style="--x:97.8%;--y:97.6%;--s:1;--d:4.7s;--w:-1.6s"></i><i style="--x:8.7%;--y:75.6%;--s:1.8;--d:2.9s;--w:-1.5s"></i><i style="--x:8.4%;--y:3.6%;--s:1;--d:3.2s;--w:-4.6s"></i><i style="--x:7.0%;--y:38.0%;--s:1.8;--d:3.8s;--w:-2.8s"></i><i style="--x:3.5%;--y:41.4%;--s:1;--d:3.0s;--w:-3.5s"></i><i style="--x:3.1%;--y:46.6%;--s:1.8;--d:3.1s;--w:-2.8s"></i><i style="--x:72.3%;--y:14.6%;--s:1.8;--d:2.9s;--w:-2.1s"></i><i style="--x:95.2%;--y:79.1%;--s:1.4;--d:5.5s;--w:-0.1s"></i><i style="--x:6.0%;--y:16.1%;--s:1.8;--d:3.3s;--w:-3.9s"></i><i style="--x:9.0%;--y:10.7%;--s:1;--d:2.6s;--w:-1.8s"></i><i style="--x:61.7%;--y:14.2%;--s:1.8;--d:5.0s;--w:-0.7s"></i><i style="--x:17.2%;--y:62.4%;--s:1;--d:4.6s;--w:-1.9s"></i><i style="--x:48.3%;--y:9.5%;--s:1;--d:2.9s;--w:-0.2s"></i><i style="--x:94.4%;--y:24.9%;--s:1.8;--d:3.3s;--w:-4.1s"></i><i style="--x:8.6%;--y:23.9%;--s:1;--d:3.4s;--w:-4.6s"></i><i style="--x:21.6%;--y:3.6%;--s:1.4;--d:3.8s;--w:-1.2s"></i><i style="--x:6.5%;--y:29.1%;--s:1;--d:2.9s;--w:-0.7s"></i><i style="--x:92.9%;--y:58.6%;--s:1;--d:4.0s;--w:-1.8s"></i><i style="--x:31.9%;--y:5.2%;--s:1;--d:4.0s;--w:-3.7s"></i><svg class="m-route r1" viewBox="0 0 220 100" preserveAspectRatio="none"><polyline points="13.2,62 24.2,40 17.6,22 35.2,11 59.4,7 74.8,14" pathLength="1"/></svg><span class="m-nodes r1"><i class="node" style="--x:6%;--y:62%;--k:0"></i><i class="node" style="--x:11%;--y:40%;--k:1"></i><i class="node" style="--x:8%;--y:22%;--k:2"></i><i class="node" style="--x:16%;--y:11%;--k:3"></i><i class="node" style="--x:27%;--y:7%;--k:4"></i><i class="node" style="--x:34%;--y:14%;--k:5"></i></span><svg class="m-route r2" viewBox="0 0 220 100" preserveAspectRatio="none"><polyline points="145.2,12 167.2,6 189.2,13 204.6,30 195.8,52 209.0,74" pathLength="1"/></svg><span class="m-nodes r2"><i class="node" style="--x:66%;--y:12%;--k:0"></i><i class="node" style="--x:76%;--y:6%;--k:1"></i><i class="node" style="--x:86%;--y:13%;--k:2"></i><i class="node" style="--x:93%;--y:30%;--k:3"></i><i class="node" style="--x:89%;--y:52%;--k:4"></i><i class="node" style="--x:95%;--y:74%;--k:5"></i></span></div><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><img src="assets/m-card-still.webp" data-still="assets/m-card-still.webp" data-anim="assets/m-card.webp" alt="" decoding="async"></div></div></div><div class="base"></div></div></div></div>
         <div class="card" role="button" tabindex="0" data-k="2" aria-label="Open Mizan: Mizan in Arabic: the weekly budget step with a balance scale, today's meals and the grocery list"><div class="mz mz-card" aria-hidden="true"><div class="z-sky" aria-hidden="true"><b style="box-shadow:32.7cqw 15.8cqh 0 0.0px rgba(230,236,255,0.28),53.5cqw 36.8cqh 0 0.0px rgba(230,236,255,0.66),22.0cqw 9.4cqh 0 0.5px rgba(230,236,255,0.28),9.9cqw 42.6cqh 0 0.0px rgba(230,236,255,0.68),62.8cqw 58.1cqh 0 0.0px rgba(230,236,255,0.51),39.9cqw 96.7cqh 0 0.0px rgba(230,236,255,0.50),14.1cqw 42.1cqh 0 0.0px rgba(230,236,255,0.51),55.9cqw 67.8cqh 0 0.0px rgba(230,236,255,0.51),63.6cqw 37.5cqh 0 0.0px rgba(230,236,255,0.50),61.7cqw 49.6cqh 0 0.5px rgba(230,236,255,0.60),46.6cqw 91.5cqh 0 0.0px rgba(230,236,255,0.38),78.8cqw 69.5cqh 0 0.0px rgba(230,236,255,0.29),30.4cqw 49.5cqh 0 0.0px rgba(230,236,255,0.58),29.2cqw 97.1cqh 0 0.0px rgba(230,236,255,0.48),17.2cqw 34.5cqh 0 0.5px rgba(230,236,255,0.44),95.3cqw 8.6cqh 0 0.0px rgba(230,236,255,0.40),35.3cqw 49.7cqh 0 0.5px rgba(230,236,255,0.28),10.2cqw 27.5cqh 0 0.0px rgba(230,236,255,0.28),69.7cqw 64.4cqh 0 0.5px rgba(230,236,255,0.38),38.8cqw 66.5cqh 0 0.0px rgba(230,236,255,0.67),35.8cqw 60.9cqh 0 0.5px rgba(230,236,255,0.28),76.3cqw 13.7cqh 0 0.0px rgba(230,236,255,0.43),90.8cqw 49.7cqh 0 0.0px rgba(230,236,255,0.45),54.8cqw 87.6cqh 0 0.5px rgba(230,236,255,0.64),28.3cqw 41.7cqh 0 0.0px rgba(230,236,255,0.56),38.3cqw 23.6cqh 0 0.0px rgba(230,236,255,0.33),23.7cqw 23.9cqh 0 0.5px rgba(230,236,255,0.62),18.9cqw 28.6cqh 0 0.0px rgba(230,236,255,0.44),37.2cqw 56.5cqh 0 0.0px rgba(230,236,255,0.56),51.5cqw 61.5cqh 0 0.0px rgba(230,236,255,0.46),86.4cqw 94.3cqh 0 0.5px rgba(230,236,255,0.43),39.6cqw 48.2cqh 0 0.5px rgba(230,236,255,0.28),7.6cqw 21.5cqh 0 0.0px rgba(230,236,255,0.30),59.9cqw 11.0cqh 0 0.0px rgba(230,236,255,0.49),94.0cqw 61.1cqh 0 0.0px rgba(230,236,255,0.64),61.2cqw 15.6cqh 0 0.0px rgba(230,236,255,0.68),60.0cqw 47.5cqh 0 0.0px rgba(230,236,255,0.63),98.3cqw 46.7cqh 0 0.5px rgba(230,236,255,0.39),15.1cqw 74.5cqh 0 0.0px rgba(230,236,255,0.47),68.8cqw 51.6cqh 0 0.0px rgba(230,236,255,0.68),52.8cqw 15.4cqh 0 0.0px rgba(230,236,255,0.59),30.2cqw 64.0cqh 0 0.0px rgba(230,236,255,0.56),26.6cqw 36.9cqh 0 0.0px rgba(230,236,255,0.41),22.8cqw 54.1cqh 0 0.0px rgba(230,236,255,0.54),61.1cqw 78.3cqh 0 0.0px rgba(230,236,255,0.61),81.2cqw 73.5cqh 0 0.0px rgba(230,236,255,0.34),49.3cqw 72.6cqh 0 0.0px rgba(230,236,255,0.61),47.3cqw 20.0cqh 0 0.0px rgba(230,236,255,0.45),92.8cqw 97.8cqh 0 0.0px rgba(230,236,255,0.29),11.0cqw 47.1cqh 0 0.0px rgba(230,236,255,0.34),62.2cqw 89.2cqh 0 0.0px rgba(230,236,255,0.47),65.0cqw 79.4cqh 0 0.0px rgba(230,236,255,0.63),12.8cqw 39.1cqh 0 0.0px rgba(230,236,255,0.47),18.5cqw 78.3cqh 0 0.0px rgba(230,236,255,0.29),93.7cqw 71.7cqh 0 0.5px rgba(230,236,255,0.43),93.8cqw 72.0cqh 0 0.0px rgba(230,236,255,0.70),3.7cqw 58.9cqh 0 0.5px rgba(230,236,255,0.61),15.3cqw 82.0cqh 0 0.5px rgba(230,236,255,0.55),35.3cqw 54.8cqh 0 0.0px rgba(230,236,255,0.26),79.3cqw 72.2cqh 0 0.0px rgba(230,236,255,0.49),92.5cqw 43.5cqh 0 0.0px rgba(230,236,255,0.62),21.7cqw 25.7cqh 0 0.0px rgba(230,236,255,0.48),75.8cqw 32.9cqh 0 0.5px rgba(230,236,255,0.63),7.0cqw 73.5cqh 0 0.5px rgba(230,236,255,0.55),80.9cqw 51.6cqh 0 0.0px rgba(230,236,255,0.49),52.3cqw 2.8cqh 0 0.5px rgba(230,236,255,0.60),60.6cqw 77.1cqh 0 0.0px rgba(230,236,255,0.33),47.4cqw 72.1cqh 0 0.0px rgba(230,236,255,0.40),51.8cqw 55.4cqh 0 0.0px rgba(230,236,255,0.65),6.6cqw 19.7cqh 0 0.0px rgba(230,236,255,0.60)"></b><i style="--x:18%;--y:6%;--d:9.5s;--w:0.6s"></i><i style="--x:52%;--y:2%;--d:12s;--w:3.4s"></i><i class=mint style="--x:70%;--y:14%;--d:10.5s;--w:6.8s"></i><i style="--x:8%;--y:30%;--d:13s;--w:8.9s"></i><i style="--x:38%;--y:10%;--d:11s;--w:1.9s"></i></div><div class="iph z-ph"><div class="scr z-scr" lang="ar" dir="rtl"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
   <div class="z-wtop"><span class="z-t3">أسبوع جديد · 3 من 4</span><div class="z-steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
@@ -1206,82 +1353,124 @@ body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::af
       <p class="scroll-cue"><span class="mouse" aria-hidden="true"></span>Scroll to see it in motion</p>
     </section>
     <ol class="shots-col">
-      <li class="shot" id="tawaqaa-s0"><p class="cap"><span class="lbl">01 · Report</span><span>Citizens report a flooded street by name or by dropping a pin, and get a confirmation.</span></p><div class="frame live" role="img" aria-label="Citizens report a flooded street by name or by dropping a pin, and get a confirmation."><div class="tq"><div class="iph lg"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad"><div class="t1">Hi, Lujain</div><div class="t3">Jeddah · rainy season</div></div>
-  <div class="wx"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12cqw;height:12cqw"><path d="M7 15a4.5 4.5 0 1 1 1.6-8.7A6 6 0 0 1 20 9.5 3.5 3.5 0 0 1 18 15z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/></svg><div><b>24°</b><div class="t3">Heavy rain until 9 PM</div></div></div>
-  <div class="tiles"><div class="tile tap"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.4 6 10.5A6 6 0 0 1 6 13.5C6 9.4 12 3 12 3z"/><path d="M12 11v4M12 17.5v.01"/></svg></span><span class="t2">New report</span><span class="t3">Flooded street</span></div><div class="tile "><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="t2">Map</span><span class="t3">Reported spots</span></div><div class="tile red"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><span class="t2">Alerts</span><span class="t3">3 streets</span></div><div class="tile amb"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="t2">Safety tips</span><span class="t3">During rain</span></div></div>
-  <div class="nav"><span class="on"></span><span></span><span></span><span></span></div>
-</div></div><div class="iph"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg><span class="t1">New report</span></div>
-  <div class="seg"><span class="on">Flooding</span><span>Unusual activity</span></div>
-  <div class="lbl2">Street name</div>
-  <div class="inp"><span class="typed">Palestine St</span><span class="caret"></span></div>
-  <div class="lbl2">Or drop a pin on the map</div>
-  <div class="mapbox"><span class="wat"></span><svg class="pin" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.6 0 20.3 12 32 12 32s12-11.7 12-20.4C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.5" fill="#fff"/></svg></div>
-  <div class="btn">Send report</div>
-  <div class="toast"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Report sent</div>
-</div></div></div></div></li>
-      <li class="shot" id="tawaqaa-s1"><p class="cap"><span class="lbl">02 · Alerts</span><span>Streets are ranked by repeated reports and measured water height, and drivers see the danger level.</span></p><div class="frame live" role="img" aria-label="Streets are ranked by repeated reports and measured water height, and drivers see the danger level."><div class="tq"><div class="iph"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad row"><span class="t1">Alerts</span><span class="sp"></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
-  <div class="ban"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:8cqw;height:8cqw"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/></svg><div><div class="t2">Palestine St · danger</div><div class="t3">Avoid this street: the water is high</div></div></div>
-  <div class="al"><div class="it" style="--k:0"><div class="row"><span class="t2">Palestine St</span><span class="sp"></span><span class="chip r">Danger</span></div><span class="t3">Water level: 42 cm</span><div class="lvl"><span style="--w:84%;--c:#D93A40;--k:0"></span></div></div><div class="it" style="--k:1"><div class="row"><span class="t2">King Abdulaziz Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 18 cm</span><div class="lvl"><span style="--w:40%;--c:#E59A2F;--k:1"></span></div></div><div class="it" style="--k:2"><div class="row"><span class="t2">Prince Majid Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 15 cm</span><div class="lvl"><span style="--w:32%;--c:#E59A2F;--k:2"></span></div></div></div>
-</div></div><div class="sensor" lang="en"><span class="t3">Hotspot · Palestine St</span><p class="h5">Water level</p>
-  <div class="gauge"><div class="tube"><span></span></div><div class="read"><b></b><span class="t3">cm of water</span></div></div>
-  <div class="ok"><span class="dot"></span>Water sensor · live</div></div></div></div></li>
-      <li class="shot" id="tawaqaa-s2"><p class="cap"><span class="lbl">03 · Reroute</span><span>The map marks the flooded street and draws a safer route around it.</span></p><div class="frame live" role="img" aria-label="The map marks the flooded street and draws a safer route around it."><div class="tq"><div class="iph lg"><div class="scr" lang="en"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
-  <div class="pad row"><span class="t1">Map</span></div>
-  <div class="mapfull">
-    <svg viewBox="0 0 200 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="#fff" stroke-linecap="round"><path d="M-10 80H210M-10 170H210M-10 260H210" stroke-width="11"/><path d="M50 -10V340M140 -10V340" stroke-width="11"/><path d="M95 -10V340" stroke-width="6"/></g>
-      <g fill="#7A8F99" font-size="7" font-family="sans-serif"><text x="150" y="76">Palestine St</text><text x="146" y="166">Prince Majid Rd</text><text x="56" y="20" transform="rotate(90 56 20)">King Abdulaziz Rd</text></g>
-      <circle class="zone" cx="95" cy="170" r="34" fill="#D93A40" fill-opacity=".22" stroke="#D93A40" stroke-width="1.5"/>
-      <text x="95" y="174" text-anchor="middle" fill="#D93A40" font-size="10" font-weight="700" font-family="sans-serif">42 cm</text>
-      <path class="route" pathLength="1" d="M95 320V260H140V80H95V20" fill="none" stroke="#1E8A5A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle r="6" fill="#13879B" stroke="#fff" stroke-width="2.5"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.18;0.55;1" calcMode="linear" path="M95 320V260H140V80H95V20"/></circle>
+      <li class="shot" id="tawaqaa-s0"><p class="cap"><span class="lbl">01 · Report</span><span>Pick the street from the list or drop a pin on the map, and the report goes to the authorities.</span></p><div class="frame live" role="img" aria-label="Pick the street from the list or drop a pin on the map, and the report goes to the authorities."><div class="tq"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="iph lg"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="hero"><svg class="ic gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span class="tqlogo" role="img" aria-label="توقّى"><svg class="wm" viewBox="0 -1260 1700 1560" aria-hidden="true"><path d="M429 -126C553 -106 668 -58 668 -30C668 3 514 40 380 40C219 40 136 -14 136 -137C136 -195 142 -252 155 -305L39 -324C29 -284 7 -203 7 -112C7 133 168 220 366 220C572 220 789 126 789 -56C789 -198 657 -241 518 -266L447 -279ZM593 -1245 606 -1162C613 -1119 592 -1118 587 -1118C554 -1118 550 -1153 550 -1214H501C501 -1148 476 -1106 442 -1106C424 -1106 410 -1118 410 -1166V-1203H357V-1160C357 -1104 375 -1054 433 -1054C482 -1054 505 -1091 516 -1128C522 -1104 534 -1066 583 -1066C633 -1066 663 -1106 655 -1166L643 -1252ZM636 -384C636 -280 593 -279 447 -279L566 -145C685 -198 756 -285 756 -440C756 -630 649 -742 513 -742C386 -742 292 -644 292 -510C292 -416 339 -326 459 -326C519 -326 556 -348 583 -368L627 -457C633 -435 636 -411 636 -384ZM438 -822 513 -898 588 -822 679 -914 588 -1005 513 -930 438 -1005 347 -914ZM482 -576C544 -576 597 -544 622 -476C583 -471 528 -466 498 -466C432 -466 402 -487 402 -520C402 -552 429 -576 482 -576ZM931 287C1187 287 1286 145 1316 0H1350C1382 0 1399 -17 1399 -49V-189H1324C1304 -353 1213 -450 1085 -450C965 -450 866 -364 866 -206C866 -65 945 0 1031 0H1186C1152 69 1074 122 917 122H880V287ZM976 -233C976 -264 1019 -285 1061 -285C1111 -285 1166 -255 1193 -189H1070C1024 -189 976 -200 976 -233ZM1351 0C1536 0 1677 -104 1630 -354L1608 -468L1462 -440L1493 -268C1505 -200 1485 -189 1400 -189C1368 -189 1351 -172 1351 -140ZM1455 -548 1530 -624 1605 -548 1696 -640 1605 -731 1530 -656 1455 -731 1364 -640Z" fill="currentColor"/></svg><svg class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 1.5S2 11 2 17.2A8 8 0 0 0 18 17.2C18 11 10 1.5 10 1.5z" fill="currentColor"/><path d="M6.2 18.5a4.2 4.2 0 0 0 3.6 3.9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/></svg></span><p class="tag">حياتك تهمنا</p></div>
+  <div class="sheet0"><p class="hi">مرحبًا بك، <span>لجين</span></p><p class="t1">الخدمات</p><div class="tiles"><div class="tile rep tap" style="--k:0"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5s-3 3.3-3 5.4a3 3 0 0 0 6 0C11 6.8 8 3.5 8 3.5zM16 3.5s-3 3.3-3 5.4a3 3 0 0 0 6 0c0-2.1-3-5.4-3-5.4z"/><path d="M3 16.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0M3 20.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/></svg></span><span class="t2">إنشاء بلاغ</span></div><div class="tile " style="--k:1"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5V3"/><path d="M12 5h6l2.4 2.5L18 10h-6zM12 12H6l-2.4 2.5L6 17h6z"/></svg></span><span class="t2">الاتجاهات</span></div><div class="tile " style="--k:2"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.4 3 7.9 7 9.5 4-1.6 7-5.1 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="t2">السلامة والإرشاد</span></div><div class="tile alr" style="--k:3"><span class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 13.5 7 9.4A2 2 0 0 1 8.9 8h6.2a2 2 0 0 1 1.9 1.4l1.5 4.1"/><path d="M4.5 13.5h15V16h-15z"/><path d="M3 20.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/></svg></span><span class="t2">الإنذارات</span><em>3</em></div></div></div></div></div><div class="iph"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="tb"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></div><p class="t1">إنشاء بلاغ</p>
+  <label class="lab">اسم الشارع</label>
+  <div class="sel"><span class="ph">اختر اسم الشارع</span><span class="val">شارع قريش</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6.5 9.5 5.5 5.5 5.5-5.5"/></svg><div class="dd"><span class="pick">شارع قريش</span><span class="">شارع فلسطين</span><span class="">شارع أبو يزيد</span></div></div>
+  <div class="btn go">إرسال</div>
+  <p class="alt"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>أو حدّد الموقع على الخريطة</p>
+  <div class="mini"><svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="120" fill="#EEF1EC"/><g fill="#E3E7EA"><rect x="10" y="10" width="50" height="34" rx="2"/><rect x="80" y="10" width="54" height="34" rx="2"/><rect x="150" y="62" width="44" height="50" rx="2"/><rect x="10" y="66" width="50" height="44" rx="2"/></g><rect x="80" y="66" width="54" height="44" rx="2" fill="#DCE6D3"/><g stroke="#fff" stroke-width="9" fill="none"><path d="M-5 55H205M70 -5V125M142 -5V125"/></g></svg><span class="mpin r"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span></div>
+  <div class="done"><svg class="badge" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M24 3l4.6 3.4 5.7-.2 1.8 5.4 4.7 3.3-1.6 5.5 1.6 5.5-4.7 3.3-1.8 5.4-5.7-.2L24 45l-4.6-3.4-5.7.2-1.8-5.4-4.7-3.3 1.6-5.5-1.6-5.5 4.7-3.3 1.8-5.4 5.7.2z"/><path d="m16 24.5 5.5 5.5L32.5 19" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="t1">تم إرسال البلاغ</p><p class="t3">وصل بلاغك للجهات المختصة</p><div class="btn">التالي</div></div></div></div></div></div></li>
+      <li class="shot" id="tawaqaa-s1"><p class="cap"><span class="lbl">02 · Alerts</span><span>Every alert shows the street, its danger level and how high the water is. A submersible sensor measures the worst spot.</span></p><div class="frame live" role="img" aria-label="Every alert shows the street, its danger level and how high the water is. A submersible sensor measures the worst spot."><div class="tq"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="iph"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="tb"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg><span class="live"><i></i>مباشر</span></div><p class="t1">الإنذارات</p>
+  <div class="chips"><span class="ind"></span><span class="c0">الكل</span><span class="c1">خطير</span><span class="c2">متوسط</span></div>
+  <div class="als"><div class="al r" style="--k:0"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="m5.9 5.9 12.2 12.2"/></svg></span>
+    <div class="al-b"><span class="lv">خطير</span><b>شارع قريش</b><span class="t3">ارتفاع الماء 80 سم</span><span class="mt"><i style="--h:80%"></i></span></div>
+    <time>6:15 م</time></div><div class="al r" style="--k:1"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="m5.9 5.9 12.2 12.2"/></svg></span>
+    <div class="al-b"><span class="lv">خطير</span><b>شارع فلسطين</b><span class="t3">ارتفاع الماء 55 سم</span><span class="mt"><i style="--h:55%"></i></span></div>
+    <time>6:22 م</time></div><div class="al a" style="--k:2"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17v.01"/></svg></span>
+    <div class="al-b"><span class="lv">متوسط</span><b>شارع أبو يزيد</b><span class="t3">ارتفاع الماء 30 سم</span><span class="mt"><i style="--h:30%"></i></span></div>
+    <time>6:25 م</time></div><div class="al a" style="--k:3"><span class="sq"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17v.01"/></svg></span>
+    <div class="al-b"><span class="lv">متوسط</span><b>طريق الملك عبدالعزيز</b><span class="t3">ارتفاع الماء 25 سم</span><span class="mt"><i style="--h:25%"></i></span></div>
+    <time>6:31 م</time></div></div></div></div><div class="sensor" dir="rtl" lang="ar"><span class="glow" aria-hidden="true"></span><p class="t3">نقطة تجمّع المياه</p><p class="h5">شارع قريش</p>
+  <div class="gauge"><div class="tube"><div class="wfill"><svg viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0V10H0z"/></svg></div></div><div class="scale"><span style="--y:0%"><b>0</b></span><span style="--y:25%"><b>25</b></span><span style="--y:50%"><b>50</b></span><span style="--y:75%"><b>75</b></span><span style="--y:100%"><b>100</b></span></div>
+    <div class="read"><b></b><span>سم</span><span class="pill r">خطير</span></div></div>
+  <p class="ok"><i></i>حسّاس منسوب المياه · مباشر</p></div></div></div></li>
+      <li class="shot" id="tawaqaa-s2"><p class="cap"><span class="lbl">03 · Directions</span><span>Reported streets show up on the map in red and amber, and the route goes around them.</span></p><div class="frame live" role="img" aria-label="Reported streets show up on the map in red and amber, and the route goes around them."><div class="tq"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="iph lg"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="mapfull">
+    <svg viewBox="0 0 200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="200" height="400" fill="#EEF1EC"/>
+      <g fill="#DCE6D3"><rect x="8" y="200" width="52" height="40" rx="3"/><rect x="150" y="18" width="40" height="46" rx="3"/></g>
+      <g fill="#E4E7EA"><rect x="70" y="100" width="58" height="60" rx="2"/><rect x="70" y="190" width="58" height="80" rx="2"/><rect x="0" y="100" width="40" height="70" rx="2"/><rect x="160" y="200" width="40" height="60" rx="2"/><rect x="0" y="300" width="40" height="60" rx="2"/><rect x="70" y="300" width="58" height="60" rx="2"/><rect x="160" y="300" width="40" height="70" rx="2"/></g>
+      <g stroke="#fff" stroke-linecap="round" fill="none"><path d="M-10 86H210M-10 180H210M-10 285H210" stroke-width="12"/><path d="M55 -10V410M145 -10V410" stroke-width="12"/><path d="M100 -10V410" stroke-width="7"/></g>
+      <path d="M-10 380 210 330" stroke="#F6D88B" stroke-width="9" fill="none"/>
+      <g fill="#7E8C95" font-size="7.2" font-family="IBM Plex Sans Arabic,Tahoma,sans-serif" text-anchor="middle"><text x="172" y="176">شارع قريش</text><text x="28" y="281">شارع أبو يزيد</text><text x="60" y="372" transform="rotate(-14 60 372)" fill="#A1823A">طريق الملك عبدالعزيز</text></g>
+      <circle class="zone" cx="100" cy="180" r="30" fill="#D23F45" fill-opacity=".14" stroke="#D23F45" stroke-opacity=".5" stroke-width="1.2"/>
+      <circle class="zone z2" cx="145" cy="285" r="20" fill="#E7A23A" fill-opacity=".14" stroke="#E7A23A" stroke-opacity=".5" stroke-width="1.2"/>
+      <path class="route" pathLength="1" d="M100 392V285H55V86H100V-10" fill="none" stroke="#3A7CA5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle r="5.5" fill="#3A7CA5" stroke="#fff" stroke-width="2.4"><animateMotion dur="9s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.22;0.7;1" calcMode="linear" path="M100 392V285H55V86H100V-10"/></circle>
     </svg>
-    <div class="topcard"><span class="dot"></span>Safer route found</div>
-    <div class="sheet"><div class="row"><span class="t2">Palestine St closed</span><span class="sp"></span><span class="chip r">Danger</span></div><span class="t3">Water 42 cm · detour adds 4 min</span></div>
-  </div>
-</div></div></div></div></li>
-      <li class="shot" id="tawaqaa-s3"><p class="cap"><span class="lbl">04 · Detect</span><span>YOLOv10 spots flooded cars and people in the water on live camera frames.</span></p><div class="frame live" role="img" aria-label="YOLOv10 spots flooded cars and people in the water on live camera frames."><div class="tq"><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><div class="pn cam" lang="en">
-  <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs><linearGradient id="tqsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14262F"/><stop offset="1" stop-color="#0A151B"/></linearGradient>
-      <linearGradient id="tqwat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F6E7C" stop-opacity=".9"/><stop offset="1" stop-color="#0E3440"/></linearGradient></defs>
-    <rect width="800" height="500" fill="url(#tqsky)"/>
-    <g fill="#1B2E37"><rect x="0" y="120" width="120" height="170"/><rect x="130" y="80" width="90" height="210"/><rect x="600" y="100" width="110" height="190"/><rect x="715" y="150" width="85" height="140"/></g>
-    <g fill="#E8C76A" opacity=".55"><rect x="20" y="150" width="10" height="14"/><rect x="60" y="190" width="10" height="14"/><rect x="150" y="110" width="10" height="14"/><rect x="180" y="170" width="10" height="14"/><rect x="630" y="130" width="10" height="14"/><rect x="670" y="200" width="10" height="14"/></g>
-    <rect x="0" y="280" width="800" height="220" fill="#16252C"/>
-    <!-- flooded car, tilted and half under water -->
-    <g transform="rotate(-5 300 330)"><path d="M190 340l28-46h132l40 46z" fill="#C9D3D8"/><path d="M226 300h56v34h-80zM292 300h52l30 34h-82z" fill="#5B7A88"/><rect x="180" y="336" width="232" height="44" rx="10" fill="#E4EBEE"/><circle cx="378" cy="352" r="6" fill="#F2D27A"/></g>
-    <!-- person waist-deep -->
-    <g fill="#D7C2A8"><circle cx="560" cy="290" r="13"/><path d="M546 306h28l6 52h-40z" fill="#B5473A"/><path d="M546 312l-16 26M574 312l18 22" stroke="#D7C2A8" stroke-width="7" stroke-linecap="round"/></g>
-    <!-- water surface -->
-    <g class="waves"><path d="M0 352q25-10 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0V500H0z" fill="url(#tqwat)"/></g>
-    <!-- detection boxes -->
-    <g fill="none" stroke-width="3"><rect class="bx" pathLength="1" x="172" y="276" width="252" height="120" stroke="#F59E4B"/><rect class="bx" pathLength="1" x="528" y="264" width="72" height="110" stroke="#4FD1C5" style="--dl:.5s"/></g>
-    <g font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700"><g class="bl"><rect x="172" y="252" width="150" height="24" fill="#F59E4B"/><text x="180" y="269" fill="#111">flooded car 0.91</text></g>
-      <g class="bl" style="--dl:.5s"><rect x="528" y="240" width="160" height="24" fill="#4FD1C5"/><text x="536" y="257" fill="#111">human in flood 0.87</text></g></g>
-  </svg>
-  <div class="scan"></div>
-  <div class="hud"><span class="rec"></span>LIVE · YOLOv10 · CAM-02</div>
-  <div class="dets"><span class="det" style="--c:#F59E4B"><i></i>Flooded car detected · Palestine St</span><span class="det" style="--c:#4FD1C5;--dl:.5s"><i></i>Human in flood detected · Palestine St</span></div>
-</div></div></div></div><div class="base"></div></div></div></div></li>
-      <li class="shot" id="tawaqaa-s4"><p class="cap"><span class="lbl">05 · Respond</span><span>Authorities review ranked reports live and delete the ones that are resolved.</span></p><div class="frame live" role="img" aria-label="Authorities review ranked reports live and delete the ones that are resolved."><div class="tq"><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><div class="pn web" lang="en">
-  <div class="wb"><i></i><i></i><i></i><span>tawaqaa · authority console</span></div>
-  <div class="wbody">
-    <div class="side"><b><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="#2BB7CC" aria-hidden="true"><path d="M12 2s7 7.5 7 12.3A7 7 0 0 1 5 14.3C5 9.5 12 2 12 2z"/></svg>Tawaqaa</b><span class="on">Alerts &amp; reports</span><span>Analytics</span><span>Detections</span></div>
-    <div class="main">
-      <p class="h4">Flood reports</p><div class="sub">Ranked by repetition · live from Firebase</div>
-      <div class="kpis"><div class="kpi">Open reports<b><span>12</span><span>10</span></b></div><div class="kpi red">Dangerous streets<b><span>1</span><span>1</span></b></div><div class="kpi">Medium streets<b><span>2</span><span>1</span></b></div><div class="kpi">AI detections<b><span>2</span><span>2</span></b></div></div>
-      <div class="tbl"><div class="tr h"><span>Street</span><span>Reports</span><span>Water</span><span>Status</span><span>Last report</span><span>Action</span></div><div class="tr"><b>Palestine St</b><span>7</span><span>42 cm</span><span class="st h">High</span><span>10:24 PM</span><span class="del">Delete</span></div><div class="tr"><b>King Abdulaziz Rd</b><span>3</span><span>18 cm</span><span class="st m">Medium</span><span>10:11 PM</span><span class="del">Delete</span></div><div class="tr gone"><b>Prince Majid Rd</b><span>2</span><span>15 cm</span><span class="st m">Medium</span><span>9:58 PM</span><span class="del">Delete</span></div></div>
+    <span class="mpin r" style="--x:50%;--y:45%"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span><span class="mpin a" style="--x:72.5%;--y:71.25%"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+    <div class="mtop"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg><span>الاتجاهات</span></div>
+    <div class="msheet"><div class="row"><span class="pill r">خطير</span><b>شارع قريش</b></div><span class="t3">ارتفاع الماء 80 سم · المسار يتجنّب الشارع</span><div class="btn">ابدأ</div></div>
+  </div></div></div><div class="iph"><div class="scr" dir="rtl" lang="ar"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div><div class="tb"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></div><p class="t1">إرشادات السلامة</p>
+  <div class="car"><div class="trk"><div class="sl"><svg class="illo" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6c18 0 36 9 40 26s-4 34-18 44-34 12-48 2S4 50 8 32 32 6 50 6z" fill="#74A8C4"/><path d="M8 74c4.7-3.6 9.3-3.6 14 0s9.3 3.6 14 0 9.3-3.6 14 0 9.3 3.6 14 0 9.3-3.6 14 0 9.3 3.6 14 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/><circle cx="50" cy="44" r="21" fill="#E2434A"/><circle cx="50" cy="44" r="21" fill="none" stroke="#fff" stroke-width="3"/><rect x="36" y="40" width="28" height="8" rx="2" fill="#fff"/></svg><p>عدم الاقتراب من تجمعات المياه، فعادة ما تكون حوافها قابلة للانهيار</p></div><div class="sl"><svg class="illo" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6c18 0 36 9 40 26s-4 34-18 44-34 12-48 2S4 50 8 32 32 6 50 6z" fill="#74A8C4"/><path d="M22 30l18-7 20 7 18-7v48l-18 7-20-7-18 7z" fill="#F7F3E8"/><path d="M40 23v48M60 30v48" stroke="#D9CFB4" stroke-width="2"/><path d="M26 58c8-10 16 4 24-6s14-6 24-14" fill="none" stroke="#3A7CA5" stroke-width="3" stroke-dasharray="4 4" stroke-linecap="round"/><path d="M64 20c-6 0-10 4.6-10 10 0 7.6 10 17 10 17s10-9.4 10-17c0-5.4-4-10-10-10z" fill="#E2434A"/><circle cx="64" cy="30" r="3.6" fill="#fff"/></svg><p>اتبع المسارات والطرق المستخدمة قدر الإمكان</p></div><div class="sl"><svg class="illo" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6c18 0 36 9 40 26s-4 34-18 44-34 12-48 2S4 50 8 32 32 6 50 6z" fill="#74A8C4"/><path d="M24 54l6-12a5 5 0 0 1 4.5-3h31a5 5 0 0 1 4.5 3l6 12z" fill="#F4F6F8"/><rect x="20" y="52" width="60" height="12" rx="4" fill="#F4F6F8"/><path d="M8 66c6-4 12-4 18 0s12 4 18 0 12-4 18 0 12 4 18 0 12-4 18 0V92H8z" fill="#2F6F95"/><circle cx="72" cy="28" r="12" fill="#E2434A"/><circle cx="72" cy="28" r="12" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M64 20l16 16" stroke="#fff" stroke-width="3"/></svg><p>لا تجازف بالجلوس في مجاري السيول أو عبورها</p></div></div></div>
+  <div class="dots"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></div>
+  <div class="pager"><span>رجوع</span><span>التالي</span></div></div></div></div></div></li>
+      <li class="shot" id="tawaqaa-s3"><p class="cap"><span class="lbl">04 · Detect</span><span>Our YOLOv10 model watching a webcam feed. It was trained on 1,532 photos of flooded cars and 171 of people in floodwater.</span></p><div class="frame live" role="img" aria-label="Our YOLOv10 model watching a webcam feed. It was trained on 1,532 photos of flooded cars and 171 of people in floodwater."><div class="tq"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><div class="pn det" lang="en">
+  <div class="cvw"><div class="cvt"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" fill="#5B8DEF"/><circle cx="8" cy="8" r="2.6" fill="#fff"/></svg><span>Webcam</span><i>&#8212;</i><i>&#9633;</i><i>&#10005;</i></div>
+    <div class="cvf">
+      <svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="tqs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4247"/><stop offset=".55" stop-color="#555A58"/><stop offset="1" stop-color="#6A6A62"/></linearGradient>
+          <linearGradient id="tqw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E6553"/><stop offset=".4" stop-color="#4E4637"/><stop offset="1" stop-color="#2D2820"/></linearGradient>
+          <linearGradient id="tqb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3C444C"/><stop offset=".5" stop-color="#1D2329"/><stop offset="1" stop-color="#101418"/></linearGradient>
+          <radialGradient id="tql"><stop offset="0" stop-color="#FFF4D6"/><stop offset=".35" stop-color="#FFD98A" stop-opacity=".55"/><stop offset="1" stop-color="#FFD98A" stop-opacity="0"/></radialGradient>
+          <filter id="tqblur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3"/></filter>
+          <filter id="tqsoft"><feGaussianBlur stdDeviation="1.1"/></filter>
+          <filter id="tqgrain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .55 0"/></filter>
+          <radialGradient id="tqv" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+        </defs>
+        <rect width="640" height="480" fill="url(#tqs)"/>
+        <g filter="url(#tqblur)">
+          <path d="M0 250V150l40-10 30 14 40-30 50 22 30-8 10 112z" fill="#2E3431"/>
+          <path d="M210 250V120h120v130zM330 250V160l40-30 40 30v90z" fill="#4A4A47"/><path d="M200 128l70-48 72 48z" fill="#5A3B33"/>
+          <g fill="#C9B88E" opacity=".55"><rect x="228" y="150" width="20" height="26"/><rect x="290" y="150" width="20" height="26"/><rect x="350" y="180" width="16" height="22"/></g>
+          <path d="M420 250V170c30-40 70-60 120-50s100 30 100 60v70z" fill="#2B312C"/>
+          <path d="M150 250c10-50 40-70 60-70" stroke="#26291F" stroke-width="10" fill="none"/>
+        </g>
+        <rect x="0" y="244" width="640" height="18" fill="#3D403B" filter="url(#tqsoft)"/>
+        <g filter="url(#tqsoft)">
+          <path d="M60 262c20-8 70-10 110-4" stroke="#7E8A8F" stroke-width="10" fill="none" opacity=".5"/>
+          <path d="M70 258l8-14h70l16 14z" fill="#5E7E9B" opacity=".7"/>
+        </g>
+        <rect y="262" width="640" height="218" fill="url(#tqw)"/>
+        <g class="cvwave" fill="none" stroke="#9C9076" stroke-opacity=".35" stroke-width="2"><path d="M-40 300c40-6 80 6 120 0s80-6 120 0 80 6 120 0 80-6 120 0 80 6 120 0 80-6 120 0"/><path d="M-40 352c40-8 80 8 120 0s80-8 120 0 80 8 120 0 80-8 120 0 80 8 120 0 80-8 120 0" stroke-opacity=".25"/><path d="M-40 410c40-10 80 10 120 0s80-10 120 0 80 10 120 0 80-10 120 0 80 10 120 0 80-10 120 0" stroke-opacity=".2"/></g>
+        <!-- the car: a dark sedan pushing through the water, headlights on -->
+        <g>
+          <path d="M120 318c4-22 16-34 42-40l52-28c18-9 34-12 62-12h52c30 0 52 10 74 30l24 14c26 4 40 12 44 30l2 14H118z" fill="url(#tqb)"/>
+          <path d="M228 254c16-8 30-10 52-10h40l8 46h-118zM338 244h4c22 0 38 8 56 24l8 22h-60z" fill="#121619"/>
+          <path d="M240 258c12-5 24-6 40-6h30l4 20h-84z" fill="#3F4A55" opacity=".35"/>
+          <path d="M130 300h340" stroke="#59636B" stroke-width="2" opacity=".6"/>
+          <ellipse cx="452" cy="306" rx="16" ry="7" fill="#FFF6DF"/><circle cx="452" cy="306" r="44" fill="url(#tql)"/>
+          <path d="M300 300h14" stroke="#2A3036" stroke-width="3"/>
+        </g>
+        <path d="M100 330c40-10 120-6 200-2s180 8 230 0l40 6v40H100z" fill="#5A503F"/>
+        <g filter="url(#tqsoft)" fill="#D8D2C2"><path d="M430 328c20-16 46-20 70-6 16 10 30 8 40 2-6 14-30 24-60 22-22-2-38-8-50-18z" opacity=".75"/><path d="M110 334c18-10 40-10 54-2-12 8-34 10-54 2z" opacity=".5"/><ellipse cx="300" cy="334" rx="120" ry="5" opacity=".35"/></g>
+        <path d="M452 336c-2 30 4 70 2 110" stroke="url(#tql)" stroke-width="22" opacity=".4" filter="url(#tqblur)"/>
+        <!-- the person, waist-deep -->
+        <g transform="translate(-40 0)">
+          <circle cx="568" cy="268" r="11" fill="#2A2724"/>
+          <path d="M553 282c4-4 26-4 30 0l6 50h-42z" fill="#2F3B46"/>
+          <path d="M555 288l-14 18M581 288l16 14" stroke="#2F3B46" stroke-width="8" stroke-linecap="round"/>
+          <ellipse cx="568" cy="333" rx="30" ry="4" fill="none" stroke="#B8AE96" stroke-opacity=".55" stroke-width="2"/>
+        </g>
+        <g class="cvrain" stroke="#E8ECEE" stroke-opacity=".22" stroke-width="1"><path d="M40 0l-14 60M130 30l-14 60M210 -10l-14 60M300 40l-14 60M390 0l-14 60M470 50l-14 60M560 10l-14 60M620 60l-14 60M80 150l-14 60M260 140l-14 60M440 160l-14 60M600 170l-14 60"/></g>
+        <rect width="640" height="480" filter="url(#tqgrain)" opacity=".16"/>
+        <rect width="640" height="480" fill="url(#tqv)"/>
+        <!-- supervision annotations -->
+        <g class="bx b1"><rect x="112" y="232" width="384" height="112" fill="none" stroke="#A351FB" stroke-width="3"/><rect x="112" y="210" width="106" height="22" fill="#A351FB"/><text x="120" y="226" fill="#fff" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15">flooded car</text></g>
+        <g class="bx b2"><rect x="494" y="252" width="66" height="84" fill="none" stroke="#FF4040" stroke-width="3"/><rect x="494" y="230" width="124" height="22" fill="#FF4040"/><text x="501" y="246" fill="#fff" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15">human in flood</text></g>
+      </svg>
     </div>
   </div>
-  <div class="wtoast"><i></i>Deleted successfully · Prince Majid Rd</div>
+  <div class="term"><div class="tt"><span>PROBLEMS</span><span>OUTPUT</span><span class="on">TERMINAL</span></div><div class="tl"><p class="p" style="--k:0">PS C:\tawaqaa&gt; python -m unittest</p><p class="" style="--k:1">0: 480x640 1 flooded car, 118.8ms</p><p class="m" style="--k:2">Speed: 2.1ms preprocess, 118.8ms inference, 0.0ms postprocess per image at shape (1, 3, 480, 640)</p><p class="g" style="--k:3">Test Result: PASS - Detected 'flooded car'</p><p class="" style="--k:4">0: 480x640 1 human in flood, 164.2ms</p><p class="m" style="--k:5">Speed: 2.0ms preprocess, 164.2ms inference, 0.0ms postprocess per image at shape (1, 3, 480, 640)</p><p class="g" style="--k:6">Test Result: PASS - Detected 'human in flood'</p><p class="m" style="--k:7">----------------------------------------------------------------------</p><p class="" style="--k:8">Ran 2 tests in 63.005s</p><p class="g" style="--k:9">OK</p><p class="cur" style="--k:10"></p></div></div>
+</div></div></div></div><div class="base"></div></div></div></div></li>
+      <li class="shot" id="tawaqaa-s4"><p class="cap"><span class="lbl">05 · Respond</span><span>Authorities see every report in one table, riskiest first, and delete it once the street is clear.</span></p><div class="frame live" role="img" aria-label="Authorities see every report in one table, riskiest first, and delete it once the street is clear."><div class="tq"><div class="tq-rain" aria-hidden="true"><span style="--x:8%;--d:4.2s;--w:-0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:19%;--d:5.6s;--w:-2.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:31%;--d:4.8s;--w:-3.4s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:46%;--d:6.2s;--w:-1.1s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:58%;--d:5.0s;--w:-4.0s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:69%;--d:4.4s;--w:-0.6s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:81%;--d:5.8s;--w:-2.8s"><i></i><b></b><em></em><em></em><em></em></span><span style="--x:92%;--d:4.6s;--w:-1.7s"><i></i><b></b><em></em><em></em><em></em></span></div><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><div class="pn web" dir="rtl" lang="ar">
+  <div class="wb"><span class="url">توقّى · الجهات المختصة</span><i></i><i></i><i></i></div>
+  <div class="wbody">
+    <div class="whead"><span class="tqlogo lg" role="img" aria-label="توقّى"><svg class="wm" viewBox="0 -1260 1700 1560" aria-hidden="true"><path d="M429 -126C553 -106 668 -58 668 -30C668 3 514 40 380 40C219 40 136 -14 136 -137C136 -195 142 -252 155 -305L39 -324C29 -284 7 -203 7 -112C7 133 168 220 366 220C572 220 789 126 789 -56C789 -198 657 -241 518 -266L447 -279ZM593 -1245 606 -1162C613 -1119 592 -1118 587 -1118C554 -1118 550 -1153 550 -1214H501C501 -1148 476 -1106 442 -1106C424 -1106 410 -1118 410 -1166V-1203H357V-1160C357 -1104 375 -1054 433 -1054C482 -1054 505 -1091 516 -1128C522 -1104 534 -1066 583 -1066C633 -1066 663 -1106 655 -1166L643 -1252ZM636 -384C636 -280 593 -279 447 -279L566 -145C685 -198 756 -285 756 -440C756 -630 649 -742 513 -742C386 -742 292 -644 292 -510C292 -416 339 -326 459 -326C519 -326 556 -348 583 -368L627 -457C633 -435 636 -411 636 -384ZM438 -822 513 -898 588 -822 679 -914 588 -1005 513 -930 438 -1005 347 -914ZM482 -576C544 -576 597 -544 622 -476C583 -471 528 -466 498 -466C432 -466 402 -487 402 -520C402 -552 429 -576 482 -576ZM931 287C1187 287 1286 145 1316 0H1350C1382 0 1399 -17 1399 -49V-189H1324C1304 -353 1213 -450 1085 -450C965 -450 866 -364 866 -206C866 -65 945 0 1031 0H1186C1152 69 1074 122 917 122H880V287ZM976 -233C976 -264 1019 -285 1061 -285C1111 -285 1166 -255 1193 -189H1070C1024 -189 976 -200 976 -233ZM1351 0C1536 0 1677 -104 1630 -354L1608 -468L1462 -440L1493 -268C1505 -200 1485 -189 1400 -189C1368 -189 1351 -172 1351 -140ZM1455 -548 1530 -624 1605 -548 1696 -640 1605 -731 1530 -656 1455 -731 1364 -640Z" fill="currentColor"/></svg><svg class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 1.5S2 11 2 17.2A8 8 0 0 0 18 17.2C18 11 10 1.5 10 1.5z" fill="currentColor"/><path d="M6.2 18.5a4.2 4.2 0 0 0 3.6 3.9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/></svg></span></div>
+    <div class="wcard">
+      <p class="wlink">لمشاهدة لوحة المعلومات للبلاغات <span>اضغط هنا</span></p>
+      <div class="tbl"><div class="tr hd"><span></span><span>مستوى الخطر</span><span>الشارع</span><span>خط الطول</span><span>خط العرض</span><span>مستوى الماء</span><span>عدد البلاغات</span></div><div class="tr h"><span class="cb"></span><span class="st">خطير</span><b>شارع قريش</b><span>39.1823</span><span>21.4858</span><span>80 سم</span><span>15</span></div><div class="tr h"><span class="cb"></span><span class="st">خطير</span><b>شارع فلسطين</b><span>39.1736</span><span>21.5312</span><span>55 سم</span><span>9</span></div><div class="tr m gone"><span class="cb"></span><span class="st">متوسط</span><b>شارع أبو يزيد</b><span>39.2104</span><span>21.5121</span><span>30 سم</span><span>2</span></div></div>
+    </div>
+  </div>
+  <div class="modal"><svg viewBox="0 0 48 28" aria-hidden="true"><path d="M4 18c6-8 12-8 18 0s12 8 18 0" fill="none" stroke="#1F4E6B" stroke-width="6" stroke-linecap="round"/><path d="M8 8c6-6 12-6 18 0s12 6 18 0" fill="none" stroke="#1F4E6B" stroke-width="6" stroke-linecap="round"/></svg>
+    <p>هل أنت متأكد أنك تريد حذف الإنذار؟</p><div class="mbar"><span class="yes">نعم</span><span>إلغاء</span></div></div>
+  <div class="wtoast"><svg class="badge" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M24 3l4.6 3.4 5.7-.2 1.8 5.4 4.7 3.3-1.6 5.5 1.6 5.5-4.7 3.3-1.8 5.4-5.7-.2L24 45l-4.6-3.4-5.7.2-1.8-5.4-4.7-3.3 1.6-5.5-1.6-5.5 4.7-3.3 1.8-5.4 5.7.2z"/><path d="m16 24.5 5.5 5.5L32.5 19" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>تم حذف الإنذار بنجاح</span></div>
 </div></div></div></div><div class="base"></div></div></div></div></li>
     </ol>
     <div class="case-next"><span class="lbl">Next project</span><button type="button" data-next="1"><span class="t">Masar →</span></button></div>
   </div>
-  <nav class="rail case-ui" aria-label="Jump to a clip"><button class="txt" type="button" aria-label="Overview">INFO</button><button class="txt" type="button" aria-label="01 · Report">01</button><button class="txt" type="button" aria-label="02 · Alerts">02</button><button class="txt" type="button" aria-label="03 · Reroute">03</button><button class="txt" type="button" aria-label="04 · Detect">04</button><button class="txt" type="button" aria-label="05 · Respond">05</button></nav>
+  <nav class="rail case-ui" aria-label="Jump to a clip"><button class="txt" type="button" aria-label="Overview">INFO</button><button class="txt" type="button" aria-label="01 · Report">01</button><button class="txt" type="button" aria-label="02 · Alerts">02</button><button class="txt" type="button" aria-label="03 · Directions">03</button><button class="txt" type="button" aria-label="04 · Detect">04</button><button class="txt" type="button" aria-label="05 · Respond">05</button></nav>
 </dialog>
 <dialog class="case" id="case-1" aria-labelledby="case-1-t">
   <div class="case-bg" aria-hidden="true"><div class="case-media"></div></div>
