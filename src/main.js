@@ -42,6 +42,11 @@ const paint=()=>{
   $("#live").textContent=`Project ${cur+1} of ${N}: ${p.title}`;
   const tc=$('meta[name="theme-color"]');if(tc)tc.content=bg;
 };
+/* recordings on cards (animated WebP) decode every frame while shown, so only the front card plays its own;
+   the rest show a still frame. A recording starts only once its card has settled, never during a move. */
+let introOver=false;
+function playFront(){cards.forEach((c,k)=>{const im=c.querySelector("img[data-anim]");if(!im)return;
+  const want=(introOver&&k===cur)?im.dataset.anim:im.dataset.still;if(im.getAttribute("src")!==want)im.setAttribute("src",want)})}
 /* put a title, line and card straight into place with no motion */
 const setInstant=k=>{
   [beltLis,attrLis].forEach(list=>list.forEach((li,j)=>{li.classList.add("prep");li.classList.remove("out");li.classList.toggle("on",j===k)}));
@@ -51,11 +56,17 @@ const setInstant=k=>{
 };
 /* project change: the old card drops, grows and fades in front while the new one settles in
    from behind; the old title slides out of its slot letter by letter and the new one rises into it */
+/* the cards either side of the front one stay laid out (paused) so the next one is ready to move;
+   a card further away is laid out a moment before it moves rather than halfway through its entrance */
+const raf2=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+const idle=f=>("requestIdleCallback" in window)?requestIdleCallback(f,{timeout:800}):setTimeout(f,200);
+const warmAround=()=>idle(()=>cards.forEach((c,k)=>c.classList.toggle("warm",k!==cur&&(k===(cur+1)%N||k===(cur+N-1)%N))));
 const show=async(to,dirHint)=>{
   if(busy||to===cur)return;busy=true;
+  if(!cards[to].classList.contains("warm")){cards[to].classList.add("warm");await raf2()}
   const from=cur,dir=dirHint||(((to-from+N)%N)<=N/2?1:-1);
   cur=to;paint();
-  if(calm){setInstant(to);busy=false;return}
+  if(calm){setInstant(to);busy=false;playFront();return}
   hero.classList.remove("booting");
   [beltLis[to],attrLis[to]].forEach(el=>{el.classList.add("prep");el.classList.remove("out")});
   stage.offsetWidth;
@@ -69,7 +80,7 @@ const show=async(to,dirHint)=>{
   cards[from].classList.remove("leave");cards[to].classList.remove("enter");
   beltLis[from].classList.add("prep");beltLis[from].classList.remove("out");attrLis[from].classList.add("prep");attrLis[from].classList.remove("out");
   stage.offsetWidth;beltLis[from].classList.remove("prep");attrLis[from].classList.remove("prep");
-  busy=false;
+  busy=false;warmAround();playFront();
 };
 const go=dir=>show((cur+dir+N)%N,dir);
 ticks.forEach((b,k)=>b.addEventListener("click",()=>show(k)));
@@ -95,7 +106,7 @@ busy=true;
    which the compositor plays even while the page is still decoding media. */
 {const st=$("#stage"),front=st&&st.querySelector(".card.is-on"),D=INTRO,N=D.s.length,dur=(N-1)/D.hz*1000;
  const done=()=>{home.classList.remove("intro","go","lit");anims.forEach(a=>a.cancel());clones.forEach(c=>c.remove());
-   [front,...layers].forEach(el=>{if(el){el.style.zIndex="";el.style.willChange="";el.style.transformOrigin=""}})};
+   [front,...layers].forEach(el=>{if(el){el.style.zIndex="";el.style.willChange="";el.style.transformOrigin=""}});introOver=true;playFront();warmAround()};
  let anims=[],clones=[],layers=[];
  if(front&&home.classList.contains("intro")&&"animate" in front){
   const r=st.getBoundingClientRect(),V=innerHeight,T=r.top,h=r.height,w=r.width,Pp=(w*.48).toFixed(1);
@@ -110,16 +121,23 @@ busy=true;
   layers=pool.slice(0,5);
   const kf=[],lk=layers.map(()=>[]);
   for(let i=0;i<N;i++){const o=i/(N-1),t=.12+i/D.hz,s=D.s[i],top=D.top[i],c=D.c[i];
-    kf.push({offset:o,transform:tf(s,top,D.th[i]),opacity:D.op[i]});
+    /* a fully transparent layer is not drawn until it shows; 0.3% is invisible but gets the front card drawn up front */
+    kf.push({offset:o,transform:tf(s,top,D.th[i]),opacity:Math.max(D.op[i],.003)});
     const as=.6+(s-.6)*c,at=205+(top-205)*c,lo=t<.79?0:t<2.72?1:0;
     layers.forEach((L,j)=>lk[j].push({offset:o,transform:tf(as+(s-as)*FS[j],at+(top-at)*FT[j],0),opacity:lo}))}
   const opt={duration:dur,fill:"both",easing:"linear"};
   [front,...layers].forEach((el,j)=>{el.style.transformOrigin="50% 50%";el.style.willChange="transform,opacity";el.style.zIndex=j?String(4+j):"10"});
   /* start once fonts are in and two frames have painted, so the first second is not spent fighting page load;
      the CSS parts (dim, title, page details) are held paused until the same moment */
-  const go=()=>{home.classList.add("go");anims=[front.animate(kf,opt),...layers.map((L,j)=>L.animate(lk[j],opt))];
-    setTimeout(()=>home.classList.add("lit"),5000);setTimeout(()=>{busy=false},5250);setTimeout(done,6100)};
-  const ready=Promise.race([d.fonts?d.fonts.ready:Promise.resolve(),wait(1200)]);
+  /* the animations are created paused on their first pose, so every card is drawn once before anything moves;
+     two frames later they all start together. The front card's own screens restart once the title has risen,
+     in the same step as the cleanup, so nothing restyles while the title is moving. */
+  const go=()=>{anims=[front.animate(kf,opt),...layers.map((L,j)=>L.animate(lk[j],opt))];anims.forEach(a=>a.pause());
+    home.classList.add("go");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{anims.forEach(a=>a.play());
+      setTimeout(()=>{busy=false},5250);setTimeout(()=>{home.classList.add("lit");done()},6000)},250)))};
+  const loaded=new Promise(r=>d.readyState==="complete"?r():addEventListener("load",r,{once:true}));
+  const ready=Promise.race([Promise.all([d.fonts?d.fonts.ready:Promise.resolve(),loaded]),wait(2500)]);
   ready.then(()=>requestAnimationFrame(()=>requestAnimationFrame(go)));
  }else{setTimeout(()=>{busy=false},50);done()}
 }
@@ -138,7 +156,7 @@ let opener=null,io=null;
 $$(".case-intro h2").forEach(h=>{const s=d.createElement("span");s.className="rise";s.append(...h.childNodes);h.append(s)});
 const openCase=async k=>{
   if(busy)return;busy=true;
-  if(k!==cur){cur=k;paint();setInstant(k)}
+  if(k!==cur){cur=k;paint();setInstant(k);playFront()}
   opener=d.activeElement;
   const dl=$("#case-"+k),card=cards[k],media=dl.querySelector(".case-media");
   dl.style.setProperty("--pbg",P[k].bg);dl.style.setProperty("--pink",P[k].ink);dl.style.setProperty("--pdeep",isDark()?P[k].night:P[k].deep);
@@ -156,9 +174,10 @@ const openCase=async k=>{
   requestAnimationFrame(()=>dl.classList.add("shown"));
   const shots=[...dl.querySelectorAll(".shot")];
   io&&io.disconnect();
-  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{root:dl,threshold:.15});
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in");e.target.classList.toggle("live",e.isIntersecting)}),{root:dl,threshold:0,rootMargin:"10% 0px"});
   shots.forEach(s=>calm?s.classList.add("in"):io.observe(s));
   await wait(1000);
+  media.classList.add("settled");root.classList.add("case-open");
   home.classList.remove("exploring");card.classList.remove("lift");
   busy=false;
 };
@@ -167,7 +186,7 @@ $$("[data-open]").forEach(b=>b.addEventListener("click",()=>openCase(+b.dataset.
 $$("dialog.case").forEach(dl=>{
   dl.querySelector(".case-close").addEventListener("click",()=>closeCase(dl));
   dl.addEventListener("cancel",e=>{e.preventDefault();closeCase(dl)});
-  dl.addEventListener("close",()=>{dl.classList.remove("shown","closing");dl.querySelector(".case-media").replaceChildren();if(cursorEl)d.body.append(cursorEl);if(opener&&opener.isConnected)opener.focus({preventScroll:true})});
+  dl.addEventListener("close",()=>{root.classList.remove("case-open");dl.querySelector(".case-media").classList.remove("settled");dl.classList.remove("shown","closing");dl.querySelector(".case-media").replaceChildren();if(cursorEl)d.body.append(cursorEl);if(opener&&opener.isConnected)opener.focus({preventScroll:true})});
   /* thumbnails copy their image from the clip they point to, so nothing is stored twice */
   const targets=[dl.querySelector(".case-intro"),...dl.querySelectorAll(".shot")],rb=[...dl.querySelectorAll(".rail button")];
   rb.forEach((b,i)=>{const img=b.querySelector("img"),src=targets[i]&&targets[i].querySelector(".frame img");if(img&&src)img.src=src.getAttribute("src");

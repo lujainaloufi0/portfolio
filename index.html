@@ -357,6 +357,23 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
 .f-top{color:inherit;text-decoration:none}@media (hover:hover) and (pointer:fine){.f-top:hover{color:#fff}}
 #home.intro{transition:none}
 
+/* ── performance: only what you can see animates ──
+   cards behind the front one, the deck while a project or About is open, and project screens scrolled out
+   of view all hold still, pseudo-elements included (rain, glows). The front card keeps every animation. */
+#stage .card:not(.is-on) *,#stage .card:not(.is-on) *::before,#stage .card:not(.is-on) *::after,
+.intro:not(.lit) .stage .card *::before,.intro:not(.lit) .stage .card *::after,
+html.case-open #stage *,html.case-open #stage *::before,html.case-open #stage *::after,
+body.on-about #stage *,body.on-about #stage *::before,body.on-about #stage *::after,
+.case .shot:not(.live) *,.case .shot:not(.live) *::before,.case .shot:not(.live) *::after,
+.case-media.anim:not(.settled) *,.case-media.anim:not(.settled) *::before,.case-media.anim:not(.settled) *::after{animation-play-state:paused!important}
+.case-media{contain:layout paint style}
+.case .shot .frame{contain:layout paint}
+/* cards behind the front one skip their contents entirely (no style, layout or paint) and show only their
+   stage colour. In the intro's fanned stack only each card's top strip shows anyway, as images already were. */
+#stage .card:not(.is-on):not(.leave):not(.warm) > *{content-visibility:hidden}
+/* project screens are laid out only as they come near the viewport */
+.case .shot{content-visibility:auto;contain-intrinsic-size:auto 720px}
+
 /* ═════════ TAWAQAA: app screens drawn in code (sharp at any size) ═════════
    Scenes size themselves to their frame with container units. Every element's resting style is its
    final state; the keyframes only add the motion, so reduced-motion users see complete screens. */
@@ -559,8 +576,8 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
   background-image:linear-gradient(rgba(229,212,192,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(229,212,192,.035) 1px,transparent 1px);
   background-size:8cqh 8cqh;mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
 .mz::after{content:"";position:absolute;left:50%;top:50%;width:70cqh;height:70cqh;margin:-35cqh;z-index:-1;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(16,185,129,.18),transparent);filter:blur(4cqh);animation:z-breathe var(--z-T) ease-in-out infinite}
-@keyframes z-breathe{50%{opacity:.55;transform:scale(1.08)}}
+  background:radial-gradient(closest-side,rgba(16,185,129,.16),rgba(16,185,129,.05) 60%,transparent);animation:z-breathe var(--z-T) ease-in-out infinite}
+@keyframes z-breathe{50%{opacity:.6}}
 .mz>*{position:relative}
 
 /* phone screen */
@@ -846,6 +863,9 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
 .card .mz::before,.case .mz::before,.case-media .mz::before{background-image:linear-gradient(rgba(170,185,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(170,185,255,.05) 1px,transparent 1px)}
 .case .z-fl{background:linear-gradient(160deg,rgba(44,54,118,.62),rgba(17,22,52,.6));border-color:rgba(190,200,255,.16)}
 
+/* the portfolio's dark stage needs no backdrop blur behind the floating cards; a blur re-rendered on every float frame is costly */
+.case .z-fl,.card .z-fl{-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(160deg,rgba(44,54,118,.88),rgba(17,22,52,.9))}
+
 /* ═════════ CURTAIN ═════════ */
 #curtain{position:fixed;inset:0;z-index:150;display:grid;place-items:center;background:var(--c,var(--about));transform:translateY(100%);pointer-events:none;visibility:hidden}
 #curtain span{font:400 clamp(4rem,16vw,14rem)/1 var(--f-bebas);color:#fff;opacity:0;transform:translateY(40px);transition:opacity .4s,transform .7s var(--out)}
@@ -1031,7 +1051,7 @@ body.at-foot .to-top{opacity:0;transform:scale(.6);pointer-events:none}
   <div class="ban"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:8cqw;height:8cqw"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/></svg><div><div class="t2">Palestine St · danger</div><div class="t3">Avoid this street: the water is high</div></div></div>
   <div class="al"><div class="it" style="--k:0"><div class="row"><span class="t2">Palestine St</span><span class="sp"></span><span class="chip r">Danger</span></div><span class="t3">Water level: 42 cm</span><div class="lvl"><span style="--w:84%;--c:#D93A40;--k:0"></span></div></div><div class="it" style="--k:1"><div class="row"><span class="t2">King Abdulaziz Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 18 cm</span><div class="lvl"><span style="--w:40%;--c:#E59A2F;--k:1"></span></div></div><div class="it" style="--k:2"><div class="row"><span class="t2">Prince Majid Rd</span><span class="sp"></span><span class="chip a">Medium</span></div><span class="t3">Water level: 15 cm</span><div class="lvl"><span style="--w:32%;--c:#E59A2F;--k:2"></span></div></div></div>
 </div></div></div></div>
-        <div class="card" role="button" tabindex="0" data-k="1" aria-label="Open Masar: Masar in use: signing in, the department overview, the task board, completing a task and switching to Arabic"><div class="mk" aria-hidden="true"><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><img src="assets/m-card.webp" alt="" decoding="async"></div></div></div><div class="base"></div></div></div></div>
+        <div class="card" role="button" tabindex="0" data-k="1" aria-label="Open Masar: Masar in use: signing in, the department overview, the task board, completing a task and switching to Arabic"><div class="mk" aria-hidden="true"><div class="lp"><div class="lid"><div class="bez"><span class="camn"></span><div class="disp"><img src="assets/m-card-still.webp" data-still="assets/m-card-still.webp" data-anim="assets/m-card.webp" alt="" decoding="async"></div></div></div><div class="base"></div></div></div></div>
         <div class="card" role="button" tabindex="0" data-k="2" aria-label="Open Mizan: Mizan in Arabic: the weekly budget step with a balance scale, today's meals and the grocery list"><div class="mz mz-card" aria-hidden="true"><div class="iph z-ph"><div class="scr z-scr" lang="ar" dir="rtl"><div class="sb"><span>9:41</span><i><svg class="sb-wifi" viewBox="0 0 17 12" aria-hidden="true"><g fill="currentColor"><path d="M8.5 11.2 6.38 9.08A3 3 0 0 1 10.62 9.08Z"/><path d="M3.41 6.11A7.2 7.2 0 0 1 13.59 6.11L11.75 7.95A4.6 4.6 0 0 0 5.25 7.95Z"/><path d="M.58 3.28A11.2 11.2 0 0 1 16.42 3.28L14.72 4.98A8.8 8.8 0 0 0 2.28 4.98Z"/></g></svg><svg class="sb-batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".38"/><rect x="2.4" y="2.4" width="19.2" height="8.2" rx="2.1" fill="currentColor"/><path d="M25 4.4v4.2c.85-.3 1.4-1.15 1.4-2.1s-.55-1.8-1.4-2.1z" fill="currentColor" opacity=".45"/></svg></i></div>
   <div class="z-wtop"><span class="z-t3">أسبوع جديد · 3 من 4</span><div class="z-steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
   <p class="z-h2">الأسرة والميزانية</p>
@@ -1540,6 +1560,11 @@ const paint=()=>{
   $("#live").textContent=`Project ${cur+1} of ${N}: ${p.title}`;
   const tc=$('meta[name="theme-color"]');if(tc)tc.content=bg;
 };
+/* recordings on cards (animated WebP) decode every frame while shown, so only the front card plays its own;
+   the rest show a still frame. A recording starts only once its card has settled, never during a move. */
+let introOver=false;
+function playFront(){cards.forEach((c,k)=>{const im=c.querySelector("img[data-anim]");if(!im)return;
+  const want=(introOver&&k===cur)?im.dataset.anim:im.dataset.still;if(im.getAttribute("src")!==want)im.setAttribute("src",want)})}
 /* put a title, line and card straight into place with no motion */
 const setInstant=k=>{
   [beltLis,attrLis].forEach(list=>list.forEach((li,j)=>{li.classList.add("prep");li.classList.remove("out");li.classList.toggle("on",j===k)}));
@@ -1549,11 +1574,17 @@ const setInstant=k=>{
 };
 /* project change: the old card drops, grows and fades in front while the new one settles in
    from behind; the old title slides out of its slot letter by letter and the new one rises into it */
+/* the cards either side of the front one stay laid out (paused) so the next one is ready to move;
+   a card further away is laid out a moment before it moves rather than halfway through its entrance */
+const raf2=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+const idle=f=>("requestIdleCallback" in window)?requestIdleCallback(f,{timeout:800}):setTimeout(f,200);
+const warmAround=()=>idle(()=>cards.forEach((c,k)=>c.classList.toggle("warm",k!==cur&&(k===(cur+1)%N||k===(cur+N-1)%N))));
 const show=async(to,dirHint)=>{
   if(busy||to===cur)return;busy=true;
+  if(!cards[to].classList.contains("warm")){cards[to].classList.add("warm");await raf2()}
   const from=cur,dir=dirHint||(((to-from+N)%N)<=N/2?1:-1);
   cur=to;paint();
-  if(calm){setInstant(to);busy=false;return}
+  if(calm){setInstant(to);busy=false;playFront();return}
   hero.classList.remove("booting");
   [beltLis[to],attrLis[to]].forEach(el=>{el.classList.add("prep");el.classList.remove("out")});
   stage.offsetWidth;
@@ -1567,7 +1598,7 @@ const show=async(to,dirHint)=>{
   cards[from].classList.remove("leave");cards[to].classList.remove("enter");
   beltLis[from].classList.add("prep");beltLis[from].classList.remove("out");attrLis[from].classList.add("prep");attrLis[from].classList.remove("out");
   stage.offsetWidth;beltLis[from].classList.remove("prep");attrLis[from].classList.remove("prep");
-  busy=false;
+  busy=false;warmAround();playFront();
 };
 const go=dir=>show((cur+dir+N)%N,dir);
 ticks.forEach((b,k)=>b.addEventListener("click",()=>show(k)));
@@ -1593,7 +1624,7 @@ busy=true;
    which the compositor plays even while the page is still decoding media. */
 {const st=$("#stage"),front=st&&st.querySelector(".card.is-on"),D=INTRO,N=D.s.length,dur=(N-1)/D.hz*1000;
  const done=()=>{home.classList.remove("intro","go","lit");anims.forEach(a=>a.cancel());clones.forEach(c=>c.remove());
-   [front,...layers].forEach(el=>{if(el){el.style.zIndex="";el.style.willChange="";el.style.transformOrigin=""}})};
+   [front,...layers].forEach(el=>{if(el){el.style.zIndex="";el.style.willChange="";el.style.transformOrigin=""}});introOver=true;playFront();warmAround()};
  let anims=[],clones=[],layers=[];
  if(front&&home.classList.contains("intro")&&"animate" in front){
   const r=st.getBoundingClientRect(),V=innerHeight,T=r.top,h=r.height,w=r.width,Pp=(w*.48).toFixed(1);
@@ -1608,16 +1639,23 @@ busy=true;
   layers=pool.slice(0,5);
   const kf=[],lk=layers.map(()=>[]);
   for(let i=0;i<N;i++){const o=i/(N-1),t=.12+i/D.hz,s=D.s[i],top=D.top[i],c=D.c[i];
-    kf.push({offset:o,transform:tf(s,top,D.th[i]),opacity:D.op[i]});
+    /* a fully transparent layer is not drawn until it shows; 0.3% is invisible but gets the front card drawn up front */
+    kf.push({offset:o,transform:tf(s,top,D.th[i]),opacity:Math.max(D.op[i],.003)});
     const as=.6+(s-.6)*c,at=205+(top-205)*c,lo=t<.79?0:t<2.72?1:0;
     layers.forEach((L,j)=>lk[j].push({offset:o,transform:tf(as+(s-as)*FS[j],at+(top-at)*FT[j],0),opacity:lo}))}
   const opt={duration:dur,fill:"both",easing:"linear"};
   [front,...layers].forEach((el,j)=>{el.style.transformOrigin="50% 50%";el.style.willChange="transform,opacity";el.style.zIndex=j?String(4+j):"10"});
   /* start once fonts are in and two frames have painted, so the first second is not spent fighting page load;
      the CSS parts (dim, title, page details) are held paused until the same moment */
-  const go=()=>{home.classList.add("go");anims=[front.animate(kf,opt),...layers.map((L,j)=>L.animate(lk[j],opt))];
-    setTimeout(()=>home.classList.add("lit"),5000);setTimeout(()=>{busy=false},5250);setTimeout(done,6100)};
-  const ready=Promise.race([d.fonts?d.fonts.ready:Promise.resolve(),wait(1200)]);
+  /* the animations are created paused on their first pose, so every card is drawn once before anything moves;
+     two frames later they all start together. The front card's own screens restart once the title has risen,
+     in the same step as the cleanup, so nothing restyles while the title is moving. */
+  const go=()=>{anims=[front.animate(kf,opt),...layers.map((L,j)=>L.animate(lk[j],opt))];anims.forEach(a=>a.pause());
+    home.classList.add("go");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{anims.forEach(a=>a.play());
+      setTimeout(()=>{busy=false},5250);setTimeout(()=>{home.classList.add("lit");done()},6000)},250)))};
+  const loaded=new Promise(r=>d.readyState==="complete"?r():addEventListener("load",r,{once:true}));
+  const ready=Promise.race([Promise.all([d.fonts?d.fonts.ready:Promise.resolve(),loaded]),wait(2500)]);
   ready.then(()=>requestAnimationFrame(()=>requestAnimationFrame(go)));
  }else{setTimeout(()=>{busy=false},50);done()}
 }
@@ -1636,7 +1674,7 @@ let opener=null,io=null;
 $$(".case-intro h2").forEach(h=>{const s=d.createElement("span");s.className="rise";s.append(...h.childNodes);h.append(s)});
 const openCase=async k=>{
   if(busy)return;busy=true;
-  if(k!==cur){cur=k;paint();setInstant(k)}
+  if(k!==cur){cur=k;paint();setInstant(k);playFront()}
   opener=d.activeElement;
   const dl=$("#case-"+k),card=cards[k],media=dl.querySelector(".case-media");
   dl.style.setProperty("--pbg",P[k].bg);dl.style.setProperty("--pink",P[k].ink);dl.style.setProperty("--pdeep",isDark()?P[k].night:P[k].deep);
@@ -1654,9 +1692,10 @@ const openCase=async k=>{
   requestAnimationFrame(()=>dl.classList.add("shown"));
   const shots=[...dl.querySelectorAll(".shot")];
   io&&io.disconnect();
-  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{root:dl,threshold:.15});
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in");e.target.classList.toggle("live",e.isIntersecting)}),{root:dl,threshold:0,rootMargin:"10% 0px"});
   shots.forEach(s=>calm?s.classList.add("in"):io.observe(s));
   await wait(1000);
+  media.classList.add("settled");root.classList.add("case-open");
   home.classList.remove("exploring");card.classList.remove("lift");
   busy=false;
 };
@@ -1665,7 +1704,7 @@ $$("[data-open]").forEach(b=>b.addEventListener("click",()=>openCase(+b.dataset.
 $$("dialog.case").forEach(dl=>{
   dl.querySelector(".case-close").addEventListener("click",()=>closeCase(dl));
   dl.addEventListener("cancel",e=>{e.preventDefault();closeCase(dl)});
-  dl.addEventListener("close",()=>{dl.classList.remove("shown","closing");dl.querySelector(".case-media").replaceChildren();if(cursorEl)d.body.append(cursorEl);if(opener&&opener.isConnected)opener.focus({preventScroll:true})});
+  dl.addEventListener("close",()=>{root.classList.remove("case-open");dl.querySelector(".case-media").classList.remove("settled");dl.classList.remove("shown","closing");dl.querySelector(".case-media").replaceChildren();if(cursorEl)d.body.append(cursorEl);if(opener&&opener.isConnected)opener.focus({preventScroll:true})});
   /* thumbnails copy their image from the clip they point to, so nothing is stored twice */
   const targets=[dl.querySelector(".case-intro"),...dl.querySelectorAll(".shot")],rb=[...dl.querySelectorAll(".rail button")];
   rb.forEach((b,i)=>{const img=b.querySelector("img"),src=targets[i]&&targets[i].querySelector(".frame img");if(img&&src)img.src=src.getAttribute("src");
